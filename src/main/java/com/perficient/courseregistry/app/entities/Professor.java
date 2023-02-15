@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class Professor extends User{
     private String professor_id;
-    private String title;
+    private String degree;
 
 }

@@ -2,16 +2,14 @@ package com.perficient.courseregistry.app.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import java.sql.Time;
 
 @Getter
 @Setter
 public class Course {
-    private String course_id;
-    private String title;
-    private String code;
+    private String courseId;
+    private String group;
     private String quota;
-    private Time startDate;
-    private Time finishDate;
+    private Professor professor;
+    private Subject subject;
 
 }
