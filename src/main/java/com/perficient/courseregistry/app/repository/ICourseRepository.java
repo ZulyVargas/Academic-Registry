@@ -11,6 +11,8 @@ public interface ICourseRepository<Course> extends CrudRepository<Course,String>
 
     @Query("SELECT * FROM COURSES where group_number= :groupNumber" )
     Course findByGroupNumber(@Param("groupNumber") String groupNumber);
-    
+
+    @Query()
+    ResultSet findPrerequisitesById(@Param("courseId") String courseId);
 
 }
