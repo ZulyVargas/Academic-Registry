@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,6 +17,7 @@ public class Course {
     private String quota;
     private Professor professor;
     private Subject subject;
-    private Set<Course> prerequisites;
 
 }
+
+
