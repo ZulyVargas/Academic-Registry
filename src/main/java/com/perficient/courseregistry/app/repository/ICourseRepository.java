@@ -9,10 +9,11 @@ import java.sql.ResultSet;
 
 public interface ICourseRepository<Course> extends CrudRepository<Course,String> {
 
-    @Query("SELECT * FROM COURSES where group_number= :groupNumber" )
+    @Query("SELECT * FROM COURSES WHERE group_number= :groupNumber" )
     Course findByGroupNumber(@Param("groupNumber") String groupNumber);
 
-    @Query()
+    @Query("SELECT pre_subject FROM PREREQUISITES WHERE subject_base = :courseId")
     ResultSet findPrerequisitesById(@Param("courseId") String courseId);
+
 
 }

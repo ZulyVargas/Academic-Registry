@@ -13,4 +13,6 @@ public interface ISubjectRepository extends CrudRepository<Subject,String> {
     @Query("SELECT * FROM SUBJECTS WHERE title = :title")
     Subject findByTitle(@Param("title") String title);
 
+    @Query("INSERT INTO PREREQUISITES VALUES(:subjectId,:prerequisiteId)")
+    void savePrerequisites(@Param("subjectId") String subjectId, @Param("prerequisiteId") String prerequisiteId);
 }
