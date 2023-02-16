@@ -12,7 +12,7 @@ public class Subject {
     private String subjectId;
     private  String title;
     private String code;
-    private Set<Subject> prerrequisites;
+    private Set<Subject> prerequisites;
 
 
 }

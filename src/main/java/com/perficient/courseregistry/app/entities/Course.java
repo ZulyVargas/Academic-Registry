@@ -19,3 +19,4 @@ public class Course {
     private Subject subject;
 
 }
+
