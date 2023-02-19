@@ -1,22 +1,33 @@
 package com.perficient.courseregistry.app.entities;
 
+import com.perficient.courseregistry.app.enums.PERIOD;
+import com.perficient.courseregistry.app.enums.STATUS_COURSE;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
 public class Course {
+
     @Column("course_id")
-    private @Id String courseId;
+    private @Id UUID courseId;
     @Column("group_number")
     private String groupNumber;
-    private String quota;
+    private Integer quota;
     private Professor professor;
     private Subject subject;
+
+    private STATUS_COURSE status;
+
+    private String year;
+
+    private PERIOD period;
 
 }
 
