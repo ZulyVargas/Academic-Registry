@@ -22,10 +22,11 @@ public class Course {
     private Integer quota;
     private Professor professor;
     private Subject subject;
-    private STATUS_COURSE status;
+    @Column("status_course")
+    private STATUS_COURSE statusCourse;
     private String year;
     private PERIOD period;
-
+    private boolean active;
 }
 
 
