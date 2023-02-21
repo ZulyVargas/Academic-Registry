@@ -22,11 +22,8 @@ public class Course {
     private Integer quota;
     private Professor professor;
     private Subject subject;
-
     private STATUS_COURSE status;
-
     private String year;
-
     private PERIOD period;
 
 }

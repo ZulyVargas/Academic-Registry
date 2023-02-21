@@ -17,7 +17,6 @@ public class Record {
     private UUID recordId;
     @Column("course_id")
     private UUID courseId;
-
     private GRADE_TYPE type;
     private double grade;
 
