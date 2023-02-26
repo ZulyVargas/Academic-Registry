@@ -1,22 +1,21 @@
-package com.perficient.courseregistry.app.entities;
+package com.perficient.courseregistry.app.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.UUID;
 
 @Getter
 @Setter
-@SuperBuilder
+@AllArgsConstructor
 @NoArgsConstructor
-@Table("Professors")
-public class Professor extends User {
+@SuperBuilder
+public class ProfessorDTO extends UserDTO{
 
-    @Column("professor_id")
     private UUID professorId;
     private String degree;
 
