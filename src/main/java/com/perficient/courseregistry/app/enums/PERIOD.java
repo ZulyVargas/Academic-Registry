@@ -1,8 +1,5 @@
 package com.perficient.courseregistry.app.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 public enum PERIOD {
     I("First semester of the year"),
     II("Second half of the year "),

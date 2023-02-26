@@ -17,6 +17,7 @@ public class Subject {
     private UUID subjectId;
     private  String title;
     private String code;
+    private String credits;
     private Set<Subject> prerrequisites;
 
 }
