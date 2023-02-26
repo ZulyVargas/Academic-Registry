@@ -8,16 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
 public interface ISubjectRepository extends CrudRepository<Subject,String> {
 
-    @Query("SELECT * FROM SUBJECTS" )
+    @Query("SELECT subject_id, title, code, credits, null as prerrequisite FROM SUBJECTS" )
     List<Subject> findAll();
 
-    @Query("SELECT prerrequisite_id FROM PREREQUISITES_SUBJECT WHERE subject_id=:subjectId")
-    List<UUID> findPrerrequisitesById(@Param("subjectId") UUID subjectId);
+    @Query("SELECT subject_id, title, code, credits FROM PREREQUISITES_INFO WHERE base_id=:subjectId")
+    Set<Subject> findPrerrequisitesById(@Param("subjectId") UUID subjectId);
 
     @Query("SELECT * FROM SUBJECTS WHERE code = :code")
     Subject findByCode(@Param("code") String code);

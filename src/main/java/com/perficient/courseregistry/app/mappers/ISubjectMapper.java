@@ -12,9 +12,5 @@ public interface ISubjectMapper {
 
 
     ISubjectMapper INSTANCE = Mappers.getMapper(ISubjectMapper.class);
-    default SubjectDTO subjectToSubjectDTO(Subject subject, Set<String> prerequisites){
-        return SubjectDTO.builder().subjectId(subject.getSubjectId()).code(subject.getCode()).credits(subject.getCredits()).title(subject.getTitle())
-                .prerrequisites(prerequisites).build();
-    }
-
+    SubjectDTO subjectToSubjectDTO(Subject subject);
 }

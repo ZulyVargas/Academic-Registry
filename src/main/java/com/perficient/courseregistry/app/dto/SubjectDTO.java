@@ -24,6 +24,6 @@ public class SubjectDTO implements Serializable {
     private String code;
     private String credits;
 
-    private Set<String> prerrequisites;
+    private Set<SubjectDTO> prerrequisites;
 
 }
