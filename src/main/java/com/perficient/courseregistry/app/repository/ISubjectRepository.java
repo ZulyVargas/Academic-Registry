@@ -14,8 +14,14 @@ import java.util.UUID;
 @Repository
 public interface ISubjectRepository extends CrudRepository<Subject,String> {
 
-    @Query("SELECT subject_id, title, code, credits, null as prerrequisite FROM SUBJECTS" )
+    @Query("SELECT * FROM SUBJECTS ORDER BY credits " )
     List<Subject> findAll();
+
+    @Query("SELECT * FROM SUBJECTS WHERE subject_id=:subjectId")
+    Subject findById(@Param("subjectId") UUID subjectId);
+
+    @Query("SELECT * FROM SUBJECTS ORDER BY credits LIMIT :limit OFFSET :offset ")
+    List<Subject>findAllPageable(@Param("limit") Integer limit,@Param("offset") Integer offset );
 
     @Query("SELECT subject_id, title, code, credits FROM PREREQUISITES_INFO WHERE base_id=:subjectId")
     Set<Subject> findPrerrequisitesById(@Param("subjectId") UUID subjectId);
