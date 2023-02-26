@@ -1,0 +1,20 @@
+package com.perficient.courseregistry.app.mappers;
+
+import com.perficient.courseregistry.app.dto.SubjectDTO;
+import com.perficient.courseregistry.app.entities.Subject;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import java.util.Set;
+
+@Mapper
+public interface ISubjectMapper {
+
+
+    ISubjectMapper INSTANCE = Mappers.getMapper(ISubjectMapper.class);
+    default SubjectDTO subjectToSubjectDTO(Subject subject, Set<String> prerequisites){
+        return SubjectDTO.builder().subjectId(subject.getSubjectId()).code(subject.getCode()).credits(subject.getCredits()).title(subject.getTitle())
+                .prerrequisites(prerequisites).build();
+    }
+
+}

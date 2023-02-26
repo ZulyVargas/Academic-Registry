@@ -2,6 +2,7 @@ package com.perficient.courseregistry.app.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.relational.core.mapping.Column;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Subject {
 
@@ -18,6 +20,6 @@ public class Subject {
     private  String title;
     private String code;
     private String credits;
-    private Set<Subject> prerrequisites;
+    private Set<String> prerrequisites;
 
 }
