@@ -1,31 +1,29 @@
-package com.perficient.courseregistry.app.entities;
+package com.perficient.courseregistry.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-@SuperBuilder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(value="users")
-public class User {
-
-    @Column("user_id")
-    private @Id UUID userId;
+@NoArgsConstructor
+public class UserDTO implements Serializable {
+    private UUID userId;
+    @NotNull
     private String name;
+    @NotNull
     private String username;
     private String password;
+    @NotNull
     private String email;
+    @NotNull
     private String gender;
     private boolean active;
-
 }
