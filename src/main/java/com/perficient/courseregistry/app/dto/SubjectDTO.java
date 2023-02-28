@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
@@ -18,10 +19,12 @@ import java.util.UUID;
 @SuperBuilder
 public class SubjectDTO implements Serializable {
     private UUID subjectId;
-    @NotNull
+    @NotBlank(message = "The title of the subject cannot be empty.")
     private  String title;
-    @NotNull
+    @NotBlank(message = "The code of the subject cannot be empty.")
     private String code;
+
+    @NotBlank(message = "The number of credits of the subject cannot be empty. ")
     private String credits;
 
     private Set<SubjectDTO> prerrequisites;
