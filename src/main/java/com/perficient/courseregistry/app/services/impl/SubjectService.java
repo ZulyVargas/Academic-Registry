@@ -2,6 +2,7 @@ package com.perficient.courseregistry.app.services.impl;
 
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
+import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import com.perficient.courseregistry.app.services.ISubjectService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class SubjectService  implements ISubjectService {
@@ -31,17 +33,20 @@ public class SubjectService  implements ISubjectService {
 
     private Set<SubjectDTO> groupSubjects(List<Subject> subjectList){
         Set<SubjectDTO> subjects = subjectList.stream()
-                                               .map(s -> {    s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
-                                                              SubjectDTO subjectDTO = ISubjectMapper.INSTANCE.subjectToSubjectDTO(s);
-                                                              return subjectDTO; }
-                                                         ).collect(Collectors.toSet());
+                                               .map(s -> {  s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
+                                                            SubjectDTO subjectDTO = ISubjectMapper.INSTANCE.subjectToSubjectDTO(s);
+                                                            return subjectDTO; }
+                                                           ).collect(Collectors.toSet());
         return subjects;
 
     }
 
     @Override
     public Set<SubjectDTO> getAllSubjects() {
-        return groupSubjects(subjectRepository.findAll());
+        List<Subject> array = StreamSupport
+                .stream(subjectRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+        return groupSubjects(array);
     }
 
     @Override
@@ -51,17 +56,22 @@ public class SubjectService  implements ISubjectService {
 
     @Override
     public SubjectDTO getSubjectByTitle(String title) {
-        Subject subject = this.subjectRepository.findByTitle(title);
-        subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
-        SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject);
-        return subjectDto;
+        try{
+            Subject subject = this.subjectRepository.findByTitle(title);
+            subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
+            SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject);
+            return subjectDto;
+        }catch (Exception ex){
+            throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
+        }
+
     }
 
     @Override
     public SubjectDTO getSubjectById(String id) {
-        Subject subject = this.subjectRepository.findById(UUID.fromString(id));
-        subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
-        SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject);
+        Optional<Subject> subject = this.subjectRepository.findById(String.valueOf(UUID.fromString(id)));
+        subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
+        SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject.get());
         return subjectDto;
     }
 

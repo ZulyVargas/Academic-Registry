@@ -1,5 +1,6 @@
 package com.perficient.courseregistry.app.exception;
 
+import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,4 +25,5 @@ public class RequestExceptionHandler {
         });
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
+
 }
