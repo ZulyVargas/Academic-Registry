@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
-import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -16,14 +18,16 @@ import java.util.UUID;
 @NoArgsConstructor
 public class UserDTO implements Serializable {
     private UUID userId;
-    @NotNull
+    @NotBlank(message = "The name of the user cannot be empty")
     private String name;
-    @NotNull
+    @NotBlank(message = "The username cannot be empty.")
     private String username;
+    @Size(min=8, message = "The password must have a minimum length of 8 characters.")
     private String password;
-    @NotNull
+    @NotBlank(message = "Please provide a valid email address.")
+    @Email(message = "The email address of the user cannot be empty")
     private String email;
-    @NotNull
+    @NotBlank(message = "The gender of the user cannot be empty")
     private String gender;
     private boolean active;
 }
