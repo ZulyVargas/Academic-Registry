@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "3f0464c8-607f-4ba6-928f-c489be2e5cb6",
+		"name": "USERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll PAGED",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users/paged/2/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"paged",
+						"2",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6af",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"8983514f-2e8a-4664-b616-2ea1744cb6af"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById (ID no found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"8983514f-2e8a-4664-b616-2ea1744cb6a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByUsername",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users/username/ssobieski3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"username",
+						"ssobieski3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByUsername (Username no found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/users/username/aaabbbccc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"username",
+						"aaabbbccc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
