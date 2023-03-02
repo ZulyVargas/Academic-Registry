@@ -75,9 +75,14 @@ public class SubjectService  implements ISubjectService {
     @Override
     public SubjectDTO getSubjectById(String id) {
         Optional<Subject> subject = this.subjectRepository.findById(String.valueOf(UUID.fromString(id)));
-        subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
-        SubjectDTO subjectDto = subjectMapper.subjectToSubjectDTO(subject.get());
-        return subjectDto;
+        if (subject.isPresent()){
+            subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
+            SubjectDTO subjectDto = subjectMapper.subjectToSubjectDTO(subject.get());
+            return subjectDto;
+        }else {
+            throw new SubjectException(SubjectException.SUBJECT_ID_EXCEPTION, "ID");
+        }
+
     }
 
     @Override

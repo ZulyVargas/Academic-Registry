@@ -6,6 +6,8 @@ import lombok.Getter;
 public class SubjectException extends RuntimeException{
     private final String field;
     public static final String SUBJECT_TITLE_EXCEPTION = "The subject with the given title does not exist.";
+    public static final String SUBJECT_ID_EXCEPTION = "The subject with the given ID does not exist.";
+
     public SubjectException(String message, String field){
         super(message);
         this.field = field;
