@@ -16,7 +16,6 @@ public class CourseService implements ICourseService {
 
     @Autowired
     private final ICourseRepository courseRepository;
-    //private final ICourseMapper courseMapper;
 
     public CourseService(ICourseRepository courseRepository) {
         this.courseRepository = courseRepository;
@@ -25,7 +24,6 @@ public class CourseService implements ICourseService {
     @Override
     public List<CourseDTO> getAllCourses() {
         List<CourseDTO> courses = courseRepository.findAll().stream().map(s -> ICourseMapper.INSTANCE.courseToCourseDTO(s)).collect(Collectors.toList());
-
         return courses;
     }
 

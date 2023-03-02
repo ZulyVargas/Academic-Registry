@@ -23,6 +23,6 @@ public class SubjectDTO implements Serializable {
     @NotNull
     private String code;
     private String credits;
-    private Set<Subject> prerrequisites;
+    private Set<SubjectDTO> prerrequisites;
 
 }

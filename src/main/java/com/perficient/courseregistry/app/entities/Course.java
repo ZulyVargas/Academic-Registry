@@ -25,9 +25,8 @@ public class Course {
     @Column("group_number")
     private String groupNumber;
     private Integer quota;
-    //private Professor professor;
-    private AggregateReference<Professor,UUID> professor;
-    private AggregateReference<Subject,UUID> subject;
+    private Professor professor;
+    private Subject subject;
     @Column("status_course")
     private STATUS_COURSE statusCourse;
     private String year;
