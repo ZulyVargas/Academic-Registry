@@ -14,7 +14,7 @@ public class ResponseExceptionHandler {
     @ExceptionHandler(value= {SubjectException.class})
     public ResponseEntity<Error> handleResponseException(SubjectException exception){
         Error error = new Error(exception.getField(), exception.getMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
-        return  new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+        return  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
     }
 
 }

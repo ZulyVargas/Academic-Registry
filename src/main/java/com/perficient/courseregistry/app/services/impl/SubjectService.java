@@ -7,6 +7,8 @@ import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import com.perficient.courseregistry.app.services.ISubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.IncorrectUpdateSemanticsDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -21,7 +23,6 @@ public class SubjectService  implements ISubjectService {
 
     @Autowired
     private final ISubjectMapper subjectMapper;
-
 
     public SubjectService(ISubjectRepository subjectRepository, ISubjectMapper subjectMapper) {
         this.subjectRepository = subjectRepository;
@@ -69,7 +70,6 @@ public class SubjectService  implements ISubjectService {
         }catch (Exception ex){
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
         }
-
     }
 
     @Override
@@ -77,8 +77,7 @@ public class SubjectService  implements ISubjectService {
         Optional<Subject> subject = this.subjectRepository.findById(String.valueOf(UUID.fromString(id)));
         if (subject.isPresent()){
             subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
-            SubjectDTO subjectDto = subjectMapper.subjectToSubjectDTO(subject.get());
-            return subjectDto;
+            return subjectMapper.subjectToSubjectDTO(subject.get());
         }else {
             throw new SubjectException(SubjectException.SUBJECT_ID_EXCEPTION, "ID");
         }
@@ -87,19 +86,30 @@ public class SubjectService  implements ISubjectService {
 
     @Override
     public SubjectDTO addSubject(SubjectDTO subjectDTO) {
-        Subject newSubject = subjectRepository.save(subjectMapper.subjectDtoToSubject(subjectDTO));
-        return ISubjectMapper.INSTANCE.subjectToSubjectDTO(newSubject);
+        try {
+            return subjectMapper.subjectToSubjectDTO(subjectRepository.save(subjectMapper.subjectDtoToSubject(subjectDTO)));
+        } catch (Exception ex ) {
+            throw new SubjectException(SubjectException.SUBJECT_INSERT_EXCEPTION, "ID");
+        }
     }
 
     @Override
     public SubjectDTO updateSubject(SubjectDTO subjectDTO) {
-        return this.addSubject(subjectDTO);
+        try {
+            return this.addSubject(subjectDTO);
+        } catch (Exception ex ) {
+            throw new SubjectException(SubjectException.SUBJECT_UPDATE_EXCEPTION,"ID");
+        }
     }
 
     @Override
     public Boolean deleteSubject(String subjectId) {
-        this.subjectRepository.deleteById(subjectId);
-        return true;
+        try {
+            this.subjectRepository.deleteById(subjectId);
+            return !subjectRepository.existsById(subjectId);
+        } catch (Exception ex ) {
+            throw new SubjectException(SubjectException.SUBJECT_DELETE_EXCEPTION, "ID");
+        }
     }
 
 }

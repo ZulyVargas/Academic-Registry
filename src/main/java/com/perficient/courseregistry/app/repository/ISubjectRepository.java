@@ -22,4 +22,5 @@ public interface ISubjectRepository extends CrudRepository<Subject,String> {
     Set<Subject> findPrerrequisitesById(@Param("subjectId") UUID subjectId);
 
     Subject findByTitle(@Param("title") String title);
+    boolean existsById(@Param("id") String id);
 }
