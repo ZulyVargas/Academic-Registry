@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "aee5afbb-e605-426b-ba22-8fb25a3de998",
+		"name": "SUBJECTS",
+		"description": "Tests for the Subjects Controller: get, update, insert and delete operations.\nThe requests with exception try to obtain the custom exception.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll PAGED",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/paged/4/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"paged",
+						"4",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/7ce15628-b60a-11ed-b86e-0242ac110002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"7ce15628-b60a-11ed-b86e-0242ac110002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById (ID no found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/f9529637-82bc-430e-bf9e-6114b3381bbc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"f9529637-82bc-430e-bf9e-6114b3381bbc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGIA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"title",
+						"BIOLOGIA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByTitle (Title not found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"title",
+						"BIOLOGI"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSubject",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSubject EXCEPTIONS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subject_id\": \"d7f25a62-b899-11ed-9a36-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjectId\": \"c58b8dca-b8a4-11ed-8d23-0242ac110002\",\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update (Exception)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjectId\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/4a68dfa8-b8a4-11ed-bcb7-0242ac110002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"4a68dfa8-b8a4-11ed-bcb7-0242ac110002"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
