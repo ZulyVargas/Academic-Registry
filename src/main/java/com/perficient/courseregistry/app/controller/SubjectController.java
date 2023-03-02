@@ -46,7 +46,7 @@ public class SubjectController {
     }
 
     @PutMapping
-    public ResponseEntity<SubjectDTO>  updateSubject(@RequestBody SubjectDTO subjectDTO){
+    public ResponseEntity<SubjectDTO>  updateSubject(@RequestBody @Valid SubjectDTO subjectDTO){
         return new ResponseEntity<SubjectDTO>(subjectService.updateSubject(subjectDTO), HttpStatus.OK);
     }
 

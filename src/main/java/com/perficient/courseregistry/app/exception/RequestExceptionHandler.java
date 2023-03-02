@@ -23,5 +23,4 @@ public class RequestExceptionHandler {
         });
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
-
 }
