@@ -19,8 +19,13 @@ public class SubjectService  implements ISubjectService {
     @Autowired
     private final ISubjectRepository subjectRepository;
 
-    public SubjectService(ISubjectRepository subjectRepository) {
+    @Autowired
+    private final ISubjectMapper subjectMapper;
+
+
+    public SubjectService(ISubjectRepository subjectRepository, ISubjectMapper subjectMapper) {
         this.subjectRepository = subjectRepository;
+        this.subjectMapper = subjectMapper;
     }
 
     private Set<Subject> findPrerrequisitesById(UUID subjectId) {
@@ -34,7 +39,7 @@ public class SubjectService  implements ISubjectService {
     private Set<SubjectDTO> groupSubjects(List<Subject> subjectList){
         Set<SubjectDTO> subjects = subjectList.stream()
                                                .map(s -> {  s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
-                                                            SubjectDTO subjectDTO = ISubjectMapper.INSTANCE.subjectToSubjectDTO(s);
+                                                            SubjectDTO subjectDTO = subjectMapper.subjectToSubjectDTO(s);
                                                             return subjectDTO; }
                                                            ).collect(Collectors.toSet());
         return subjects;
@@ -59,7 +64,7 @@ public class SubjectService  implements ISubjectService {
         try{
             Subject subject = this.subjectRepository.findByTitle(title);
             subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
-            SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject);
+            SubjectDTO subjectDto = subjectMapper.subjectToSubjectDTO(subject);
             return subjectDto;
         }catch (Exception ex){
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
@@ -71,13 +76,13 @@ public class SubjectService  implements ISubjectService {
     public SubjectDTO getSubjectById(String id) {
         Optional<Subject> subject = this.subjectRepository.findById(String.valueOf(UUID.fromString(id)));
         subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
-        SubjectDTO subjectDto = ISubjectMapper.INSTANCE.subjectToSubjectDTO(subject.get());
+        SubjectDTO subjectDto = subjectMapper.subjectToSubjectDTO(subject.get());
         return subjectDto;
     }
 
     @Override
     public SubjectDTO addSubject(SubjectDTO subjectDTO) {
-        Subject newSubject = subjectRepository.save(ISubjectMapper.INSTANCE.subjectDtoToSubject(subjectDTO));
+        Subject newSubject = subjectRepository.save(subjectMapper.subjectDtoToSubject(subjectDTO));
         return ISubjectMapper.INSTANCE.subjectToSubjectDTO(newSubject);
     }
 

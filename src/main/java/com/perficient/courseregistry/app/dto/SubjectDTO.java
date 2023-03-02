@@ -26,7 +26,6 @@ public class SubjectDTO implements Serializable {
 
     @NotBlank(message = "The number of credits of the subject cannot be empty. ")
     private String credits;
-
     private Set<SubjectDTO> prerrequisites;
 
 }
