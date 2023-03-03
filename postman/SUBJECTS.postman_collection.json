@@ -177,7 +177,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/7ce15628-b60a-11ed-b86e-0242ac110002",
+							"raw": "http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -187,7 +187,7 @@
 								"api",
 								"v1",
 								"subjects",
-								"7ce15628-b60a-11ed-b86e-0242ac110002"
+								"ed4f110a-ba03-11ed-afa1-0242ac120002"
 							]
 						}
 					},
@@ -205,7 +205,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:10 GMT"
+							"value": "Fri, 03 Mar 2023 21:29:55 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -217,7 +217,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"7ce15628-b60a-11ed-b86e-0242ac110002\",\n    \"title\": \"CALCULO DIFERENCIAL\",\n    \"code\": \"CALD\",\n    \"credits\": \"4\",\n    \"prerrequisites\": [\n        {\n            \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": []\n        }\n    ]\n}"
+					"body": "{\n    \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n    \"title\": \"CALCULO DIFERENCIAL\",\n    \"code\": \"CALD\",\n    \"credits\": \"4\",\n    \"prerrequisites\": [\n        {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": []\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -871,7 +871,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/aa008232-b907-11ed-8f84-0242ac110002",
+					"raw": "http://localhost:8001/api/v1/subjects/f574f92e-ba0a-11ed-bc90-0242ac110002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -881,7 +881,7 @@
 						"api",
 						"v1",
 						"subjects",
-						"aa008232-b907-11ed-8f84-0242ac110002"
+						"f574f92e-ba0a-11ed-bc90-0242ac110002"
 					]
 				}
 			},
@@ -933,6 +933,54 @@
 					],
 					"cookie": [],
 					"body": "true"
+				},
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/f574f92e-ba0a-11ed-bc90-0242ac110002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"f574f92e-ba0a-11ed-bc90-0242ac110002"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Mar 2023 21:33:38 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "false"
 				}
 			]
 		}
