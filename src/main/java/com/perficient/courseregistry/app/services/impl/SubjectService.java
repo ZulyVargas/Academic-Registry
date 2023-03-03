@@ -39,8 +39,7 @@ public class SubjectService  implements ISubjectService {
     private Set<SubjectDTO> groupSubjects(List<Subject> subjectList){
         Set<SubjectDTO> subjects = subjectList.stream()
                                               .map(s -> { s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
-                                                          SubjectDTO subjectDTO = subjectMapper.subjectToSubjectDTO(s);
-                                                          return subjectDTO; })
+                                                          return subjectMapper.subjectToSubjectDTO(s); })
                                               .collect(Collectors.toSet());
         return subjects;
     }
