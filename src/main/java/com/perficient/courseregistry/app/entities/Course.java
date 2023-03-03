@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Table(value = "courses")
 public class Course {
 
     @Column("course_id")
@@ -20,7 +22,9 @@ public class Course {
     @Column("group_number")
     private String groupNumber;
     private Integer quota;
+    @Column("professor_id")
     private Professor professor;
+    @Column("subject_id")
     private Subject subject;
     @Column("status_course")
     private STATUS_COURSE statusCourse;

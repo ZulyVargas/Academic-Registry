@@ -27,9 +27,20 @@ public class ProfessorService implements IProfessorService {
 
     @Override
     public Set<ProfessorDTO> getAllProfessors(){
-        Set<ProfessorDTO> professors = this.professorRepository.findAll().stream()
-                .map(user -> professorMapper.professorDtoToProfessor(user))
+        Set<ProfessorDTO> professors = this.professorRepository.findAll()
+                                                               .stream()
+                                                               .map(professor -> professorMapper.professorDtoToProfessor(professor))
+                                                               .collect(Collectors.toSet());
+        return professors;
+    }
+
+    @Override
+    public Set<ProfessorDTO> getProfessorsByDegree(String degree) {
+        Set<ProfessorDTO> professors = this.professorRepository.findAllByDegree(degree).stream()
+                .map(professor -> professorMapper.professorDtoToProfessor(professor))
                 .collect(Collectors.toSet());
         return professors;
     }
+
+
 }

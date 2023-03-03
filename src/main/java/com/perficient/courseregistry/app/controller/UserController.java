@@ -1,9 +1,11 @@
 package com.perficient.courseregistry.app.controller;
 
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
+import com.perficient.courseregistry.app.dto.StudentDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import com.perficient.courseregistry.app.services.IUserService;
+import com.perficient.courseregistry.app.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +24,13 @@ public class UserController {
     private final IUserService userService;
     @Autowired
     private final IProfessorService professorService;
+    @Autowired
+    private final IStudentService studentService;
 
-    public UserController(IUserService userService, IProfessorService professorService) {
+    public UserController(IUserService userService, IProfessorService professorService, IStudentService studentService) {
         this.userService = userService;
         this.professorService = professorService;
+        this.studentService = studentService;
     }
 
     @GetMapping
@@ -49,4 +54,15 @@ public class UserController {
     public ResponseEntity<Set<ProfessorDTO>> getAllProfessors(){
         return new ResponseEntity<>(this.professorService.getAllProfessors(), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/professors/degree/{degree}")
+    public ResponseEntity<Set<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
+        return new ResponseEntity<>(this.professorService.getProfessorsByDegree(degree), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/students")
+    public ResponseEntity<Set<StudentDTO>> getAllStudents(){
+        return new ResponseEntity<>(this.studentService.getAllStudents(), HttpStatus.OK);
+    }
+
 }
