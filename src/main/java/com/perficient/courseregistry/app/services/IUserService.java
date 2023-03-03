@@ -13,4 +13,5 @@ public interface IUserService {
     UserDTO getUserByUsername(String username);
 
     UserDTO getUserById(String id);
+
 }

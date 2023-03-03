@@ -18,8 +18,6 @@ import java.util.UUID;
 @Table(value="students")
 public class Student extends User{
 
-    @Column("student_id")
-    private @Id UUID studentId;
     private double avg;
     private STATUS_STUDENT status;
     @MappedCollection(idColumn = "student_id")

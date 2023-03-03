@@ -10,14 +10,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO implements Serializable {
-    private UUID userId;
+    private String userId;
     @NotBlank(message = "The name of the user cannot be empty")
     private String name;
     @NotBlank(message = "The username cannot be empty.")

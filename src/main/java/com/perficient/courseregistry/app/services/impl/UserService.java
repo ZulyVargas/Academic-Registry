@@ -20,6 +20,7 @@ public class UserService implements IUserService {
     @Autowired
     private final IUserRepository userRepository;
 
+
     @Autowired
     private final IUserMapper userMapper;
 
@@ -62,4 +63,5 @@ public class UserService implements IUserService {
             throw new UserException(UserException.USER_ID_EXCEPTION, "username");
         }
     }
+
 }
