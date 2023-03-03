@@ -1,7 +1,7 @@
 --------------- STUDENTS INFO ----------------------
 
 create view INFO_STUDENTS as
-select u.name, u.email, s.avg, s.status
+select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active as active, s.avg, s.status
 from users u join students s on u.USER_ID = s.STUDENT_ID;
 
 select * from INFO_STUDENTS;
@@ -9,21 +9,11 @@ select * from INFO_STUDENTS;
 --------------  INFO PROFESSORS --------------------
 
 create view INFO_PROFESSORS as
-select u.name, u.email, p.degree, u.active
+select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active as active , p.degree as degree
 from users u join professors p on u.user_id = p.professor_id;
 
 select * from INFO_PROFESSORS;
 
-
--------------- INFO COURSES: GROUP, SUBJECT, PROFESSOR, YEAR, PERIOD ------------------------
-
-create view INFO_COURSES as
-select s.title as subject , s.code as code, c.group_number, c.quota, u.name as professor, c.status_course, c.year, c.period
-from subjects s join courses c on c.subject = s.subject_id
-				join users u on u.user_id = c.professor;
-
-select * from INFO_COURSES;
-drop view info_course
 
 -------------- INFO COURSES: GROUP, SUBJECT, PROFESSOR, YEAR, PERIOD (ALL data from course, subject, professor)------------------------
 create view INFO__TOTAL_COURSES as
