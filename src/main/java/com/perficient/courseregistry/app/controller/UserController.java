@@ -3,6 +3,7 @@ package com.perficient.courseregistry.app.controller;
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
 import com.perficient.courseregistry.app.dto.StudentDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
+import com.perficient.courseregistry.app.entities.User;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import com.perficient.courseregistry.app.services.IUserService;
 import com.perficient.courseregistry.app.services.IStudentService;
@@ -66,6 +67,15 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserDTO> addUser(@RequestBody @Valid UserDTO userDTO){
         return new ResponseEntity<UserDTO>(this.userService.addUser(userDTO), HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO userDTO){
+        return new ResponseEntity<UserDTO>(this.userService.updateUser(userDTO), HttpStatus.OK);
+    }
+    @DeleteMapping(value="/{userId}")
+    public ResponseEntity<Boolean> deleteUser(@PathVariable String userId){
+        return new ResponseEntity<Boolean>(this.userService.deleteUser(userId), HttpStatus.OK);
     }
 
 }

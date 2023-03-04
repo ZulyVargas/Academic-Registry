@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -71,7 +72,26 @@ public class UserService implements IUserService {
         }catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "email or username unique");
         }
+    }
 
+    @Override
+    public UserDTO updateUser(UserDTO userDTO) {
+        try {
+            return this.addUser(userDTO);
+        }catch (Exception ex){
+            throw new UserException(UserException.USER_UPDATE_EXCEPTION, "ID");
+        }
+    }
+
+    @Override
+    public Boolean deleteUser(String userId) {
+        try{
+            if (userRepository.findById(userId).isEmpty() ) return false;
+            return this.userRepository.updateActive(UUID.fromString(userId));
+        }catch (Exception ex){
+            System.out.println("error " + ex);
+        return false;
+        }
     }
 
 }
