@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "be266df8-e9e1-4bcb-8430-5231062dfc38",
+		"name": "COURSES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 04 Mar 2023 23:55:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n        \"groupNumber\": \"1\",\n        \"quota\": 20,\n        \"professor\": {\n            \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n            \"name\": \"Sandi Sobieski\",\n            \"username\": \"ssobieski3\",\n            \"password\": \"knxGjrTj\",\n            \"email\": \"ssobieski3@reverbnation.com\",\n            \"gender\": \"F\",\n            \"active\": true,\n            \"degree\": \"Masters Degree in Mathematics\"\n        },\n        \"subject\": {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": null\n        },\n        \"statusCourse\": \"IN_PROGRESS\",\n        \"year\": \"2023\",\n        \"period\": \"I\",\n        \"active\": true\n    },\n    {\n        \"courseId\": \"38ef1de2-e0c6-404c-8cb0-b3e048a01fc0\",\n        \"groupNumber\": \"2\",\n        \"quota\": 25,\n        \"professor\": {\n            \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n            \"name\": \"Sandi Sobieski\",\n            \"username\": \"ssobieski3\",\n            \"password\": \"knxGjrTj\",\n            \"email\": \"ssobieski3@reverbnation.com\",\n            \"gender\": \"F\",\n            \"active\": true,\n            \"degree\": \"Masters Degree in Mathematics\"\n        },\n        \"subject\": {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": null\n        },\n        \"statusCourse\": \"IN_PROGRESS\",\n        \"year\": \"2023\",\n        \"period\": \"I\",\n        \"active\": true\n    },\n    {\n        \"courseId\": \"24abb2bd-7e2b-4cc4-8b6c-dd292d3373a0\",\n        \"groupNumber\": \"2\",\n        \"quota\": 15,\n        \"professor\": {\n            \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n            \"name\": \"Amberly Pietroni\",\n            \"username\": \"apietroni4\",\n            \"password\": \"A8PQNZA\",\n            \"email\": \"apietroni4@delicious.com\",\n            \"gender\": \"M\",\n            \"active\": true,\n            \"degree\": \"Civil Engineer \"\n        },\n        \"subject\": {\n            \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"CALCULO INTEGRAL\",\n            \"code\": \"CALI\",\n            \"credits\": \"4\",\n            \"prerrequisites\": null\n        },\n        \"statusCourse\": \"IN_PROGRESS\",\n        \"year\": \"2023\",\n        \"period\": \"I\",\n        \"active\": true\n    }\n]"
+				}
+			]
+		}
+	]
+}

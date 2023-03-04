@@ -1,4 +1,4 @@
---------------- STUDENTS INFO ----------------------
+-------------- STUDENTS INFO ----------------------
 
 create view INFO_STUDENTS as
 select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active as active, s.avg, s.status
@@ -17,11 +17,15 @@ select * from INFO_PROFESSORS;
 
 -------------- INFO COURSES: GROUP, SUBJECT, PROFESSOR, YEAR, PERIOD (ALL data from course, subject, professor)------------------------
 create view INFO__TOTAL_COURSES as
-select c.COURSE_ID  as course_id, c.GROUP_NUMBER  as group_number, c.QUOTA  as quota, c.PROFESSOR as professor, c.SUBJECT  as subject, c.STATUS_COURSE as status_course, c.year, c.period, c.ACTIVE  as active, 
-u.USER_ID as user_id, u.name as name, u.USERNAME as username, u."password" as password, u.EMAIL as email, u.GENDER as gender, u.ACTIVE as uactive, 
-s.SUBJECT_ID as SUBJECT_ID, s.title as title, s.CODE as code, s.CREDITS as CREDITS
-from subjects s join courses c on c.subject = s.subject_id
-				join users u on u.user_id = c.professor;
+select c.course_id  as course_id, c.GROUP_NUMBER  as group_number, c.QUOTA  as quota, c.PROFESSOR_id as professor_id, c.subject_id  as subject, c.status_course as status_course, c.year, c.period, c.active  as activec, 
+u.USER_ID as user_id, u.name as name, u.USERNAME as username, u."password" as password, u.EMAIL as email, u.GENDER as gender, u.ACTIVE as active, 
+s.SUBJECT_ID as SUBJECT_ID, s.title as title, s.CODE as code, s.CREDITS as CREDITS,
+p.degree as degree
+from subjects s join courses c on c.subject_id = s.subject_id
+				join users u on u.user_id = c.professor_id
+				join professors p on u.user_id  = p.professor_id;
+			
+drop view INFO__TOTAL_COURSES;
 
 SELECT * FROM INFO__TOTAL_COURSES;
 
