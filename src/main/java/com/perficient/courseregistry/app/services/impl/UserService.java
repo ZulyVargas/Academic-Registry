@@ -86,11 +86,13 @@ public class UserService implements IUserService {
     @Override
     public Boolean deleteUser(String userId) {
         try{
-            if (userRepository.findById(userId).isEmpty() ) return false;
+            Optional<User> user = userRepository.findById(userId);
+            if (user.isEmpty() || !user.get().isActive()) {
+               return false;
+            }
             return this.userRepository.updateActive(UUID.fromString(userId));
         }catch (Exception ex){
-            System.out.println("error " + ex);
-        return false;
+            throw new UserException(UserException.USER_DELETE_EXCEPTION, "ID");
         }
     }
 
