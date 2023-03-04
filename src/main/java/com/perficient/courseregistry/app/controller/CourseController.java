@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping( "/api/v1/courses" )
@@ -24,8 +25,8 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CourseDTO>> getAllCourses(){
-        return new ResponseEntity<List<CourseDTO>>(courseService.getAllCourses(),HttpStatus.OK);
+    public ResponseEntity<Set<CourseDTO>> getAllCourses(){
+        return new ResponseEntity<Set<CourseDTO>>(courseService.getAllCourses(),HttpStatus.OK);
     }
 
     //@GetMapping(value="/courses-paged/{limit}/{offset}")

@@ -14,13 +14,13 @@ import java.util.List;
 
 @RestControllerAdvice
 public class RequestExceptionHandler {
-    @ExceptionHandler(value= {MethodArgumentNotValidException.class})
-    public ResponseEntity<List<Error>> handleRequestException(MethodArgumentNotValidException exception){
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+    public ResponseEntity<List<Error>> handleRequestException(MethodArgumentNotValidException exception) {
         List<Error> response = new ArrayList<>();
         exception.getBindingResult().getAllErrors().forEach((e) -> {
-            Error error = new Error(((FieldError)e).getField(), e.getDefaultMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+            Error error = new Error(((FieldError) e).getField(), e.getDefaultMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
             response.add(error);
         });
-        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

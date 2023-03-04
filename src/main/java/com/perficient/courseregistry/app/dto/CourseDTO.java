@@ -27,7 +27,7 @@ public class CourseDTO {
     private Integer quota;
     private ProfessorDTO professor;
     @NotNull
-    private Subject subject;
+    private SubjectDTO subject;
     private STATUS_COURSE statusCourse;
     @NotNull
     private String year;

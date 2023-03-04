@@ -4,11 +4,12 @@ import com.perficient.courseregistry.app.dto.CourseDTO;
 import com.perficient.courseregistry.app.entities.Course;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ICourseService {
-    List<CourseDTO> getAllCourses();
+    Set<CourseDTO> getAllCourses();
 
-    List<Course> getAllCoursesPaged(Integer limit, Integer details);
+    //Set<Course> getAllCoursesPaged(Integer limit, Integer details);
 
-    Course saveCourse(Course course);
+    //Course saveCourse(Course course);
 }

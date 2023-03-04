@@ -10,12 +10,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface ICourseRepository extends CrudRepository<Course,String> {
 
-    @Query("SELECT * FROM COURSES WHERE active and status_course='IN_PROGRESS' ")
-    List<Course> findAll();
+    @Query("SELECT * FROM INFO__TOTAL_COURSES WHERE active and status_course='IN_PROGRESS' ")
+    Set<Course> findAll();
 
     @Query("SELECT * FROM COURSES WHERE active and status_course='IN_PROGRESS' LIMIT :limit OFFSET :offset")
     List<Course> findAllPageable(Integer limit, Integer offset);

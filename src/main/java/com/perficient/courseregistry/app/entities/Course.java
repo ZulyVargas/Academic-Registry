@@ -4,20 +4,20 @@ import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.enums.STATUS_COURSE;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Embedded;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
-@Table("courses")
+@Table(value = "courses")
 public class Course {
 
     @Column("course_id")
@@ -25,7 +25,11 @@ public class Course {
     @Column("group_number")
     private String groupNumber;
     private Integer quota;
+    //@Column("professor_id")
+    @Embedded.Nullable
     private Professor professor;
+    //@Column("subject_id")
+    @Embedded.Nullable
     private Subject subject;
     @Column("status_course")
     private STATUS_COURSE statusCourse;
@@ -33,4 +37,5 @@ public class Course {
     private PERIOD period;
     private boolean active;
 }
+
 

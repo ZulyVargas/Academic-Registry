@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "3f0464c8-607f-4ba6-928f-c489be2e5cb6",
+		"name": "USERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/username/ssobieski3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"username",
+								"ssobieski3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getByUsername",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/username/ssobieski3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"username",
+										"ssobieski3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:51:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n    \"name\": \"Sandi Sobieski\",\n    \"username\": \"ssobieski3\",\n    \"password\": \"knxGjrTj\",\n    \"email\": \"ssobieski3@reverbnation.com\",\n    \"gender\": \"F\",\n    \"active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "getByUsername (Username no found exception)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/username/aaabbbccc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"username",
+								"aaabbbccc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getByUsername (Username no found exception)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/username/aaabbbccc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"username",
+										"aaabbbccc"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:49:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"field\": \"username\",\n    \"message\": \"The user with the given username does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-03T11:49:19.4404423-05:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:50:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"userId\": \"131e8918-730b-4739-9b9b-e91510f96fa9\",\n        \"name\": \"Hayden Strephan\",\n        \"username\": \"hstrephan1\",\n        \"password\": \"8rOmjSki\",\n        \"email\": \"hstrephan1@oracle.com\",\n        \"gender\": \"M\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n        \"name\": \"Sandi Sobieski\",\n        \"username\": \"ssobieski3\",\n        \"password\": \"knxGjrTj\",\n        \"email\": \"ssobieski3@reverbnation.com\",\n        \"gender\": \"F\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"6f323b65-cd24-48a9-bc53-e3e45676e619\",\n        \"name\": \"Pierre Aubray\",\n        \"username\": \"paubray0\",\n        \"password\": \"j95p5YVCl\",\n        \"email\": \"paubray0@auda.org.au\",\n        \"gender\": \"F\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZA\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n        \"name\": \"Kerry Waslin\",\n        \"username\": \"kwaslin2\",\n        \"password\": \"o70kLhC4QQkO\",\n        \"email\": \"kwaslin2@liveinternet.ru\",\n        \"gender\": \"M\",\n        \"active\": true\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getAll PAGED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/paged/2/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"paged",
+								"2",
+								"0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAll PAGED",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/paged/2/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"paged",
+										"2",
+										"0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:51:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"userId\": \"6f323b65-cd24-48a9-bc53-e3e45676e619\",\n        \"name\": \"Pierre Aubray\",\n        \"username\": \"paubray0\",\n        \"password\": \"j95p5YVCl\",\n        \"email\": \"paubray0@auda.org.au\",\n        \"gender\": \"F\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"131e8918-730b-4739-9b9b-e91510f96fa9\",\n        \"name\": \"Hayden Strephan\",\n        \"username\": \"hstrephan1\",\n        \"password\": \"8rOmjSki\",\n        \"email\": \"hstrephan1@oracle.com\",\n        \"gender\": \"M\",\n        \"active\": true\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8983514f-2e8a-4664-b616-2ea1744cb6af"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6af",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"8983514f-2e8a-4664-b616-2ea1744cb6af"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:51:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n    \"name\": \"Kerry Waslin\",\n    \"username\": \"kwaslin2\",\n    \"password\": \"o70kLhC4QQkO\",\n    \"email\": \"kwaslin2@liveinternet.ru\",\n    \"gender\": \"M\",\n    \"active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "getById (ID no found exception)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8983514f-2e8a-4664-b616-2ea1744cb6a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getById (ID no found exception)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/8983514f-2e8a-4664-b616-2ea1744cb6a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"8983514f-2e8a-4664-b616-2ea1744cb6a"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:51:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"field\": \"username\",\n    \"message\": \"The user with the given ID does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-03T11:51:29.0389362-05:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Brendan Strephan\",\r\n        \"username\": \"brendan.st\",\r\n        \"password\": \"dfert\",\r\n        \"email\": \"brendan@school.com\",\r\n        \"gender\": \"M\",\r\n        \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"name\": \"Brendan Strephan\",\r\n        \"username\": \"brendan.st\",\r\n        \"password\": \"dfert\",\r\n        \"email\": \"brendan@school.com\",\r\n        \"gender\": \"M\",\r\n        \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:04:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"93add248-baae-11ed-8538-0242ac110002\",\n    \"name\": \"Brendan Strephan\",\n    \"username\": \"brendan.st\",\n    \"password\": \"dfert\",\n    \"email\": \"brendan@school.com\",\n    \"gender\": \"M\",\n    \"active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "addUser Exception email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{       \"name\": \"Hayden Strephan\",\r\n        \"username\": \"hstrephan1\",\r\n        \"password\": \"8rOmjSki\",\r\n        \"email\": \"hstrephan1@oracle.com\",\r\n        \"gender\": \"M\",\r\n        \"active\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addUser Exception email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{       \"name\": \"Hayden Strephan\",\r\n        \"username\": \"hstrephan1\",\r\n        \"password\": \"8rikloip\",\r\n        \"email\": \"hstrephan1@school.edu\",\r\n        \"gender\": \"M\",\r\n        \"active\": true\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:09:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"field\": \"email or username unique\",\n    \"message\": \"The given user could not be saved.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-04T12:09:13.9119698-05:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"93add248-baae-11ed-8538-0242ac110002\",\r\n    \"name\": \"Brendan Ray Strephan \",\r\n    \"username\": \"brendan.st\",\r\n    \"password\": \"dfert908\",\r\n    \"email\": \"brendan@school.com\",\r\n    \"gender\": \"M\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateUser",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"93add248-baae-11ed-8538-0242ac110002\",\r\n    \"name\": \"Brendan Ray Strephan \",\r\n    \"username\": \"brendan.st\",\r\n    \"password\": \"dfert908\",\r\n    \"email\": \"brendan@school.com\",\r\n    \"gender\": \"M\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:20:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"93add248-baae-11ed-8538-0242ac110002\",\n    \"name\": \"Brendan Ray Strephan \",\n    \"username\": \"brendan.st\",\n    \"password\": \"dfert908\",\n    \"email\": \"brendan@school.com\",\n    \"gender\": \"M\",\n    \"active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "updateUser Exception",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"393add248-baae-11ed-8538-0242ac110002\",\r\n    \"name\": \"Brendan Ray Strephan \",\r\n    \"username\": \"brendan.st\",\r\n    \"password\": \"dfert908\",\r\n    \"email\": \"brendan@school.com\",\r\n    \"gender\": \"M\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateUser Exception",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"393add248-baae-11ed-8538-0242ac110002\",\r\n    \"name\": \"Brendan Ray Strephan \",\r\n    \"username\": \"brendan.st\",\r\n    \"password\": \"dfert908\",\r\n    \"email\": \"brendan@school.com\",\r\n    \"gender\": \"M\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:22:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The given subject could not be updated.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-04T12:22:17.7864511-05:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delele user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/users/93add248-baae-11ed-8538-0242ac110002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"93add248-baae-11ed-8538-0242ac110002"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "active set to false",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/93add248-baae-11ed-8538-0242ac110002",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"93add248-baae-11ed-8538-0242ac110002"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:54:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "true"
+						},
+						{
+							"name": "active false could not be set false again",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/93add248-baae-11ed-8538-0242ac110002",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"93add248-baae-11ed-8538-0242ac110002"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 Mar 2023 17:59:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "false"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Professors",
+			"item": [
+				{
+					"name": "getAllProfessors",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "getAllProfessors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/users/professors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"professors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 16:51:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n        \"name\": \"Sandi Sobieski\",\n        \"username\": \"ssobieski3\",\n        \"password\": \"knxGjrTj\",\n        \"email\": \"ssobieski3@reverbnation.com\",\n        \"gender\": \"F\",\n        \"active\": true\n    },\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZA\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": true\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getByDegree",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "getAllStudents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
