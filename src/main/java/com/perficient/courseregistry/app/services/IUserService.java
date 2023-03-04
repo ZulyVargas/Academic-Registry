@@ -14,4 +14,5 @@ public interface IUserService {
 
     UserDTO getUserById(String id);
 
+    UserDTO addUser(UserDTO userDTO);
 }

@@ -64,4 +64,14 @@ public class UserService implements IUserService {
         }
     }
 
+    @Override
+    public UserDTO addUser(UserDTO userDTO) {
+        try{
+            return userMapper.userToUserDTO(this.userRepository.save(userMapper.userDtoToUser(userDTO)));
+        }catch (Exception ex){
+            throw new UserException(UserException.USER_INSERT_EXCEPTION, "email or username unique");
+        }
+
+    }
+
 }

@@ -22,8 +22,8 @@ public class UserDTO implements Serializable {
     private String username;
     @Size(min=8, message = "The password must have a minimum length of 8 characters.")
     private String password;
-    @NotBlank(message = "Please provide a valid email address.")
-    @Email(message = "The email address of the user cannot be empty")
+    @NotBlank(message = "The email address of the user cannot be empty.")
+    @Email(message = "Please provide a valid email address.")
     private String email;
     @NotBlank(message = "The gender of the user cannot be empty")
     private String gender;
