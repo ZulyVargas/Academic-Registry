@@ -8,6 +8,6 @@ import java.util.Set;
 
 public interface IStudentRepository extends CrudRepository<Student, String> {
 
-    @Query("SELECT * FROM INFO_STUDENTS")
+    @Query("SELECT * FROM INFO_STUDENTS WHERE active")
     Set<Student> findAll();
 }

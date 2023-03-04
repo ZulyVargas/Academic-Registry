@@ -9,4 +9,5 @@ public interface IProfessorService {
     Set<ProfessorDTO> getAllProfessors();
 
     Set<ProfessorDTO> getProfessorsByDegree(String degree);
+    
 }

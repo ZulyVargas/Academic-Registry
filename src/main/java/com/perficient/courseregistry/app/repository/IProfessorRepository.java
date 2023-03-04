@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Repository
 public interface IProfessorRepository extends CrudRepository<Professor, String> {
-    @Query("SELECT * FROM INFO_PROFESSORS")
+    @Query("SELECT * FROM INFO_PROFESSORS WHERE active ")
     Set<Professor> findAll();
 
     @Query("SELECT * FROM INFO_PROFESSORS where degree=:degree")

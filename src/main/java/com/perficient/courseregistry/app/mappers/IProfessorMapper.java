@@ -9,9 +9,9 @@ import org.mapstruct.factory.Mappers;
 public interface IProfessorMapper {
     IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);
 
-    ProfessorDTO professorDtoToProfessor(Professor professor);
+    ProfessorDTO professorToProfessorDto(Professor professor);
 
-    Professor professorToProfessorDto(ProfessorDTO professorDTO);
+    Professor professorDtoToProfessor(ProfessorDTO professorDTO);
 
 
 

@@ -29,7 +29,7 @@ public class ProfessorService implements IProfessorService {
     public Set<ProfessorDTO> getAllProfessors(){
         Set<ProfessorDTO> professors = this.professorRepository.findAll()
                                                                .stream()
-                                                               .map(professor -> professorMapper.professorDtoToProfessor(professor))
+                                                               .map(professor -> professorMapper.professorToProfessorDto(professor))
                                                                .collect(Collectors.toSet());
         return professors;
     }
@@ -37,7 +37,7 @@ public class ProfessorService implements IProfessorService {
     @Override
     public Set<ProfessorDTO> getProfessorsByDegree(String degree) {
         Set<ProfessorDTO> professors = this.professorRepository.findAllByDegree(degree).stream()
-                .map(professor -> professorMapper.professorDtoToProfessor(professor))
+                .map(professor -> professorMapper.professorToProfessorDto(professor))
                 .collect(Collectors.toSet());
         return professors;
     }
