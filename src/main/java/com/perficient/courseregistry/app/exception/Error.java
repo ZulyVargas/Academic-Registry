@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import java.time.ZonedDateTime;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Error {
-    private String field;
-    private String message;
-    private HttpStatus httpStatus;
-    private ZonedDateTime timestamp;
+    private final String field;
+    private final String message;
+    private final HttpStatus httpStatus;
+    private final ZonedDateTime timestamp;
 
 }
