@@ -14,7 +14,6 @@ import java.util.Set;
 @RequestMapping( "/api/v1/subjects" )
 public class SubjectController {
 
-    @Autowired
     private final ISubjectService subjectService;
 
     public SubjectController(ISubjectService subjectService) {
@@ -26,8 +25,8 @@ public class SubjectController {
         return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/paged/{limit}/{offset}")
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@PathVariable Integer limit, @PathVariable Integer offset){
+    @GetMapping(value="/paged")
+    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@RequestParam(name = "limit")  Integer limit, @RequestParam(name = "offset") Integer offset){
         return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjectsPaged(limit, offset), HttpStatus.OK);
     }
 

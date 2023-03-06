@@ -16,10 +16,7 @@ import java.util.stream.StreamSupport;
 @Service
 public class SubjectService  implements ISubjectService {
 
-    @Autowired
     private final ISubjectRepository subjectRepository;
-
-    @Autowired
     private final ISubjectMapper subjectMapper;
 
     public SubjectService(ISubjectRepository subjectRepository, ISubjectMapper subjectMapper) {
