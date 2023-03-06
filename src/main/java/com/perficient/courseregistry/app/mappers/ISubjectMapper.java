@@ -8,8 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ISubjectMapper {
 
-    ISubjectMapper INSTANCE = Mappers.getMapper(ISubjectMapper.class);
-
     SubjectDTO subjectToSubjectDTO(Subject subject);
     Subject subjectDtoToSubject(SubjectDTO subjectDTO);
 }
