@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "getAll",
+			"name": "getAll   (Limit 10 Offset 0 default)",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -162,12 +162,12 @@
 			]
 		},
 		{
-			"name": "getAll PAGED",
+			"name": "getAll paged",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/paged?limit=4&offset=2",
+					"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=0&active=false",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -176,29 +176,32 @@
 					"path": [
 						"api",
 						"v1",
-						"subjects",
-						"paged"
+						"subjects"
 					],
 					"query": [
 						{
 							"key": "limit",
-							"value": "4"
+							"value": "5"
 						},
 						{
 							"key": "offset",
-							"value": "2"
+							"value": "0"
+						},
+						{
+							"key": "active",
+							"value": "false"
 						}
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "getAll PAGED",
+					"name": "getAll (isActive default)",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/paged?limit=4&offset=1",
+							"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -207,13 +210,12 @@
 							"path": [
 								"api",
 								"v1",
-								"subjects",
-								"paged"
+								"subjects"
 							],
 							"query": [
 								{
 									"key": "limit",
-									"value": "4"
+									"value": "5"
 								},
 								{
 									"key": "offset",
@@ -236,7 +238,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 06 Mar 2023 12:18:41 GMT"
+							"value": "Tue, 07 Mar 2023 22:32:55 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -248,15 +250,15 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
 				},
 				{
-					"name": "getAll PAGED - default values",
+					"name": "getAll paged (active and not active)",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/paged?offset=0",
+							"raw": "http://localhost:8001/api/v1/subjects?limit=35&offset=0&active=false",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -265,13 +267,20 @@
 							"path": [
 								"api",
 								"v1",
-								"subjects",
-								"paged"
+								"subjects"
 							],
 							"query": [
 								{
+									"key": "limit",
+									"value": "35"
+								},
+								{
 									"key": "offset",
 									"value": "0"
+								},
+								{
+									"key": "active",
+									"value": "false"
 								}
 							]
 						}
@@ -290,7 +299,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 02:09:26 GMT"
+							"value": "Tue, 07 Mar 2023 22:37:28 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -302,7 +311,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"3dfb64cb-c01c-416b-9a36-8d6df97d8933\",\n        \"title\": \"SEGURIDAD EN LA INDUSTRIA\",\n        \"code\": \"SIND\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"30f70acc-3b66-4bed-90f3-38e614c055dd\",\n        \"title\": \"CINE Y LITERATURA\",\n        \"code\": \"CYLI\",\n        \"credits\": 2,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cd11e55a-e064-42d1-bf25-d0363b5715d9\",\n        \"title\": \"ANALISIS NUMERICO\",\n        \"code\": \"ANUM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ee2bf736-7f56-4d3d-a8db-2e44a5767325\",\n        \"title\": \"EXPRESION GRAFICA\",\n        \"code\": \"EGRA\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ccb75709-a567-4934-85bd-4f733092784e\",\n        \"title\": \"OPTIMIZACION LINEAL\",\n        \"code\": \"OPTL\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"bdc6e175-aa1e-4d78-8078-bfb6a80bba7a\",\n        \"title\": \"HISTORIA DE COLOMBIA\",\n        \"code\": \"HDCL\",\n        \"credits\": 1,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"9d1d7edd-46e6-4001-b277-efdd4b513042\",\n        \"title\": \"COSTOS Y PRESUPUESTOS\",\n        \"code\": \"CYPR\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"6501acbf-ce9e-4b07-a87b-12b74d62c429\",\n        \"title\": \"SEÑALES DIGITALES\",\n        \"code\": \"SDIG\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"74efce37-2775-4016-b357-80a3ddaa85f0\",\n        \"title\": \"MATEMATICA FINANCIERA\",\n        \"code\": \"MATF\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cb7e06de-bd29-11ed-afa1-0242ac120002\",\n        \"title\": \"QUIMICA I\",\n        \"code\": \"QUIM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
 				}
 			]
 		},
@@ -630,7 +639,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"prerrequisites\": []\r\n}",
+							"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"active\": true,\r\n    \"prerrequisites\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -665,7 +674,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:55 GMT"
+							"value": "Tue, 07 Mar 2023 23:06:55 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -677,7 +686,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": \"2\",\n    \"prerrequisites\": []\n}"
+					"body": "{\n    \"subjectId\": \"c13831f0-bd3c-11ed-bdb4-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": 2,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
 				}
 			]
 		},
@@ -711,13 +720,13 @@
 			},
 			"response": [
 				{
-					"name": "addSubject EXCEPTIONS",
+					"name": "addSubject EXCEPTIONS MAX",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
+							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 10,\r\n    \"prerrequisites\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -752,7 +761,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:35:08 GMT"
+							"value": "Tue, 07 Mar 2023 20:57:34 GMT"
 						},
 						{
 							"key": "Connection",
@@ -760,7 +769,59 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"field\": \"credits\",\n        \"message\": \"The number of credits of the subject cannot be empty. \",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-02T10:35:08.0688887-05:00\"\n    },\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-02T10:35:08.0688887-05:00\"\n    }\n]"
+					"body": "[\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    },\n    {\n        \"field\": \"credits\",\n        \"message\": \"The maximum number of credits is 4.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    }\n]"
+				},
+				{
+					"name": "addSubject EXCEPTIONS MIN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 0,\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 20:57:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"field\": \"credits\",\n        \"message\": \"The minimum number of credits is 1.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:59.3500882-05:00\"\n    },\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:59.3500882-05:00\"\n    }\n]"
 				}
 			]
 		},
@@ -800,7 +861,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": []\r\n}",
+							"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": [],\r\n    \"active\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -835,7 +896,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 13:18:09 GMT"
+							"value": "Tue, 07 Mar 2023 23:07:39 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -847,7 +908,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": \"4\",\n    \"active\": false,\n    \"prerrequisites\": []\n}"
+					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": 4,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
 				}
 			]
 		},
