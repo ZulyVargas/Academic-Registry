@@ -7,7 +7,6 @@ insert into USERS (user_id, name, username, password, email, gender, active) val
 insert into USERS (user_id, name, username, password, email, gender, active) values ('273f9c9c-c900-436b-af8a-65aead73052c', 'Amberly Pietroni', 'apietroni4', 'A8PQNZA', 'apietroni4@delicious.com', 'M', true);
 
 
-
 --------------- STUDENTS -------------------
 
 insert into STUDENTS (student_id, avg, status) values ('6f323b65-cd24-48a9-bc53-e3e45676e619', 3.5, 'ACTIVE');
@@ -24,18 +23,16 @@ insert into PROFESSORS (professor_id, degree) values ('273f9c9c-c900-436b-af8a-6
 
 --------------- SUBJECTS -------------------
 
-insert into SUBJECTS (title, code, credits ) values ( 'CALCULO DIFERENCIAL', 'CALD', '4');
-insert into SUBJECTS (title, code, credits ) values ( 'CALCULO INTEGRAL', 'CALI', '4');
-insert into SUBJECTS (title, code, credits ) values ( 'BIOLOGIA', 'BIOL', '3');
-insert into SUBJECTS (title, code, credits ) values ( 'PRE CALCULO', 'PCAL', '3');
-
-
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'ed4f110a-ba03-11ed-afa1-0242ac120002','CALCULO DIFERENCIAL', 'CALD', '4', true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '06ad6480-ba04-11ed-afa1-0242ac120002','CALCULO INTEGRAL', 'CALI', '4', true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1403f93c-ba04-11ed-afa1-0242ac120002','BIOLOGIA', 'BIOL', '3', true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1f3efb1c-ba04-11ed-afa1-0242ac120002','PRE CALCULO', 'PCAL', '3', true);
 
 --------------- COURSES --------------------
 
-insert into COURSES (course_id, group_number, quota, professor, subject, status_course, year, period, active) values ('cfe96f22-5c2c-406a-b458-3831aaa6d3c9', 1, 20, 'b378f207-0f03-469c-bb6f-058779a2ad32', '7ce15628-b60a-11ed-b86e-0242ac110002', 'IN_PROGRESS', '2023', 'I',true);
-insert into COURSES (course_id, group_number, quota, professor, subject, status_course, year, period, active) values ('38ef1de2-e0c6-404c-8cb0-b3e048a01fc0', 2, 25, 'b378f207-0f03-469c-bb6f-058779a2ad32', '7ce15628-b60a-11ed-b86e-0242ac110002', 'IN_PROGRESS', '2023', 'I',true );
-insert into COURSES (course_id, group_number, quota, professor, subject, status_course, year, period, active) values ('24abb2bd-7e2b-4cc4-8b6c-dd292d3373a0', 2, 15, '273f9c9c-c900-436b-af8a-65aead73052c', '7ce16910-b60a-11ed-b86e-0242ac110002', 'IN_PROGRESS', '2023', 'I',true );
+insert into COURSES (course_id, group_number, quota, professor_id, subject_id, status_course, year, period, active) values ('cfe96f22-5c2c-406a-b458-3831aaa6d3c9', 1, 20, 'b378f207-0f03-469c-bb6f-058779a2ad32', '1f3efb1c-ba04-11ed-afa1-0242ac120002', 'IN_PROGRESS', '2023', 'I',true);
+insert into COURSES (course_id, group_number, quota, professor_id, subject_id, status_course, year, period, active) values ('38ef1de2-e0c6-404c-8cb0-b3e048a01fc0', 2, 25, 'b378f207-0f03-469c-bb6f-058779a2ad32', '1f3efb1c-ba04-11ed-afa1-0242ac120002', 'IN_PROGRESS', '2023', 'I',true );
+insert into COURSES (course_id, group_number, quota, professor_id, subject_id, status_course, year, period, active) values ('24abb2bd-7e2b-4cc4-8b6c-dd292d3373a0', 2, 15, '273f9c9c-c900-436b-af8a-65aead73052c', '06ad6480-ba04-11ed-afa1-0242ac120002', 'IN_PROGRESS', '2023', 'I',true );
 
 
 --------------- RECORDS --------------------
@@ -46,8 +43,6 @@ insert into RECORDS (record_id, student_id, course_id, type, grade) values ('c1f
 
 
 -------------- PREREQUISITES ---------------
-SELECT * FROM SUBJECTS;
 
-insert into PREREQUISITES (subject_base, pre_subject) values ('7ce15628-b60a-11ed-b86e-0242ac110002','7ce16910-b60a-11ed-b86e-0242ac110002');
-insert into PREREQUISITES (subject_base, pre_subject) values ('7ce16488-b60a-11ed-b86e-0242ac110002','7ce15628-b60a-11ed-b86e-0242ac110002');
-
+insert into PREREQUISITES (subject_base, pre_subject) values ('06ad6480-ba04-11ed-afa1-0242ac120002','ed4f110a-ba03-11ed-afa1-0242ac120002');
+insert into PREREQUISITES (subject_base, pre_subject) values ('ed4f110a-ba03-11ed-afa1-0242ac120002','1f3efb1c-ba04-11ed-afa1-0242ac120002');

@@ -7,4 +7,3 @@ drop view GRADES_COURSE;
 drop view PREREQUISITES_SUBJECT;
 drop view PREREQUISITES_INFO;
 
-

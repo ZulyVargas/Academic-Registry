@@ -1,3 +1,14 @@
+----------------- VIEWS FOR SUBJECTS: ------------------------
+	  ----------  PREREQUISITES_INFO  ----------
+
+create view PREREQUISITES_INFO as
+select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title, pr.code as code, pr.credits as credits, pr.active as active
+	from  prerequisites  p join subjects b on b.subject_id = p.subject_base
+	join subjects pr on pr.subject_id = p.pre_subject;
+
+
+
+
 --------------- STUDENTS INFO ----------------------
 
 create view INFO_STUDENTS as
@@ -17,11 +28,15 @@ select * from INFO_PROFESSORS;
 
 -------------- INFO COURSES: GROUP, SUBJECT, PROFESSOR, YEAR, PERIOD (ALL data from course, subject, professor)------------------------
 create view INFO__TOTAL_COURSES as
-select c.COURSE_ID  as course_id, c.GROUP_NUMBER  as group_number, c.QUOTA  as quota, c.PROFESSOR as professor, c.SUBJECT  as subject, c.STATUS_COURSE as status_course, c.year, c.period, c.ACTIVE  as active, 
-u.USER_ID as user_id, u.name as name, u.USERNAME as username, u."password" as password, u.EMAIL as email, u.GENDER as gender, u.ACTIVE as uactive, 
-s.SUBJECT_ID as SUBJECT_ID, s.title as title, s.CODE as code, s.CREDITS as CREDITS
-from subjects s join courses c on c.subject = s.subject_id
-				join users u on u.user_id = c.professor;
+select c.course_id  as course_id, c.GROUP_NUMBER  as group_number, c.QUOTA  as quota, c.PROFESSOR_id as professor_id, c.subject_id  as subject, c.status_course as status_course, c.year, c.period, c.active  as activec, 
+u.USER_ID as user_id, u.name as name, u.USERNAME as username, u."password" as password, u.EMAIL as email, u.GENDER as gender, u.ACTIVE as active, 
+s.SUBJECT_ID as SUBJECT_ID, s.title as title, s.CODE as code, s.CREDITS as CREDITS,
+p.degree as degree
+from subjects s join courses c on c.subject_id = s.subject_id
+				join users u on u.user_id = c.professor_id
+				join professors p on u.user_id  = p.professor_id;
+			
+drop view INFO__TOTAL_COURSES;
 
 SELECT * FROM INFO__TOTAL_COURSES;
 
@@ -57,12 +72,6 @@ select b.SUBJECT_ID  as subject_id, b.title as subject, pr.SUBJECT_ID as prerreq
 SELECT * FROM PREREQUISITES_SUBJECT;
 
 
------------- PREREQUISITES_INFO----------
-
-create view PREREQUISITES_INFO as
-select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title, pr.code as code, pr.credits as credits 
-	from  prerequisites  p join subjects b on b.subject_id = p.subject_base
-	join subjects pr on pr.subject_id = p.pre_subject;
   
 
 SELECT * FROM PREREQUISITES_INFO;
