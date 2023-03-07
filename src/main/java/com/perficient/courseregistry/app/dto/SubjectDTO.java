@@ -3,6 +3,8 @@ package com.perficient.courseregistry.app.dto;
 import lombok.*;
 
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,8 +19,9 @@ public class SubjectDTO implements Serializable {
     @NotBlank(message = "The code of the subject cannot be empty.")
     private String code;
 
-    @NotBlank(message = "The number of credits of the subject cannot be empty. ")
-    private String credits;
+    @Min(value = 1, message = "The minimum number of credits is 1.")
+    @Max(value = 4, message = "The maximum number of credits is 4.")
+    private Integer credits;
 
     private boolean active;
     private Set<SubjectDTO> prerrequisites;

@@ -17,7 +17,7 @@ public class Subject {
     private @Id UUID subjectId;
     private  String title;
     private String code;
-    private String credits;
+    private Integer credits;
     private boolean active;
     @Transient
     private Set<Subject> prerrequisites;
