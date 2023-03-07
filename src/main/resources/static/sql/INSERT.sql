@@ -30,7 +30,15 @@ insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1f3ef
 insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'f90bbcb9-531d-4259-9d52-e92f29a961e5','FUNDAMENTOS DE MECANICA', 'FMEC', 4, true);
 insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '55d02807-635f-4408-b18f-ee92ef0f7de4','FUNDAMENTOS DE COMUNICACION', 'FCOM', 2, true);
 insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'cb7e06de-bd29-11ed-afa1-0242ac120002','QUIMICA I', 'QUIM', 3, true);
-
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '74efce37-2775-4016-b357-80a3ddaa85f0','MATEMATICA FINANCIERA', 'MATF', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'ccb75709-a567-4934-85bd-4f733092784e','OPTIMIZACION LINEAL', 'OPTL', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '9d1d7edd-46e6-4001-b277-efdd4b513042','COSTOS Y PRESUPUESTOS', 'CYPR', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '6501acbf-ce9e-4b07-a87b-12b74d62c429','SEÑALES DIGITALES', 'SDIG', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '3dfb64cb-c01c-416b-9a36-8d6df97d8933','SEGURIDAD EN LA INDUSTRIA', 'SIND', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'cd11e55a-e064-42d1-bf25-d0363b5715d9','ANALISIS NUMERICO', 'ANUM', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'ee2bf736-7f56-4d3d-a8db-2e44a5767325','EXPRESION GRAFICA', 'EGRA', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '30f70acc-3b66-4bed-90f3-38e614c055dd','CINE Y LITERATURA', 'CYLI', 2, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'bdc6e175-aa1e-4d78-8078-bfb6a80bba7a','HISTORIA DE COLOMBIA', 'HDCL', 1, true);
 
 --------------- COURSES --------------------
 
