@@ -1,12 +1,12 @@
 package com.perficient.courseregistry.app.repository;
 
 import com.perficient.courseregistry.app.entities.Subject;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,4 +24,7 @@ public interface ISubjectRepository extends CrudRepository<Subject,String> {
 
     Subject findByTitle(@Param("title") String title);
 
+    @Modifying
+    @Query("UPDATE SUBJECTS SET active = false WHERE subject_id=:subjectId")
+    boolean updateActive(UUID subjectId);
 }

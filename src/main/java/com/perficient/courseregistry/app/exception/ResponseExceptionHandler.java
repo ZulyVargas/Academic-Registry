@@ -21,13 +21,13 @@ public class ResponseExceptionHandler {
 
     @ExceptionHandler(value={ConnectException.class})
     public ResponseEntity<Error> handleDatabaseConnectionException(ConnectException exception){
-        Error error = new Error("Data Surce", "Unable to connect to data source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        Error error = new Error("Data Source", "Unable to connect to data source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
         return  new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(value={SQLException.class})
     public ResponseEntity<Error> handleDatabaseException(SQLException  exception){
-        Error error = new Error("Data Surce", "Unable to get data from source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        Error error = new Error("Data Source", "Unable to get data from source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

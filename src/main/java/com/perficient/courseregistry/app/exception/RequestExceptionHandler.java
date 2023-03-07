@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,11 +18,8 @@ public class RequestExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public ResponseEntity<List<Error>> handleRequestException(MethodArgumentNotValidException exception) {
         List<Error> response = exception.getBindingResult().getAllErrors().stream()
-                .map((e) ->
-                        new Error(((FieldError) e).getField(), e.getDefaultMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")))
-                )
-                .collect(Collectors.toList());
-
+                                        .map((e) -> new Error(((FieldError) e).getField(), e.getDefaultMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota"))))
+                                        .collect(Collectors.toList());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 

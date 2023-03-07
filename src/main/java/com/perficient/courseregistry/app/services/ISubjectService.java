@@ -12,5 +12,5 @@ public interface ISubjectService {
     SubjectDTO getSubjectById(String id);
     SubjectDTO addSubject(SubjectDTO subjectDTO);
     SubjectDTO updateSubject(SubjectDTO subjectDTO);
-    Boolean deleteSubject(String subjectId);
+    boolean deleteSubject(String subjectId);
 }

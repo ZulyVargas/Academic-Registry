@@ -4,7 +4,6 @@ import lombok.*;
 
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;

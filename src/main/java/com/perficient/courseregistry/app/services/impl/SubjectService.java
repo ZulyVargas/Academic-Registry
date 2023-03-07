@@ -73,11 +73,11 @@ public class SubjectService  implements ISubjectService {
     }
 
     @Override
-    public Boolean deleteSubject(String subjectId) {
+    public boolean deleteSubject(String subjectId) {
         try {
-            if (subjectRepository.findById(subjectId).isEmpty()) return false;
-            this.subjectRepository.deleteById(subjectId);
-            return true;
+            Optional<Subject> subject = subjectRepository.findById(subjectId);
+            if (subject.isEmpty() || !subject.get().isActive()) return false;
+            return subjectRepository.updateActive(UUID.fromString(subjectId));
         } catch (Exception ex ) {
             throw new SubjectException(SubjectException.SUBJECT_DELETE_EXCEPTION, "ID");
         }

@@ -2,7 +2,6 @@ package com.perficient.courseregistry.app.controller;
 
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.services.ISubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,4 +52,5 @@ public class SubjectController {
     public ResponseEntity<Boolean> deleteSubject(@PathVariable String subjectId){
         return new ResponseEntity<Boolean>(subjectService.deleteSubject(subjectId), HttpStatus.OK);
     }
+
 }
