@@ -59,7 +59,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:23:41 GMT"
+							"value": "Tue, 07 Mar 2023 01:56:24 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -71,7 +71,93 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"7ce1673a-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"7ce15628-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"prerrequisites\": []\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"7ce16488-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"7ce15628-b60a-11ed-b86e-0242ac110002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+				},
+				{
+					"name": "getAll -> When the view or table doesnt exist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 01:33:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"Data Surce\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-06T20:33:34.3035917-05:00\"\n}"
+				},
+				{
+					"name": "getAll -> DB connection lost",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 13:04:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"Data Source\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-07T08:04:44.9324167-05:00\"\n}"
 				}
 			]
 		},
@@ -81,7 +167,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/paged/4/3",
+					"raw": "http://localhost:8001/api/v1/subjects/paged?limit=4&offset=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -91,9 +177,17 @@
 						"api",
 						"v1",
 						"subjects",
-						"paged",
-						"4",
-						"3"
+						"paged"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "offset",
+							"value": "2"
+						}
 					]
 				}
 			},
@@ -104,7 +198,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/paged/4/1",
+							"raw": "http://localhost:8001/api/v1/subjects/paged?limit=4&offset=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -114,9 +208,17 @@
 								"api",
 								"v1",
 								"subjects",
-								"paged",
-								"4",
-								"1"
+								"paged"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "4"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -134,7 +236,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:24:35 GMT"
+							"value": "Mon, 06 Mar 2023 12:18:41 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -146,7 +248,61 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"7ce15628-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"prerrequisites\": []\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"7ce16488-b60a-11ed-b86e-0242ac110002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"7ce15628-b60a-11ed-b86e-0242ac110002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"7ce16910-b60a-11ed-b86e-0242ac110002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+				},
+				{
+					"name": "getAll PAGED - default values",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/paged?offset=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"paged"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 02:09:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
 				}
 			]
 		},
@@ -156,7 +312,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/7ce15628-b60a-11ed-b86e-0242ac110002",
+					"raw": "http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -166,7 +322,7 @@
 						"api",
 						"v1",
 						"subjects",
-						"7ce15628-b60a-11ed-b86e-0242ac110002"
+						"ed4f110a-ba03-11ed-afa1-0242ac120002"
 					]
 				}
 			},
@@ -532,7 +688,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"subject_id\": \"d7f25a62-b899-11ed-9a36-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
+					"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -615,7 +771,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"subjectId\": \"c58b8dca-b8a4-11ed-8d23-0242ac110002\",\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+					"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": [],\r\n    \"active\":true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -644,7 +800,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+							"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -679,7 +835,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 16:00:15 GMT"
+							"value": "Tue, 07 Mar 2023 13:18:09 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -691,7 +847,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ENG1\",\n    \"credits\": \"3\",\n    \"prerrequisites\": []\n}"
+					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": \"4\",\n    \"active\": false,\n    \"prerrequisites\": []\n}"
 				}
 			]
 		},
@@ -853,7 +1009,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 16:01:53 GMT"
+							"value": "Tue, 07 Mar 2023 02:47:58 GMT"
 						},
 						{
 							"key": "Connection",
@@ -861,7 +1017,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"field\": \"subjectId\",\n        \"message\": \"ID format error.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-02T11:01:53.1218603-05:00\"\n    }\n]"
+					"body": "{\n    \"field\": \"c87648b6-b90f-11ed-99c1\",\n    \"message\": \"ID format error\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-06T21:47:58.8183107-05:00\"\n}"
 				}
 			]
 		},
@@ -871,7 +1027,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/f574f92e-ba0a-11ed-bc90-0242ac110002",
+					"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -881,7 +1037,7 @@
 						"api",
 						"v1",
 						"subjects",
-						"f574f92e-ba0a-11ed-bc90-0242ac110002"
+						"1403f93c-ba04-11ed-afa1-0242ac120002"
 					]
 				}
 			},
@@ -892,7 +1048,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/c87648b6-b90f-11ed-99c1-0242ac110002",
+							"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -902,7 +1058,7 @@
 								"api",
 								"v1",
 								"subjects",
-								"c87648b6-b90f-11ed-99c1-0242ac110002"
+								"1403f93c-ba04-11ed-afa1-0242ac120002"
 							]
 						}
 					},
@@ -920,7 +1076,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 02 Mar 2023 16:02:25 GMT"
+							"value": "Tue, 07 Mar 2023 13:20:22 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -935,12 +1091,12 @@
 					"body": "true"
 				},
 				{
-					"name": "delete",
+					"name": "delete- previous delete -> return false",
 					"originalRequest": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/f574f92e-ba0a-11ed-bc90-0242ac110002",
+							"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -950,7 +1106,7 @@
 								"api",
 								"v1",
 								"subjects",
-								"f574f92e-ba0a-11ed-bc90-0242ac110002"
+								"1403f93c-ba04-11ed-afa1-0242ac120002"
 							]
 						}
 					},
@@ -968,7 +1124,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 03 Mar 2023 21:33:38 GMT"
+							"value": "Tue, 07 Mar 2023 13:12:11 GMT"
 						},
 						{
 							"key": "Keep-Alive",
