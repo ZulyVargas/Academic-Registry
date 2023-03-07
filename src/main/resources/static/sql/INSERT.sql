@@ -23,10 +23,14 @@ insert into PROFESSORS (professor_id, degree) values ('273f9c9c-c900-436b-af8a-6
 
 --------------- SUBJECTS -------------------
 
-insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'ed4f110a-ba03-11ed-afa1-0242ac120002','CALCULO DIFERENCIAL', 'CALD', '4', true);
-insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '06ad6480-ba04-11ed-afa1-0242ac120002','CALCULO INTEGRAL', 'CALI', '4', true);
-insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1403f93c-ba04-11ed-afa1-0242ac120002','BIOLOGIA', 'BIOL', '3', true);
-insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1f3efb1c-ba04-11ed-afa1-0242ac120002','PRE CALCULO', 'PCAL', '3', true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'ed4f110a-ba03-11ed-afa1-0242ac120002','CALCULO DIFERENCIAL', 'CALD', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '06ad6480-ba04-11ed-afa1-0242ac120002','CALCULO INTEGRAL', 'CALI', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1403f93c-ba04-11ed-afa1-0242ac120002','BIOLOGIA', 'BIOL', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '1f3efb1c-ba04-11ed-afa1-0242ac120002','PRE CALCULO', 'PCAL', 3, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'f90bbcb9-531d-4259-9d52-e92f29a961e5','FUNDAMENTOS DE MECANICA', 'FMEC', 4, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( '55d02807-635f-4408-b18f-ee92ef0f7de4','FUNDAMENTOS DE COMUNICACION', 'FCOM', 2, true);
+insert into SUBJECTS (subject_id, title, code, credits, active ) values ( 'cb7e06de-bd29-11ed-afa1-0242ac120002','QUIMICA I', 'QUIM', 3, true);
+
 
 --------------- COURSES --------------------
 
@@ -46,3 +50,4 @@ insert into RECORDS (record_id, student_id, course_id, type, grade) values ('c1f
 
 insert into PREREQUISITES (subject_base, pre_subject) values ('06ad6480-ba04-11ed-afa1-0242ac120002','ed4f110a-ba03-11ed-afa1-0242ac120002');
 insert into PREREQUISITES (subject_base, pre_subject) values ('ed4f110a-ba03-11ed-afa1-0242ac120002','1f3efb1c-ba04-11ed-afa1-0242ac120002');
+	

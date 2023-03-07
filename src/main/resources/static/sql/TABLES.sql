@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS  SUBJECTS (
 	subject_id uuid primary key DEFAULT uuid_generate_v1(),
 	title VARCHAR(100) unique not null,
 	code VARCHAR(4) not null,
-	credits VARCHAR (1) not null,
+	credits INTEGER not null,
 	active BOOLEAN not null default true
 );
 
@@ -75,4 +75,3 @@ CREATE TABLE IF NOT EXISTS  PREREQUISITES(
 	foreign KEY(pre_subject)
 		references subjects(subject_id)
 );
-

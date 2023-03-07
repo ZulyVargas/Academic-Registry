@@ -7,8 +7,6 @@ select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title
 	join subjects pr on pr.subject_id = p.pre_subject;
 
 
-
-
 --------------- STUDENTS INFO ----------------------
 
 create view INFO_STUDENTS as
