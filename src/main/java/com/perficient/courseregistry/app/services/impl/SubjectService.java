@@ -6,12 +6,10 @@ import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import com.perficient.courseregistry.app.services.ISubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class SubjectService  implements ISubjectService {
@@ -24,39 +22,20 @@ public class SubjectService  implements ISubjectService {
         this.subjectMapper = subjectMapper;
     }
 
-    private Set<Subject> findPrerrequisitesById(UUID subjectId) {
-        Set<Subject> prerrequisites = this.subjectRepository.findPrerrequisitesById(subjectId)
-                                                            .stream()
-                                                            .map(p -> { p.setPrerrequisites(findPrerrequisitesById(p.getSubjectId()));
-                                                                        return p; })
-                                                            .collect(Collectors.toSet());
-        return prerrequisites;
-    }
-
-    private Set<SubjectDTO> groupSubjects(List<Subject> subjectList){
-        Set<SubjectDTO> subjects = subjectList.stream()
-                                              .map(s -> { s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
-                                                          return subjectMapper.subjectToSubjectDTO(s); })
-                                              .collect(Collectors.toSet());
-        return subjects;
-    }
-
     @Override
     public Set<SubjectDTO> getAllSubjects() {
-        List<Subject> array = StreamSupport.stream(subjectRepository.findAll().spliterator(), false)
-                                           .collect(Collectors.toList());
-        return groupSubjects(array);
+        return groupSubjects(subjectRepository.findAll());
     }
 
     @Override
     public Set<SubjectDTO> getAllSubjectsPaged(Integer limit, Integer offset) {
-        return groupSubjects(this.subjectRepository.findAllPageable(limit, offset));
+        return groupSubjects(subjectRepository.findAllPageable(limit, offset));
     }
 
     @Override
     public SubjectDTO getSubjectByTitle(String title) {
         try{
-            Subject subject = this.subjectRepository.findByTitle(title);
+            Subject subject = subjectRepository.findByTitle(title);
             subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
             return subjectMapper.subjectToSubjectDTO(subject);
         }catch (Exception ex){
@@ -73,7 +52,6 @@ public class SubjectService  implements ISubjectService {
         }else {
             throw new SubjectException(SubjectException.SUBJECT_ID_EXCEPTION, "ID");
         }
-
     }
 
     @Override
@@ -103,6 +81,21 @@ public class SubjectService  implements ISubjectService {
         } catch (Exception ex ) {
             throw new SubjectException(SubjectException.SUBJECT_DELETE_EXCEPTION, "ID");
         }
+    }
+
+    private Set<SubjectDTO> groupSubjects(Set<Subject> subjectList){
+        return  subjectList.stream()
+                .map(s -> { s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
+                    return subjectMapper.subjectToSubjectDTO(s); })
+                .collect(Collectors.toSet());
+    }
+
+    private Set<Subject> findPrerrequisitesById(UUID subjectId) {
+        return subjectRepository.findPrerrequisitesById(subjectId)
+                .stream()
+                .map(p -> { p.setPrerrequisites(findPrerrequisitesById(p.getSubjectId()));
+                    return p; })
+                .collect(Collectors.toSet());
     }
 
 }

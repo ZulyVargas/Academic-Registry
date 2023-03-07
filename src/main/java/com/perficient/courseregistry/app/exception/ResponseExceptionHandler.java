@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.net.ConnectException;
+import java.sql.SQLException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -19,9 +20,15 @@ public class ResponseExceptionHandler {
     }
 
     @ExceptionHandler(value={ConnectException.class})
-    public ResponseEntity<Error> handleDatabaseException(ConnectException exception){
+    public ResponseEntity<Error> handleDatabaseConnectionException(ConnectException exception){
         Error error = new Error("Data Surce", "Unable to connect to data source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
-        return  new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);}
+        return  new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
+    @ExceptionHandler(value={SQLException.class})
+    public ResponseEntity<Error> handleDatabaseException(SQLException  exception){
+        Error error = new Error("Data Surce", "Unable to get data from source", HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

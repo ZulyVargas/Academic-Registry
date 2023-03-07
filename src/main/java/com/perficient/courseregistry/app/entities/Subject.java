@@ -18,7 +18,9 @@ public class Subject {
     private  String title;
     private String code;
     private String credits;
+    private boolean active;
     @Transient
     private Set<Subject> prerrequisites;
+
 
 }

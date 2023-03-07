@@ -26,7 +26,7 @@ public class SubjectController {
     }
 
     @GetMapping(value="/paged")
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@RequestParam(name = "limit")  Integer limit, @RequestParam(name = "offset") Integer offset){
+    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@RequestParam(name = "limit", defaultValue = "10")  Integer limit, @RequestParam(name = "offset", defaultValue = "0") Integer offset){
         return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjectsPaged(limit, offset), HttpStatus.OK);
     }
 
