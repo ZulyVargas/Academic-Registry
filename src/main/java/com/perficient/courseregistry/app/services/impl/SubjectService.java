@@ -23,13 +23,8 @@ public class SubjectService  implements ISubjectService {
     }
 
     @Override
-    public Set<SubjectDTO> getAllSubjects() {
-        return groupSubjects(subjectRepository.findAll());
-    }
-
-    @Override
-    public Set<SubjectDTO> getAllSubjectsPaged(Integer limit, Integer offset) {
-        return groupSubjects(subjectRepository.findAllPageable(limit, offset));
+    public Set<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
+        return groupSubjects(subjectRepository.findAll(limit, offset, isActive.orElse(true) ));
     }
 
     @Override

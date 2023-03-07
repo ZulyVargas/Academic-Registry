@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -20,13 +21,10 @@ public class SubjectController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjects(){
-        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(), HttpStatus.OK);
-    }
-
-    @GetMapping(value="/paged")
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@RequestParam(name = "limit", defaultValue = "10")  Integer limit, @RequestParam(name = "offset", defaultValue = "0") Integer offset){
-        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjectsPaged(limit, offset), HttpStatus.OK);
+    public ResponseEntity<Set<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                          @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                          @RequestParam(name = "active", required = false) Boolean isActive) {
+        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
