@@ -4,8 +4,10 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.relational.core.mapping.Table;
 
-@SuperBuilder
 @Data
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(value="professors")
 public class Professor extends User {
     private String degree;

@@ -32,45 +32,49 @@ public class UserController {
     public ResponseEntity<Set<UserDTO>> getAll(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                @RequestParam(name = "offset", defaultValue = "0") Integer offset,
                                                @RequestParam(name = "active", required = false) Boolean isActive){
-        return new ResponseEntity<>(this.userService.getAllUsers(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUsers(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @GetMapping(value="/{userId}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable String userId){
-        return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
     }
     @GetMapping(value="/username/{username}")
     public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username){
-        return new ResponseEntity<>(this.userService.getUserByUsername(username), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUserByUsername(username), HttpStatus.OK);
     }
 
     @GetMapping(value = "/professors")
-    public ResponseEntity<Set<ProfessorDTO>> getAllProfessors(){
-        return new ResponseEntity<>(this.professorService.getAllProfessors(), HttpStatus.OK);
+    public ResponseEntity<Set<ProfessorDTO>> getAllProfessors(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                              @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                              @RequestParam(name = "active", required = false) Boolean isActive){
+        return new ResponseEntity<>(professorService.getAllProfessors(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/professors/degree/{degree}")
     public ResponseEntity<Set<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
-        return new ResponseEntity<>(this.professorService.getProfessorsByDegree(degree), HttpStatus.OK);
+        return new ResponseEntity<>(professorService.getProfessorsByDegree(degree), HttpStatus.OK);
     }
 
     @GetMapping(value = "/students")
-    public ResponseEntity<Set<StudentDTO>> getAllStudents(){
-        return new ResponseEntity<>(this.studentService.getAllStudents(), HttpStatus.OK);
+    public ResponseEntity<Set<StudentDTO>> getAllStudents(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                          @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                          @RequestParam(name = "active", required = false) Boolean isActive){
+        return new ResponseEntity<>(studentService.getAllStudents(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<UserDTO> addUser(@RequestBody @Valid UserDTO userDTO){
-        return new ResponseEntity<UserDTO>(this.userService.addUser(userDTO), HttpStatus.OK);
+        return new ResponseEntity<UserDTO>(userService.addUser(userDTO), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO userDTO){
-        return new ResponseEntity<UserDTO>(this.userService.updateUser(userDTO), HttpStatus.OK);
+        return new ResponseEntity<UserDTO>(userService.updateUser(userDTO), HttpStatus.OK);
     }
     @DeleteMapping(value="/{userId}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable String userId){
-        return new ResponseEntity<Boolean>(this.userService.deleteUser(userId), HttpStatus.OK);
+        return new ResponseEntity<Boolean>(userService.deleteUser(userId), HttpStatus.OK);
     }
 
 }

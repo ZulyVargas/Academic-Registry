@@ -9,6 +9,8 @@ import java.util.Set;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(value="students")
 public class Student extends User{
     private double avg;

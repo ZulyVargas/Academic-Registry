@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.UUID;
 @Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO implements Serializable {
     private UUID userId;
     @NotBlank(message = "The name of the user cannot be empty")

@@ -9,6 +9,8 @@ import java.util.UUID;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(value="users")
 public class User {
 

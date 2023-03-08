@@ -7,6 +7,7 @@ import com.perficient.courseregistry.app.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,11 +26,10 @@ public class StudentService  implements IStudentService {
     }
 
     @Override
-    public Set<StudentDTO> getAllStudents() {
-        Set<StudentDTO> students = studentRepository.findAll()
-                                                    .stream()
-                                                    .map(student -> studentMapper.studentToStudentDto(student))
-                                                    .collect(Collectors.toSet());
-        return students;
+    public Set<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
+        return studentRepository.findAll(limit,offset, isActive.orElse(true))
+                                .stream()
+                                .map(student -> studentMapper.studentToStudentDto(student))
+                                .collect(Collectors.toSet());
     }
 }

@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProfessorDTO extends UserDTO implements Serializable {
     private String degree;
 }

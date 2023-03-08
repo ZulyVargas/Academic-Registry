@@ -9,6 +9,8 @@ import java.util.Set;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentDTO extends UserDTO implements Serializable {
     private double avg;
     private STATUS_STUDENT status;

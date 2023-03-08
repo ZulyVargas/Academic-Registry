@@ -20,5 +20,5 @@ public interface IUserRepository extends CrudRepository<User, String> {
 
     @Modifying
     @Query("UPDATE Users SET active= false WHERE user_id= :id ")
-    boolean updateActive(@Param("id") UUID id);
+    boolean updateActive(@Param("id") UUID userId);
 }
