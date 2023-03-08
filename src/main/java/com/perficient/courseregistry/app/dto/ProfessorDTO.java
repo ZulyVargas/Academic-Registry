@@ -5,11 +5,8 @@ import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+@Data
 @SuperBuilder
-@AllArgsConstructor
-@NoArgsConstructor
 public class ProfessorDTO extends UserDTO implements Serializable {
     private String degree;
 }

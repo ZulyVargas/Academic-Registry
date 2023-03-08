@@ -18,11 +18,7 @@ import java.util.stream.StreamSupport;
 @Service
 public class UserService implements IUserService {
 
-    @Autowired
     private final IUserRepository userRepository;
-
-
-    @Autowired
     private final IUserMapper userMapper;
 
     public UserService(IUserRepository userRepository, IUserMapper userMapper) {
@@ -31,20 +27,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Set<UserDTO> getAllUsers() {
-        Set<UserDTO> users = StreamSupport.stream(this.userRepository.findAll().spliterator(), false)
-                                          .map(user -> userMapper.userToUserDTO(user))
-                                          .collect(Collectors.toSet());
-        return users;
-    }
-
-    @Override
-    public Set<UserDTO> getAllUsersPaged(Integer limit, Integer offset) {
-        Set<UserDTO> users = this.userRepository.findAllPageable(limit,offset)
+    public Set<UserDTO> getAllUsers(Integer limit, Integer offset,Optional<Boolean> isActive ) {
+        return userRepository.findAll(limit,offset, isActive.orElse(true))
                                                 .stream()
                                                 .map( user -> userMapper.userToUserDTO(user))
                                                 .collect(Collectors.toSet());
-        return users;
     }
 
     @Override
