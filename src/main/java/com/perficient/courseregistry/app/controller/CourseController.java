@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -22,18 +24,10 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<CourseDTO>> getAllCourses(){
-        return new ResponseEntity<Set<CourseDTO>>(courseService.getAllCourses(),HttpStatus.OK);
+    public ResponseEntity<Set<CourseDTO>> getAllCourses(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                        @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                        @RequestParam(name = "active", required = false) Boolean isActive){
+        return new ResponseEntity<Set<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)),HttpStatus.OK);
     }
-
-    //@GetMapping(value="/courses-paged/{limit}/{offset}")
-   // public List<Course> getAllCoursesPaged(@PathVariable Integer limit, @PathVariable Integer offset){
-      //  return new ResponseEntity<List<Course>>(courseService.getAllCoursesPaged(limit, offset),HttpStatus.OK);
-    //}
-
-    //@PostMapping
-    //public Course saveCourse(@RequestBody Course course){
-    //    return courseService.saveCourse(course);
-    //}
 
 }

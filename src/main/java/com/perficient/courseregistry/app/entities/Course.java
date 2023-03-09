@@ -28,5 +28,6 @@ public class Course {
     private STATUS_COURSE statusCourse;
     private String year;
     private PERIOD period;
+    @Column("active_course")
     private boolean active;
 }

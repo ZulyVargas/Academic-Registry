@@ -21,6 +21,7 @@ public class User {
     private String password;
     private String email;
     private String gender;
+    @Column("active_user")
     private boolean active;
 
 }

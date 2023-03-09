@@ -15,7 +15,6 @@ import java.util.UUID;
 @Mapper
 public  interface ICourseMapper {
 
-    ICourseMapper INSTANCE= Mappers.getMapper(ICourseMapper.class);
     CourseDTO courseToCourseDTO(Course course);
     Course   courseDTOToCourse(CourseDTO courseDTO);
 
