@@ -8,11 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface IStudentMapper {
 
-    IStudentMapper INSTANCE = Mappers.getMapper(IStudentMapper.class);
-
     StudentDTO studentToStudentDto(Student student);
-
     Student studentDtoToStudent(StudentDTO studentDTO);
-
-
 }

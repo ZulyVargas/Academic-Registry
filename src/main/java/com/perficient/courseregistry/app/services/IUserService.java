@@ -2,14 +2,12 @@ package com.perficient.courseregistry.app.services;
 
 
 import com.perficient.courseregistry.app.dto.UserDTO;
-import org.springframework.http.HttpStatus;
-
+import java.util.Optional;
 import java.util.Set;
 
 public interface IUserService {
-    Set<UserDTO> getAllUsers();
 
-    Set<UserDTO> getAllUsersPaged(Integer limit, Integer offset);
+    Set<UserDTO> getAllUsers(Integer limit, Integer offset, Optional<Boolean> isActive);
 
     UserDTO getUserByUsername(String username);
 

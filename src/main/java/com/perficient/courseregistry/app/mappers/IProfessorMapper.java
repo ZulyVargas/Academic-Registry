@@ -7,12 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface IProfessorMapper {
-    IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);
 
     ProfessorDTO professorToProfessorDto(Professor professor);
-
     Professor professorDtoToProfessor(ProfessorDTO professorDTO);
-
-
-
 }
