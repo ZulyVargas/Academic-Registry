@@ -2,14 +2,11 @@ package com.perficient.courseregistry.app.controller;
 
 
 import com.perficient.courseregistry.app.dto.CourseDTO;
-import com.perficient.courseregistry.app.entities.Course;
 import com.perficient.courseregistry.app.services.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Set;
 
 @RestController

@@ -1,5 +1,6 @@
 package com.perficient.courseregistry.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
