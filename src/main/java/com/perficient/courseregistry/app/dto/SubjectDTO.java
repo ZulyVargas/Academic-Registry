@@ -1,31 +1,29 @@
 package com.perficient.courseregistry.app.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.UUID;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@SuperBuilder
+@Data
+@Builder
 public class SubjectDTO implements Serializable {
-    @Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" , message = "ID format error.")
-    private String subjectId;
+    private UUID subjectId;
     @NotBlank(message = "The title of the subject cannot be empty.")
     private  String title;
     @NotBlank(message = "The code of the subject cannot be empty.")
     private String code;
 
-    @NotBlank(message = "The number of credits of the subject cannot be empty. ")
-    private String credits;
+    @Min(value = 1, message = "The minimum number of credits is 1.")
+    @Max(value = 4, message = "The maximum number of credits is 4.")
+    private Integer credits;
+
+    private boolean active;
     private Set<SubjectDTO> prerrequisites;
 
 }

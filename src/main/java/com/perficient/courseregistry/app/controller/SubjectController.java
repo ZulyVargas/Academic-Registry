@@ -2,19 +2,18 @@ package com.perficient.courseregistry.app.controller;
 
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.services.ISubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
 @RequestMapping( "/api/v1/subjects" )
 public class SubjectController {
 
-    @Autowired
     private final ISubjectService subjectService;
 
     public SubjectController(ISubjectService subjectService) {
@@ -22,13 +21,10 @@ public class SubjectController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjects(){
-        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(), HttpStatus.OK);
-    }
-
-    @GetMapping(value="/paged/{limit}/{offset}")
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjectsPaged(@PathVariable Integer limit, @PathVariable Integer offset){
-        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjectsPaged(limit, offset), HttpStatus.OK);
+    public ResponseEntity<Set<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                          @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                          @RequestParam(name = "active", required = false) Boolean isActive) {
+        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
@@ -54,4 +50,5 @@ public class SubjectController {
     public ResponseEntity<Boolean> deleteSubject(@PathVariable String subjectId){
         return new ResponseEntity<Boolean>(subjectService.deleteSubject(subjectId), HttpStatus.OK);
     }
+
 }

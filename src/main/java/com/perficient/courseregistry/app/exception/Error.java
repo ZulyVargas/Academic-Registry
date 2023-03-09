@@ -1,19 +1,15 @@
 package com.perficient.courseregistry.app.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class Error {
-    private String field;
-    private String message;
-    private HttpStatus httpStatus;
-    private ZonedDateTime timestamp;
+    private final String field;
+    private final String message;
+    private final HttpStatus httpStatus;
+    private final ZonedDateTime timestamp;
 
 }

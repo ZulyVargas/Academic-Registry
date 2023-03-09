@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 -------------- STUDENTS INFO ----------------------
+=======
+----------------- VIEWS FOR SUBJECTS: ------------------------
+	  ----------  PREREQUISITES_INFO  ----------
+
+create view PREREQUISITES_INFO as
+select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title, pr.code as code, pr.credits as credits, pr.active as active
+	from  prerequisites  p join subjects b on b.subject_id = p.subject_base
+	join subjects pr on pr.subject_id = p.pre_subject;
+
+
+--------------- STUDENTS INFO ----------------------
+>>>>>>> feature/subjects
 
 create view INFO_STUDENTS as
 select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active as active, s.avg, s.status
@@ -61,12 +74,6 @@ select b.SUBJECT_ID  as subject_id, b.title as subject, pr.SUBJECT_ID as prerreq
 SELECT * FROM PREREQUISITES_SUBJECT;
 
 
------------- PREREQUISITES_INFO----------
-
-create view PREREQUISITES_INFO as
-select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title, pr.code as code, pr.credits as credits 
-	from  prerequisites  p join subjects b on b.subject_id = p.subject_base
-	join subjects pr on pr.subject_id = p.pre_subject;
   
 
 SELECT * FROM PREREQUISITES_INFO;
