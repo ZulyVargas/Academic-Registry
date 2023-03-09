@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS USERS (
 	password VARCHAR (60) not null,
 	email VARCHAR(100) unique not null,
 	gender VARCHAR(1) not null,
-	active BOOLEAN not null default true
+	active_user BOOLEAN not null default true
 );
 
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS  SUBJECTS (
 	title VARCHAR(100) unique not null,
 	code VARCHAR(4) not null,
 	credits INTEGER not null,
-	active BOOLEAN not null default true
+	active_subject BOOLEAN not null default true
 );
 
 
@@ -41,11 +41,11 @@ CREATE TABLE IF NOT EXISTS   COURSES (
 	group_number VARCHAR(2) not null,
 	quota INTEGER not null,
 	professor_id uuid,
-	subject_id uuid,
+	subject_id uuid not null,
 	status_course VARCHAR(11) not null,
 	year VARCHAR(4) not null,
 	period VARCHAR(2) not null,
-	active BOOLEAN not null,
+	active_course BOOLEAN not null,
 	foreign KEY(professor_id)
 		references professors(professor_id),
 	foreign KEY(subject_id)
