@@ -13,15 +13,15 @@ import java.util.UUID;
 @Repository
 public interface ISubjectRepository extends CrudRepository<Subject,String> {
 
-    @Query("SELECT * FROM SUBJECTS WHERE active OR active=:isActive LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM SUBJECTS WHERE active_subject OR active_subject=:isActive LIMIT :limit OFFSET :offset")
     Set<Subject> findAll(@Param("limit") Integer limit, @Param("offset") Integer offset, @Param("isActive") boolean isActive);
 
-    @Query("SELECT subject_id, title, code, credits, active FROM PREREQUISITES_INFO WHERE base_id=:subjectId AND active")
+    @Query("SELECT subject_id, title, code, credits, active_subject FROM PREREQUISITES_INFO WHERE base_id=:subjectId")
     Set<Subject> findPrerrequisitesById(@Param("subjectId") UUID subjectId);
 
     Subject findByTitle(@Param("title") String title);
 
     @Modifying
-    @Query("UPDATE SUBJECTS SET active = false WHERE subject_id=:subjectId")
+    @Query("UPDATE SUBJECTS SET active_subject = false WHERE subject_id=:subjectId")
     boolean updateActive(UUID subjectId);
 }

@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,6 +17,7 @@ public class Subject {
     private  String title;
     private String code;
     private Integer credits;
+    @Column("active_subject")
     private boolean active;
     @Transient
     private Set<Subject> prerrequisites;

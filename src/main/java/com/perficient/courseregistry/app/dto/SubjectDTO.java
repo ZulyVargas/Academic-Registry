@@ -1,5 +1,6 @@
 package com.perficient.courseregistry.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 
@@ -24,6 +25,7 @@ public class SubjectDTO implements Serializable {
     private Integer credits;
 
     private boolean active;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Set<SubjectDTO> prerrequisites;
 
 }
