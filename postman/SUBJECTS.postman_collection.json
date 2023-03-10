@@ -1,0 +1,1205 @@
+{
+	"info": {
+		"_postman_id": "aee5afbb-e605-426b-ba22-8fb25a3de998",
+		"name": "SUBJECTS",
+		"description": "Tests for the Subjects Controller: get, update, insert and delete operations.\nThe requests with exception try to obtain the custom exception.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll   (Limit 10 Offset 0 default)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 01:56:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+				},
+				{
+					"name": "getAll -> When the view or table doesnt exist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 01:33:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"Data Surce\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-06T20:33:34.3035917-05:00\"\n}"
+				},
+				{
+					"name": "getAll -> DB connection lost",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 13:04:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"Data Source\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-07T08:04:44.9324167-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "getAll paged",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=0&active=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "active",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll (isActive default)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 22:32:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
+				},
+				{
+					"name": "getAll paged (active and not active)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects?limit=35&offset=0&active=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "35"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "active",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 22:37:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"3dfb64cb-c01c-416b-9a36-8d6df97d8933\",\n        \"title\": \"SEGURIDAD EN LA INDUSTRIA\",\n        \"code\": \"SIND\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"30f70acc-3b66-4bed-90f3-38e614c055dd\",\n        \"title\": \"CINE Y LITERATURA\",\n        \"code\": \"CYLI\",\n        \"credits\": 2,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cd11e55a-e064-42d1-bf25-d0363b5715d9\",\n        \"title\": \"ANALISIS NUMERICO\",\n        \"code\": \"ANUM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ee2bf736-7f56-4d3d-a8db-2e44a5767325\",\n        \"title\": \"EXPRESION GRAFICA\",\n        \"code\": \"EGRA\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ccb75709-a567-4934-85bd-4f733092784e\",\n        \"title\": \"OPTIMIZACION LINEAL\",\n        \"code\": \"OPTL\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"bdc6e175-aa1e-4d78-8078-bfb6a80bba7a\",\n        \"title\": \"HISTORIA DE COLOMBIA\",\n        \"code\": \"HDCL\",\n        \"credits\": 1,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"9d1d7edd-46e6-4001-b277-efdd4b513042\",\n        \"title\": \"COSTOS Y PRESUPUESTOS\",\n        \"code\": \"CYPR\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"6501acbf-ce9e-4b07-a87b-12b74d62c429\",\n        \"title\": \"SEÑALES DIGITALES\",\n        \"code\": \"SDIG\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"74efce37-2775-4016-b357-80a3ddaa85f0\",\n        \"title\": \"MATEMATICA FINANCIERA\",\n        \"code\": \"MATF\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cb7e06de-bd29-11ed-afa1-0242ac120002\",\n        \"title\": \"QUIMICA I\",\n        \"code\": \"QUIM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"ed4f110a-ba03-11ed-afa1-0242ac120002"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"ed4f110a-ba03-11ed-afa1-0242ac120002"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Mar 2023 21:29:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n    \"title\": \"CALCULO DIFERENCIAL\",\n    \"code\": \"CALD\",\n    \"credits\": \"4\",\n    \"prerrequisites\": [\n        {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "getById (ID no found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/f9529637-82bc-430e-bf9e-6114b3381bbc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"f9529637-82bc-430e-bf9e-6114b3381bbc"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById (ID no found exception)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/f9529637-82bc-430e-bf9e-6114b3381bbc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"f9529637-82bc-430e-bf9e-6114b3381bbc"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 15:34:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The subject with the given ID does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:21.6891962-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "getByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGIA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"title",
+						"BIOLOGIA"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getByTitle",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGIA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"title",
+								"BIOLOGIA"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 15:34:29 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"subjectId\": \"7ce1673a-b60a-11ed-b86e-0242ac110002\",\n    \"title\": \"BIOLOGIA\",\n    \"code\": \"BIOL\",\n    \"credits\": \"3\",\n    \"prerrequisites\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "getByTitle (Title not found exception)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"title",
+						"BIOLOGI"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getByTitle (Title not found exception)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"title",
+								"BIOLOGI"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 15:34:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"title\",\n    \"message\": \"The subject with the given title does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:34.8940374-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "addSubject",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "addSubject",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"active\": true,\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 23:06:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"subjectId\": \"c13831f0-bd3c-11ed-bdb4-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": 2,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "addSubject EXCEPTIONS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "addSubject EXCEPTIONS MAX",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 10,\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 20:57:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    },\n    {\n        \"field\": \"credits\",\n        \"message\": \"The maximum number of credits is 4.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    }\n]"
+				},
+				{
+					"name": "addSubject EXCEPTIONS MIN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 0,\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 20:57:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"field\": \"credits\",\n        \"message\": \"The minimum number of credits is 1.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:59.3500882-05:00\"\n    },\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:59.3500882-05:00\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": [],\r\n    \"active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\r\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\r\n    \"code\": \"BICN\",\r\n    \"credits\": \"4\",\r\n    \"prerrequisites\": [],\r\n    \"active\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 23:07:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": 4,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "update (Exception) (ID NOT EXIST)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110001\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update (Exception)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110001\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 16:01:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The given subject could not be updated.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T11:01:07.061114-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update (Exception) (ID BAD FORMAT) Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update (Exception) (ID NOT EXIST) Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 02:47:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"c87648b6-b90f-11ed-99c1\",\n    \"message\": \"ID format error\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-06T21:47:58.8183107-05:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"subjects",
+						"1403f93c-ba04-11ed-afa1-0242ac120002"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"1403f93c-ba04-11ed-afa1-0242ac120002"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 13:20:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "true"
+				},
+				{
+					"name": "delete- previous delete -> return false",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"1403f93c-ba04-11ed-afa1-0242ac120002"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 13:12:11 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "false"
+				}
+			]
+		}
+	]
+}
