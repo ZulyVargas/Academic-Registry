@@ -1,5 +1,7 @@
 package com.perficient.courseregistry.app.mappers;
 
+import java.util.HashSet;
+import java.util.UUID;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,10 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mapstruct.factory.Mappers;
 
-import java.util.HashSet;
-import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SubjectMapperTest {
 
