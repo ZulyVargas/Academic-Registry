@@ -11,24 +11,22 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SubjectServiceTest {
-
-    private final ISubjectMapper subjectMapperTest = Mappers.getMapper(ISubjectMapper.class);
     private Subject subjectTest;
     private SubjectDTO subjectDTOTest;
-
     @Mock
     private ISubjectRepository subjectRepository;
-
     private SubjectService subjectService;
 
     @Before
@@ -40,8 +38,8 @@ public class SubjectServiceTest {
         subjectTest.setCredits(4);
         subjectTest.setActive(true);
         subjectTest.setPrerrequisites(new HashSet<>());
-        subjectDTOTest = subjectMapperTest.subjectToSubjectDTO(subjectTest);
-        subjectService = new SubjectService(subjectRepository, subjectMapperTest);
+        subjectDTOTest = Mappers.getMapper(ISubjectMapper.class).subjectToSubjectDTO(subjectTest);
+        subjectService = new SubjectService(subjectRepository, Mappers.getMapper(ISubjectMapper.class));
     }
 
     @Test
@@ -69,6 +67,7 @@ public class SubjectServiceTest {
         when(subjectRepository.findByTitle(any())).thenReturn(null);
 
         assertThrows(SubjectException.class, () -> subjectService.getSubjectByTitle("SUBT"));
+
     }
 
     @Test
@@ -94,6 +93,7 @@ public class SubjectServiceTest {
         SubjectDTO subjectDTOReturned = subjectService.addSubject(subjectDTOTest);
 
         assertEquals(subjectDTOTest, subjectDTOReturned);
+
     }
 
     @Test
@@ -110,6 +110,7 @@ public class SubjectServiceTest {
         SubjectDTO subjectDTOReturned = subjectService.updateSubject(subjectDTOTest);
 
         assertEquals(subjectDTOTest, subjectDTOReturned);
+
     }
 
     @Test
@@ -128,6 +129,7 @@ public class SubjectServiceTest {
         Boolean updateActiveReturned = subjectService.deleteSubject("d45e4121-cfd0-4307-813e-a50b3d7ea7b5");
 
         assertEquals(updateActiveExpected, updateActiveReturned);
+
     }
 
     @Test
@@ -148,6 +150,5 @@ public class SubjectServiceTest {
 
         assertThrows(SubjectException.class, () -> subjectService.deleteSubject("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"));
     }
-    
 }
 
