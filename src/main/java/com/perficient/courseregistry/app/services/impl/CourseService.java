@@ -1,12 +1,16 @@
 package com.perficient.courseregistry.app.services.impl;
 
 import com.perficient.courseregistry.app.dto.CourseDTO;
+import com.perficient.courseregistry.app.entities.Course;
+import com.perficient.courseregistry.app.exception.custom.CourseException;
+import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.mappers.ICourseMapper;
 import com.perficient.courseregistry.app.repository.ICourseRepository;
 import com.perficient.courseregistry.app.services.ICourseService;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,13 +31,24 @@ public class CourseService implements ICourseService {
 
     @Override
     public CourseDTO addCourse(CourseDTO courseDTO) {
-        System.out.println("RESULT  " + courseRepository.save(courseDTO.getGroupNumber(), courseDTO.getQuota(),
+        UUID idNewCourse = UUID.randomUUID();
+        courseDTO.setCourseId(idNewCourse);
+        Boolean isSaved = courseRepository.save(courseDTO.getCourseId(), courseDTO.getGroupNumber(), courseDTO.getQuota(),
                 courseDTO.getProfessor().getUserId(), courseDTO.getSubject().getSubjectId(),
                 courseDTO.getStatusCourse(), courseDTO.getYear(),
-                courseDTO.getPeriod(), courseDTO.isActive()));
-        return null;
-
-        //return courseMapper.courseToCourseDTO(courseRepository.save(courseMapper.courseDTOToCourse(courseDTO)));
+                courseDTO.getPeriod(), courseDTO.isActive());
+        if (isSaved) return getCourseById(String.valueOf(idNewCourse));
+        else{
+            throw new SubjectException(CourseException.COURSE_INSERT_EXCEPTION, "ID");
+        }
     }
 
+    @Override
+    public CourseDTO getCourseById(String id) {
+        Optional<Course> course = courseRepository.findById(UUID.fromString(id));
+        if (course.isPresent()) return courseMapper.courseToCourseDTO(course.get());
+        else {
+           throw new CourseException(CourseException.COURSE_ID_EXCEPTION, "ID");
+        }
+    }
 }

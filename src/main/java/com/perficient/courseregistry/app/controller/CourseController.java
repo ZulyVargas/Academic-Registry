@@ -31,6 +31,11 @@ public class CourseController {
         return new ResponseEntity<Set<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)),HttpStatus.OK);
     }
 
+    @GetMapping(value="/{id}")
+    public ResponseEntity<CourseDTO> getCourseById(@PathVariable String id){
+        return new ResponseEntity<CourseDTO>(courseService.getCourseById(id), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<CourseDTO> addCourse(@RequestBody @Valid CourseDTO courseDTO){
         return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO), HttpStatus.OK);

@@ -1,11 +1,13 @@
 package com.perficient.courseregistry.app.exception;
 
 
+import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.exception.custom.GeneralException;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -16,7 +18,7 @@ import java.time.ZonedDateTime;
 
 @RestControllerAdvice
 public class ResponseExceptionHandler {
-    @ExceptionHandler(value= {SubjectException.class, UserException.class})
+    @ExceptionHandler(value= {SubjectException.class, UserException.class, CourseException.class})
     public ResponseEntity<Error> handleResponseException(GeneralException exception){
         Error error = new Error(exception.getField(), exception.getMessage(), HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
         return  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
@@ -33,4 +35,9 @@ public class ResponseExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(value={UncategorizedSQLException.class})
+    public ResponseEntity<Error> handleTriggerException(UncategorizedSQLException exception){
+        Error error = new Error("SUBJECT, NUMBER GROUP, YEAR, PERIOD", "THIS COURSE WAS REGISTERED PREVIOUSLY. THE COURSE HAS TO BE UNIQUE", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 }
