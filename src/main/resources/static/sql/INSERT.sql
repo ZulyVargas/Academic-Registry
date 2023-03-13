@@ -64,7 +64,7 @@ insert into COURSES (course_id, group_number, quota, professor_id, subject_id, s
 
 
 --------------- RECORDS --------------------
-	
+
 insert into RECORDS (record_id, student_id, course_id, type, grade) values ('73f434dc-0e37-4ec2-9b36-7744fcc15f96', '6f323b65-cd24-48a9-bc53-e3e45676e619', 'cfe96f22-5c2c-406a-b458-3831aaa6d3c9', 'FIRST', 3.9 );
 insert into RECORDS (record_id, student_id, course_id, type, grade) values ('a23f4dd9-ae58-4391-bd03-1545d5d28d79', '131e8918-730b-4739-9b9b-e91510f96fa9', 'cfe96f22-5c2c-406a-b458-3831aaa6d3c9', 'FIRST', 3.1 );
 insert into RECORDS (record_id, student_id, course_id, type, grade) values ('c1fb643b-3196-443a-abcb-95800531374a', '8983514f-2e8a-4664-b616-2ea1744cb6af', 'cfe96f22-5c2c-406a-b458-3831aaa6d3c9', 'FIRST', 4.1 );
@@ -74,4 +74,3 @@ insert into RECORDS (record_id, student_id, course_id, type, grade) values ('c1f
 
 insert into PREREQUISITES (subject_base, pre_subject) values ('06ad6480-ba04-11ed-afa1-0242ac120002','ed4f110a-ba03-11ed-afa1-0242ac120002');
 insert into PREREQUISITES (subject_base, pre_subject) values ('ed4f110a-ba03-11ed-afa1-0242ac120002','1f3efb1c-ba04-11ed-afa1-0242ac120002');
-
