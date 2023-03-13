@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,6 +29,12 @@ public class CourseController {
                                                         @RequestParam(name = "offset", defaultValue = "0") Integer offset,
                                                         @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<Set<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)),HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<CourseDTO> addCourse(@RequestBody @Valid CourseDTO courseDTO){
+        return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO), HttpStatus.OK);
+
     }
 
 }

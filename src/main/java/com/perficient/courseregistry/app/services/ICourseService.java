@@ -7,4 +7,5 @@ import java.util.Set;
 public interface ICourseService {
     Set<CourseDTO> getAllCourses(Integer limit, Integer offset, Optional<Boolean> isActive);
 
+    CourseDTO addCourse(CourseDTO courseDTO);
 }

@@ -18,10 +18,8 @@ public class Course {
     @Column("group_number")
     private String groupNumber;
     private Integer quota;
-    @Column("professor_id")
     @Embedded.Nullable
     private Professor professor;
-    @Column("subject_id")
     @Embedded.Empty
     private Subject subject;
     @Column("status_course")

@@ -25,4 +25,15 @@ public class CourseService implements ICourseService {
         return courseRepository.findAll(limit, offset, isActive.orElse(true)).stream().map(s -> courseMapper.courseToCourseDTO(s)).collect(Collectors.toSet());
     }
 
+    @Override
+    public CourseDTO addCourse(CourseDTO courseDTO) {
+        System.out.println("RESULT  " + courseRepository.save(courseDTO.getGroupNumber(), courseDTO.getQuota(),
+                courseDTO.getProfessor().getUserId(), courseDTO.getSubject().getSubjectId(),
+                courseDTO.getStatusCourse(), courseDTO.getYear(),
+                courseDTO.getPeriod(), courseDTO.isActive()));
+        return null;
+
+        //return courseMapper.courseToCourseDTO(courseRepository.save(courseMapper.courseDTOToCourse(courseDTO)));
+    }
+
 }
