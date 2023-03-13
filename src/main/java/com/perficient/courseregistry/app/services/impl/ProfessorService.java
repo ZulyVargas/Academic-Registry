@@ -2,6 +2,7 @@ package com.perficient.courseregistry.app.services.impl;
 
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
+import com.perficient.courseregistry.app.entities.Professor;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.repository.IProfessorRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +34,15 @@ public class ProfessorService extends UserService implements IProfessorService {
     }
 
     @Override
+    public ProfessorDTO getProfessorById(String id) {
+        Optional<Professor> professor = professorRepository.findById(UUID.fromString(id));
+        if(professor.isPresent()) return professorMapper.professorToProfessorDto(professor.get());
+        else {
+            throw new UserException(UserException.USER_ID_EXCEPTION, "ID");
+        }
+    }
+
+    @Override
     public Set<ProfessorDTO> getProfessorsByDegree(String degree) {
         System.out.println("degree "+ degree);
         return professorRepository.findAllByDegree(degree).stream()
@@ -49,11 +60,13 @@ public class ProfessorService extends UserService implements IProfessorService {
         } catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "Professor");
         }
-        return professorDTO;
+        return getProfessorById(professorDTO.getUserId().toString());
     }
 
     @Override
     public Boolean deleteProfessor(String userId) {
         return deleteUser(userId);
     }
+
+
 }

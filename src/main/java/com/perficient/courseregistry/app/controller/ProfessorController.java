@@ -1,6 +1,7 @@
 package com.perficient.courseregistry.app.controller;
 
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
+import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,12 @@ public class ProfessorController {
                                                               @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<>(professorService.getAllProfessors(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
+
+    @GetMapping(value="/{id}")
+    public ResponseEntity<UserDTO> getProfessorById(@PathVariable String id){
+        return new ResponseEntity<>(professorService.getProfessorById(id), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/degree/{degree}")
     public ResponseEntity<Set<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
         return new ResponseEntity<>(professorService.getProfessorsByDegree(degree), HttpStatus.OK);

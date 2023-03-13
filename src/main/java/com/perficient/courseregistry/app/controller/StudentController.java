@@ -28,9 +28,9 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getAllStudents(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
-    @GetMapping(value="/{studentId}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable String studentId){
-        return new ResponseEntity<>(studentService.getStudentById(studentId), HttpStatus.OK);
+    @GetMapping(value="/{id}")
+    public ResponseEntity<UserDTO> getStudentById(@PathVariable String id){
+        return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.OK);
     }
 
     @PostMapping

@@ -37,7 +37,7 @@ public class StudentService extends UserService implements IStudentService {
         Optional<Student> student = studentRepository.findById(UUID.fromString(studentId));
         if (student.isPresent()) return studentMapper.studentToStudentDto(student.get());
         else {
-            throw new UserException(UserException.USER_ID_EXCEPTION, "username");
+            throw new UserException(UserException.USER_ID_EXCEPTION, "ID");
         }
     }
 
@@ -49,7 +49,7 @@ public class StudentService extends UserService implements IStudentService {
         } catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "student");
         }
-        return studentDTO;
+        return getStudentById(studentDTO.getUserId().toString());
     }
 
     @Override
