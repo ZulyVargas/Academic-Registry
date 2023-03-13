@@ -44,7 +44,6 @@ public class ProfessorService extends UserService implements IProfessorService {
 
     @Override
     public Set<ProfessorDTO> getProfessorsByDegree(String degree) {
-        System.out.println("degree "+ degree);
         return professorRepository.findAllByDegree(degree).stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
                                   .collect(Collectors.toSet());

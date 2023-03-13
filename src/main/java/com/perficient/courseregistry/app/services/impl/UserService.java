@@ -23,7 +23,6 @@ public abstract class UserService implements IUserService {
     @Override
     public UserDTO addUser(UserDTO userDTO) {
         try{
-            System.out.println(userDTO);
             return userMapper.userToUserDTO(userRepository.save(userMapper.userDtoToUser(userDTO)));
         }catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "email or username unique");

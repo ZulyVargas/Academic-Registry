@@ -36,7 +36,6 @@ public class ProfessorMapperTest {
                 .active(true)
                 .degree("TEST")
                 .build();
-
     }
 
     @Test
