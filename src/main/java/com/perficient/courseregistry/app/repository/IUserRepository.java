@@ -12,12 +12,7 @@ import java.util.UUID;
 
 @Repository
 public interface IUserRepository extends CrudRepository<User, String> {
-
-    @Query("SELECT * FROM USERS WHERE active_user OR active_user=:isActive LIMIT :limit OFFSET :offset")
-    Set<User>findAll(@Param("limit") Integer limit,@Param("offset") Integer offset, @Param("isActive") boolean isActive );
-
-    Optional<User> findByUsername(String username);
-
+    
     @Modifying
     @Query("UPDATE Users SET active_user= false WHERE user_id= :id ")
     boolean updateActive(@Param("id") UUID userId);
