@@ -9,8 +9,8 @@ import com.perficient.courseregistry.app.repository.IStudentRepository;
 import com.perficient.courseregistry.app.services.IStudentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -25,11 +25,11 @@ public class StudentService extends UserService implements IStudentService {
         this.studentMapper = studentMapper;
     }
 
-    public Set<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
+    public List<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
         return studentRepository.findAll(limit,offset, isActive.orElse(true))
                                 .stream()
                                 .map(student -> studentMapper.studentToStudentDto(student))
-                                .collect(Collectors.toSet());
+                                .collect(Collectors.toList());
     }
 
     @Override

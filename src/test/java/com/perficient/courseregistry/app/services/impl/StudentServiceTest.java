@@ -16,10 +16,8 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+
+import java.util.*;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,13 +60,13 @@ public class StudentServiceTest {
 
     @Test
     public void getAllStudents_shouldReturnSetOfDTOProfessors() {
-        Set<Student> studentSet = new HashSet<>();
-        studentSet.add(studentTest);
-        when(studentRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(studentSet);
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(studentTest);
+        when(studentRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(studentList);
 
-        Set<StudentDTO> studentDTOsReturned = studentService.getAllStudents(1,1, Optional.of(true));
+        List<StudentDTO> studentDTOsReturned = studentService.getAllStudents(1,1, Optional.of(true));
 
-        assertEquals(new HashSet<>(Set.of(studentDTOTest)), studentDTOsReturned);
+        assertEquals(new ArrayList<>(List.of(studentDTOTest)), studentDTOsReturned);
     }
 
     @Test

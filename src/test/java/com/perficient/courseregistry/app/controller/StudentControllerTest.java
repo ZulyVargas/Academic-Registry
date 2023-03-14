@@ -10,9 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,14 +40,14 @@ public class StudentControllerTest {
 
     @Test
     public void getAllStudents_shouldReturnSetOfDTOStudent() {
-        Set<StudentDTO> studentDTOSet = new HashSet<>();
-        studentDTOSet.add(studentDTOTest);
-        when(studentService.getAllStudents(any(), any(), any())).thenReturn(studentDTOSet);
+        List<StudentDTO> studentDTOList = new ArrayList<>();
+        studentDTOList.add(studentDTOTest);
+        when(studentService.getAllStudents(any(), any(), any())).thenReturn(studentDTOList);
 
-        ResponseEntity<Set<StudentDTO>> response = studentController.getAllStudents(1,1,true);
+        ResponseEntity<List<StudentDTO>> response = studentController.getAllStudents(1,1,true);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(studentDTOSet, response.getBody());
+        assertEquals(studentDTOList, response.getBody());
     }
 
     @Test
