@@ -29,7 +29,7 @@ public class ProfessorController {
     }
 
     @GetMapping(value="/{id}")
-    public ResponseEntity<UserDTO> getProfessorById(@PathVariable String id){
+    public ResponseEntity<ProfessorDTO> getProfessorById(@PathVariable String id){
         return new ResponseEntity<>(professorService.getProfessorById(id), HttpStatus.OK);
     }
 

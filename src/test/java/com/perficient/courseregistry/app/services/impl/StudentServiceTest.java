@@ -49,12 +49,14 @@ public class StudentServiceTest {
                 .avg(3.4)
                 .status(STATUS_STUDENT.ACTIVE)
                 .build();
-        studentDTOTest = Mappers.getMapper(IStudentMapper.class).studentToStudentDto(studentTest);
-        userDTOTest = Mappers.getMapper(IStudentMapper.class).studentDTOToUser(studentDTOTest);
-        userTest = Mappers.getMapper(IUserMapper.class).userDtoToUser(userDTOTest);
+        IStudentMapper studentMapper = Mappers.getMapper(IStudentMapper.class);
+        IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);
+        studentDTOTest = studentMapper.studentToStudentDto(studentTest);
+        userDTOTest = studentMapper.studentDTOToUser(studentDTOTest);
+        userTest = userMapper.userDtoToUser(userDTOTest);
 
-        studentService = new StudentService(studentRepository, Mappers.getMapper(IStudentMapper.class));
-        studentService.setUserMapper(Mappers.getMapper(IUserMapper.class));
+        studentService = new StudentService(studentRepository, studentMapper);
+        studentService.setUserMapper(userMapper);
         studentService.setUserRepository(userRepository);
     }
 
@@ -132,6 +134,7 @@ public class StudentServiceTest {
 
         assertEquals(updateActiveExpected, updateActiveReturned);
     }
+
     @Test
     public void deleteProfessor_givenId_shouldReturnFalse(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));

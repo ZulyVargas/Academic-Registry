@@ -7,6 +7,7 @@ import com.perficient.courseregistry.app.entities.User;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.mappers.IUserMapper;
+import com.perficient.courseregistry.app.mappers.ProfessorMapperTest;
 import com.perficient.courseregistry.app.repository.IProfessorRepository;
 import com.perficient.courseregistry.app.repository.IUserRepository;
 import org.junit.Before;
@@ -37,6 +38,7 @@ public class ProfessorServiceTest {
     private IUserRepository userRepository;
     private ProfessorService professorService;
 
+
     @Before
     public void setUp(){
         professorTest = Professor.builder().userId(UUID.randomUUID())
@@ -47,12 +49,14 @@ public class ProfessorServiceTest {
                 .active(true)
                 .degree("TEST")
                 .build();
-        professorDTOTest = Mappers.getMapper(IProfessorMapper.class).professorToProfessorDto(professorTest);
-        userDTOTest = Mappers.getMapper(IProfessorMapper.class).professorDTOToUserDTO(professorDTOTest);
-        userTest = Mappers.getMapper(IUserMapper.class).userDtoToUser(userDTOTest);
+        IProfessorMapper professorMapper = Mappers.getMapper(IProfessorMapper.class);
+        IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);
+        professorDTOTest = professorMapper.professorToProfessorDto(professorTest);
+        userDTOTest = professorMapper.professorDTOToUserDTO(professorDTOTest);
+        userTest = userMapper.userDtoToUser(userDTOTest);
 
-        professorService = new ProfessorService(professorRepository, Mappers.getMapper(IProfessorMapper.class));
-        professorService.setUserMapper(Mappers.getMapper(IUserMapper.class));
+        professorService = new ProfessorService(professorRepository, professorMapper);
+        professorService.setUserMapper(userMapper);
         professorService.setUserRepository(userRepository);
     }
 
