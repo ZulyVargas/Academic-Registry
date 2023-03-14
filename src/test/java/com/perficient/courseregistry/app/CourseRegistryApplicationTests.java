@@ -1,13 +1,12 @@
 package com.perficient.courseregistry.app;
 
-import org.junit.Ignore;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CourseRegistryApplicationTests {
-
-	@Ignore
+class CourseRegistryApplicationTest {
+	@Test
 	void contextLoads() {
 	}
 
