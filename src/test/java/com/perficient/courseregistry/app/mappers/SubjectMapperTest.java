@@ -5,7 +5,7 @@ import java.util.UUID;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mapstruct.factory.Mappers;
 
@@ -29,13 +29,13 @@ public class SubjectMapperTest {
         subjectTest.setPrerrequisites(new HashSet<>());
 
         subjectDTOTest = SubjectDTO.builder()
-                                           .subjectId(UUID.fromString("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"))
-                                           .title("SUBJECT TEST")
-                                           .code("SUBT")
-                                           .credits(4)
-                                           .active(true)
-                                           .prerrequisites(new HashSet<>())
-                                           .build();
+                                   .subjectId(UUID.fromString("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"))
+                                   .title("SUBJECT TEST")
+                                   .code("SUBT")
+                                   .credits(4)
+                                   .active(true)
+                                   .prerrequisites(new HashSet<>())
+                                   .build();
 }
     @Test
     public void subjectToSubjectDTO() {
