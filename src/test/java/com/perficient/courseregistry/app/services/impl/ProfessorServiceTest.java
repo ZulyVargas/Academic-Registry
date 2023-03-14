@@ -7,7 +7,6 @@ import com.perficient.courseregistry.app.entities.User;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.mappers.IUserMapper;
-import com.perficient.courseregistry.app.mappers.ProfessorMapperTest;
 import com.perficient.courseregistry.app.repository.IProfessorRepository;
 import com.perficient.courseregistry.app.repository.IUserRepository;
 import org.junit.Before;
@@ -16,10 +15,8 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+
+import java.util.*;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,13 +59,13 @@ public class ProfessorServiceTest {
 
     @Test
     public void getAllProfessors_shouldReturnSetOfDTOProfessors() {
-        Set<Professor> professorSet = new HashSet<>();
-        professorSet.add(professorTest);
-        when(professorRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(professorSet);
+        List<Professor> professorList= new ArrayList<>();
+        professorList.add(professorTest);
+        when(professorRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(professorList);
 
-        Set<ProfessorDTO> professorDTOsReturned = professorService.getAllProfessors(1,1, Optional.of(true));
+        List<ProfessorDTO> professorDTOsReturned = professorService.getAllProfessors(1,1, Optional.of(true));
 
-        assertEquals(new HashSet<>(Set.of(professorDTOTest)),professorDTOsReturned);
+        assertEquals(new ArrayList<>(List.of(professorDTOTest)),professorDTOsReturned);
     }
 
     @Test
@@ -89,13 +86,13 @@ public class ProfessorServiceTest {
 
     @Test
     public void getProffesorsByDegree_givenDegree_shouldReturnSetOfDTOProfessors(){
-        Set<Professor> professorSet = new HashSet<>();
-        professorSet.add(professorTest);
-        when(professorRepository.findAllByDegree(any(String.class))).thenReturn(professorSet);
+        List<Professor> professorList = new ArrayList<>();
+        professorList.add(professorTest);
+        when(professorRepository.findAllByDegree(any(String.class))).thenReturn(professorList);
 
-        Set<ProfessorDTO> professorDTOsReturned = professorService.getProfessorsByDegree("TEST");
+        List<ProfessorDTO> professorDTOsReturned = professorService.getProfessorsByDegree("TEST");
 
-        assertEquals(new HashSet<>(Set.of(professorDTOTest)), professorDTOsReturned);
+        assertEquals(new ArrayList<>(List.of(professorDTOTest)), professorDTOsReturned);
     }
 
     @Test

@@ -9,9 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -40,14 +39,14 @@ public class ProfessorControllerTest {
 
     @Test
     public void getAllProfessors_shouldReturnSetOfDTOProfessors() {
-        Set<ProfessorDTO> professorDTOSet = new HashSet<>();
-        professorDTOSet.add(professorDTOTest);
-        when(professorService.getAllProfessors(any(), any(), any())).thenReturn(professorDTOSet);
+        List<ProfessorDTO> professorList = new ArrayList<>();
+        professorList.add(professorDTOTest);
+        when(professorService.getAllProfessors(any(), any(), any())).thenReturn(professorList);
 
-        ResponseEntity<Set<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true);
+        ResponseEntity<List<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(professorDTOSet, response.getBody());
+        assertEquals(professorList, response.getBody());
 
     }
 
@@ -63,14 +62,14 @@ public class ProfessorControllerTest {
 
     @Test
     public void getProffesorsByDegree_givenDegree_shouldReturnSetOfDTOProfessors() {
-        Set<ProfessorDTO> professorDTOsSet = new HashSet<>();
-        professorDTOsSet.add(professorDTOTest);
-        when(professorService.getProfessorsByDegree(any(String.class))).thenReturn(professorDTOsSet);
+        List<ProfessorDTO> professorList = new ArrayList<>();
+        professorList.add(professorDTOTest);
+        when(professorService.getProfessorsByDegree(any(String.class))).thenReturn(professorList);
 
-        ResponseEntity<Set<ProfessorDTO>> response = professorController.getProffesorsByDegree("TEST");
+        ResponseEntity<List<ProfessorDTO>> response = professorController.getProffesorsByDegree("TEST");
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(professorDTOsSet, response.getBody());
+        assertEquals(professorList, response.getBody());
     }
 
     @Test
