@@ -1,5 +1,6 @@
 package com.perficient.courseregistry.app.exception;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,4 +25,9 @@ public class RequestExceptionHandler {
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value={InvalidFormatException.class})
+    public ResponseEntity<Error> handleRequestExceptionEnums(InvalidFormatException exception){
+        Error response = new Error(exception.getValue().toString(), "The indicated value is not allowed, you must use the default values.", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
 }
