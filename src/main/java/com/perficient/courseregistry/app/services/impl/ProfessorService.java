@@ -9,6 +9,7 @@ import com.perficient.courseregistry.app.repository.IProfessorRepository;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -27,11 +28,11 @@ public class ProfessorService extends UserService implements IProfessorService {
     }
 
     @Override
-    public Set<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive ){
+    public List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive ){
         return professorRepository.findAll(limit, offset, isActive.orElse(true) )
                                   .stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
-                                  .collect(Collectors.toSet());
+                                  .collect(Collectors.toList());
     }
 
     @Override
@@ -44,10 +45,10 @@ public class ProfessorService extends UserService implements IProfessorService {
     }
 
     @Override
-    public Set<ProfessorDTO> getProfessorsByDegree(String degree) {
+    public List<ProfessorDTO> getProfessorsByDegree(String degree) {
         return professorRepository.findAllByDegree(degree).stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
-                                  .collect(Collectors.toSet());
+                                  .collect(Collectors.toList());
     }
 
     @Override

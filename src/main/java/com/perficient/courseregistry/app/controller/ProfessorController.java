@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -22,9 +23,9 @@ public class ProfessorController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<ProfessorDTO>> getAllProfessors(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
-                                                              @RequestParam(name = "offset", defaultValue = "0") Integer offset,
-                                                              @RequestParam(name = "active", required = false) Boolean isActive){
+    public ResponseEntity<List<ProfessorDTO>> getAllProfessors(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+                                                               @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                               @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<>(professorService.getAllProfessors(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
@@ -34,7 +35,7 @@ public class ProfessorController {
     }
 
     @GetMapping(value = "/degree/{degree}")
-    public ResponseEntity<Set<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
+    public ResponseEntity<List<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
         return new ResponseEntity<>(professorService.getProfessorsByDegree(degree), HttpStatus.OK);
     }
 
