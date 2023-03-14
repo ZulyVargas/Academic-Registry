@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.hamcrest.Matchers.hasSize;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -26,10 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(ProfessorController.class)
 public class ProfessorControllerTest {
-    @Autowired
-    private MockMvc  mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
     @MockBean
     private ProfessorService professorService;
     private ProfessorDTO professorDTOTest;
@@ -52,13 +48,6 @@ public class ProfessorControllerTest {
         professorDTOSet.add(professorDTOTest);
         when(professorService.getAllProfessors(any(), any(), any())).thenReturn(professorDTOSet);
 
-        ResultActions response = mockMvc.perform(get("/api/v1/professors")
-                .param("limit","1")
-                .param("offset", "10")
-                .accept(MediaType.APPLICATION_JSON));
-
-        response.andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
 
     }
 

@@ -43,6 +43,11 @@ public class ProfessorController {
         return new ResponseEntity<>(professorService.addProfessor(professorDTO), HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<ProfessorDTO> updateProfessor(@RequestBody @Valid ProfessorDTO professorDTO){
+        return new ResponseEntity<>(professorService.updateProfessor(professorDTO), HttpStatus.OK);
+    }
+
     @DeleteMapping(value="/{professorId}")
     public ResponseEntity<Boolean> deleteProfessor(@PathVariable String professorId){
         return new ResponseEntity<>(professorService.deleteProfessor(professorId), HttpStatus.OK);

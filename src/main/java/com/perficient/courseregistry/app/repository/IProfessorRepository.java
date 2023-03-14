@@ -1,8 +1,6 @@
 package com.perficient.courseregistry.app.repository;
 
 import com.perficient.courseregistry.app.entities.Professor;
-import com.perficient.courseregistry.app.entities.Student;
-import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -28,4 +26,7 @@ public interface IProfessorRepository extends CrudRepository<Professor, String> 
     @Query("INSERT INTO PROFESSORS (professor_id, degree) VALUES (:idProfessor, :degree)")
     Boolean save(UUID idProfessor, String degree);
 
+    @Modifying
+    @Query("UPDATE PROFESSORS SET degree=:degree WHERE professor_id = :idProfessor ")
+    Boolean update(UUID idProfessor, String degree);
 }

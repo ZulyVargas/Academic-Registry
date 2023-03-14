@@ -1,9 +1,12 @@
 package com.perficient.courseregistry.app.services.impl;
 
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
+import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.entities.Professor;
+import com.perficient.courseregistry.app.entities.User;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
+import com.perficient.courseregistry.app.mappers.IUserMapper;
 import com.perficient.courseregistry.app.repository.IProfessorRepository;
 import com.perficient.courseregistry.app.repository.IUserRepository;
 import org.junit.Before;
@@ -12,7 +15,6 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -27,7 +29,8 @@ import static org.mockito.Mockito.when;
 public class ProfessorServiceTest {
     private Professor professorTest;
     private ProfessorDTO professorDTOTest;
-
+    private UserDTO userDTOTest;
+    private User userTest;
     @Mock
     private IProfessorRepository professorRepository;
     @Mock
@@ -44,15 +47,13 @@ public class ProfessorServiceTest {
                 .active(true)
                 .degree("TEST")
                 .build();
-        professorDTOTest = ProfessorDTO.builder().userId(professorTest.getUserId())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .degree("TEST")
-                .build();
+        professorDTOTest = Mappers.getMapper(IProfessorMapper.class).professorToProfessorDto(professorTest);
+        userDTOTest = Mappers.getMapper(IProfessorMapper.class).professorDTOToUserDTO(professorDTOTest);
+        userTest = Mappers.getMapper(IUserMapper.class).userDtoToUser(userDTOTest);
+
         professorService = new ProfessorService(professorRepository, Mappers.getMapper(IProfessorMapper.class));
+        professorService.setUserMapper(Mappers.getMapper(IUserMapper.class));
+        professorService.setUserRepository(userRepository);
     }
 
     @Test
@@ -64,7 +65,6 @@ public class ProfessorServiceTest {
         Set<ProfessorDTO> professorDTOsReturned = professorService.getAllProfessors(1,1, Optional.of(true));
 
         assertEquals(new HashSet<>(Set.of(professorDTOTest)),professorDTOsReturned);
-
     }
 
     @Test
@@ -94,4 +94,68 @@ public class ProfessorServiceTest {
         assertEquals(new HashSet<>(Set.of(professorDTOTest)), professorDTOsReturned);
     }
 
+    @Test
+    public void addProfessor_givenProfessorDTO_shouldReturnProfessorDTO(){
+        when(userRepository.save(any(User.class))).thenReturn(userTest);
+        when(professorRepository.save(any(UUID.class),any(String.class))).thenReturn(true);
+        when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(professorTest));
+
+        ProfessorDTO professorDTOsReturned = professorService.addProfessor(professorDTOTest);
+
+        assertEquals(professorDTOTest,professorDTOsReturned);
+    }
+
+    @Test
+    public void addProfessor_givenProfessorDTO_shouldThrowException(){
+        when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
+
+        assertThrows(UserException.class, () -> professorService.addProfessor(professorDTOTest));
+    }
+    @Test
+    public void updateProfessor_givenProfessorDTO_shouldReturnProfessorDTO(){
+        when(userRepository.save(any(User.class))).thenReturn(userTest);
+        when(professorRepository.update(any(UUID.class),any(String.class))).thenReturn(true);
+        when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(professorTest));
+
+        ProfessorDTO professorDTOsReturned = professorService.updateProfessor(professorDTOTest);
+
+        assertEquals(professorDTOTest,professorDTOsReturned);
+    }
+
+    @Test
+    public void updateProfessor_givenProfessorDTO_shouldThrowException(){
+        when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
+
+        assertThrows(UserException.class, () -> professorService.addProfessor(professorDTOTest));
+    }
+
+    @Test
+    public void deleteProfessor_givenId_shouldReturnTrue(){
+        when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
+        when(userRepository.updateActive(any(UUID.class))).thenReturn(true);
+
+
+        Boolean updateActiveExpected = true;
+        Boolean updateActiveReturned = professorService.deleteProfessor(UUID.randomUUID().toString());
+
+        assertEquals(updateActiveExpected, updateActiveReturned);
+    }
+    @Test
+    public void deleteProfessor_givenId_shouldReturnFalse(){
+        when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
+        when(userRepository.updateActive(any(UUID.class))).thenReturn(false);
+
+        Boolean updateActiveExpected = false;
+        Boolean updateActiveReturned = professorService.deleteProfessor(UUID.randomUUID().toString());
+
+        assertEquals(updateActiveExpected, updateActiveReturned);
+    }
+
+    @Test
+    public void deleteProfessor_givenId_shouldThrowException(){
+        when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
+        when(userRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
+
+        assertThrows(UserException.class, () -> professorService.deleteProfessor(UUID.randomUUID().toString()));
+    }
 }

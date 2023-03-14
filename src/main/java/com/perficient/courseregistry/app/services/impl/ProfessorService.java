@@ -21,6 +21,7 @@ public class ProfessorService extends UserService implements IProfessorService {
     private final IProfessorMapper professorMapper;
 
     public ProfessorService(IProfessorRepository professorRepository, IProfessorMapper professorMapper) {
+        super();
         this.professorRepository = professorRepository;
         this.professorMapper = professorMapper;
     }
@@ -47,17 +48,27 @@ public class ProfessorService extends UserService implements IProfessorService {
         return professorRepository.findAllByDegree(degree).stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
                                   .collect(Collectors.toSet());
-
     }
 
     @Override
     public ProfessorDTO addProfessor(ProfessorDTO professorDTO) {
         try{
-        UserDTO tempUser = addUser(professorMapper.professorDTOToUserDTO(professorDTO));
-        professorDTO.setUserId(tempUser.getUserId());
-        professorRepository.save(professorDTO.getUserId(), professorDTO.getDegree());
+            UserDTO tempUser = insertProfessorAsUser(professorDTO);
+            professorDTO.setUserId(tempUser.getUserId());
+            professorRepository.save(professorDTO.getUserId(), professorDTO.getDegree());
         } catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "Professor");
+        }
+        return getProfessorById(professorDTO.getUserId().toString());
+    }
+
+    @Override
+    public ProfessorDTO updateProfessor(ProfessorDTO professorDTO) {
+        try{
+            insertProfessorAsUser(professorDTO);
+            professorRepository.update(professorDTO.getUserId(), professorDTO.getDegree());
+        } catch (Exception ex){
+            throw new UserException(UserException.USER_UPDATE_EXCEPTION, "Professor");
         }
         return getProfessorById(professorDTO.getUserId().toString());
     }
@@ -67,5 +78,7 @@ public class ProfessorService extends UserService implements IProfessorService {
         return deleteUser(userId);
     }
 
-
+    private UserDTO insertProfessorAsUser(ProfessorDTO professorDTO){
+        return addUser(professorMapper.professorDTOToUserDTO(professorDTO));
+    }
 }
