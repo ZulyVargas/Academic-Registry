@@ -38,6 +38,11 @@ public class StudentController {
         return new ResponseEntity<>(studentService.addStudent(studentDTO), HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody @Valid StudentDTO studentDTO){
+        return new ResponseEntity<>(studentService.updateStudent(studentDTO), HttpStatus.OK);
+    }
+
     @DeleteMapping(value="/{studentId}")
     public ResponseEntity<Boolean> deleteStudent(@PathVariable String studentId){
         return new ResponseEntity<Boolean>(studentService.deleteStudent(studentId), HttpStatus.OK);

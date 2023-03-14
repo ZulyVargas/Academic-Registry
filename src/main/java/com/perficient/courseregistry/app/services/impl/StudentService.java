@@ -43,7 +43,7 @@ public class StudentService extends UserService implements IStudentService {
 
     public StudentDTO addStudent (StudentDTO studentDTO) {
         try {
-            UserDTO tempUser = addUser(studentMapper.studentDTOToUser(studentDTO));
+            UserDTO tempUser = insertStudentAsUser(studentDTO);
             studentDTO.setUserId(tempUser.getUserId());
             studentRepository.save(studentDTO.getUserId(), studentDTO.getAvg(), studentDTO.getStatus());
         } catch (Exception ex){
@@ -53,7 +53,23 @@ public class StudentService extends UserService implements IStudentService {
     }
 
     @Override
+    public StudentDTO updateStudent(StudentDTO studentDTO) {
+        try {
+            UserDTO tempUser = insertStudentAsUser(studentDTO);
+            studentDTO.setUserId(tempUser.getUserId());
+            studentRepository.update(studentDTO.getUserId(), studentDTO.getAvg(), studentDTO.getStatus());
+        } catch (Exception ex){
+            throw new UserException(UserException.USER_UPDATE_EXCEPTION, "student");
+        }
+        return getStudentById(studentDTO.getUserId().toString());
+    }
+
+    @Override
     public Boolean deleteStudent(String userId){
         return deleteUser(userId);
+    }
+
+    private UserDTO insertStudentAsUser(StudentDTO studentDTO){
+        return addUser(studentMapper.studentDTOToUser(studentDTO));
     }
 }

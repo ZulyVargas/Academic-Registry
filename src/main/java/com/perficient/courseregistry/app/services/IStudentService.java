@@ -13,6 +13,8 @@ public interface IStudentService {
 
     StudentDTO addStudent (StudentDTO studentDTO);
 
+    StudentDTO updateStudent(StudentDTO studentDTO);
+
     Boolean deleteStudent (String userId);
 
 
