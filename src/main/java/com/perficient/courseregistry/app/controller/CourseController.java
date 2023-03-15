@@ -41,7 +41,7 @@ public class CourseController {
 
     @PutMapping
     public ResponseEntity<CourseDTO> updatedCourse(@RequestBody @Valid CourseDTO courseDTO){
-        return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO), HttpStatus.OK);
+        return  new ResponseEntity<CourseDTO>(courseService.updateCourse(courseDTO), HttpStatus.OK);
     }
 
     @DeleteMapping(value="/{courseId}")

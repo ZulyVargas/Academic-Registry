@@ -6,6 +6,7 @@ import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.mappers.ICourseMapper;
 import com.perficient.courseregistry.app.repository.ICourseRepository;
 import com.perficient.courseregistry.app.services.ICourseService;
+import com.perficient.courseregistry.app.utils.adapters.ComparatorCourse;
 import com.perficient.courseregistry.app.utils.adapters.ICourseAdapterService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -32,22 +33,33 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public CourseDTO addCourse(CourseDTO courseDTO) {
-        try{
-            Optional<Course> courseSaved = courseAdapter.saveWithDatabaseFormat(courseDTO, courseRepository);
-            return courseSaved.map(courseMapper::courseToCourseDTO).orElseThrow();
-        }
-        catch(Exception e){
-            throw new CourseException(CourseException.COURSE_INSERT_EXCEPTION, "ID");
-        }
-    }
-
-    @Override
     public CourseDTO getCourseById(String id) {
         Optional<Course> course = courseRepository.findById(UUID.fromString(id));
         if (course.isPresent()) return courseMapper.courseToCourseDTO(course.get());
         else {
            throw new CourseException(CourseException.COURSE_ID_EXCEPTION, "ID");
+        }
+    }
+
+    @Override
+    public CourseDTO addCourse(CourseDTO courseDTO) {
+        try{
+            validateCourseUnique(courseDTO);
+            Optional<Course> courseSaved = courseAdapter.saveWithDatabaseFormat(courseDTO, courseRepository);
+            return courseSaved.map(courseMapper::courseToCourseDTO).orElseThrow();
+        }
+        catch(Exception e){
+            throw new CourseException(CourseException.COURSE_UNIQUE_EXCEPTION, "SUBJECT-GROUP NUMBER-PERIOD-YEAR");
+        }
+    }
+
+    @Override
+    public CourseDTO updateCourse(CourseDTO courseDTO) {
+        try{
+            Optional<Course> courseSaved = courseAdapter.saveWithDatabaseFormat(courseDTO, courseRepository);
+            return courseSaved.map(courseMapper::courseToCourseDTO).orElseThrow();
+        }catch(Exception e){
+            throw new CourseException(CourseException.COURSE_UPDATE_EXCEPTION, "ID");
         }
     }
 
@@ -60,5 +72,11 @@ public class CourseService implements ICourseService {
         }catch (Exception ex){
             throw new CourseException(CourseException.COURSE_DELETE_EXCEPTION, "ID");
         }
+    }
+
+    private void validateCourseUnique(CourseDTO courseDTO){
+        List<Course> courses =  courseRepository.findAll();
+        if (ComparatorCourse.findEqualsCourse(courses, courseDTO))
+            throw new CourseException("The course need to be unique", "SUBJECT-GROUP NUMBER-PERIOD");
     }
 }
