@@ -10,6 +10,7 @@ import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
@@ -31,7 +32,7 @@ public class SubjectServiceTest {
     @Before
     public void setUp() {
         subjectTest = new Subject();
-        subjectTest.setSubjectId(UUID.fromString("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"));
+        subjectTest.setSubjectId(UUID.randomUUID());
         subjectTest.setTitle("SUBJECT TEST");
         subjectTest.setCode("SUBT");
         subjectTest.setCredits(4);
@@ -73,7 +74,7 @@ public class SubjectServiceTest {
     public void getSubjectById_givenId_shouldReturnSubjectDTO() {
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
 
-        SubjectDTO subjectDTOReturned = subjectService.getSubjectById("d45e4121-cfd0-4307-813e-a50b3d7ea7b5");
+        SubjectDTO subjectDTOReturned = subjectService.getSubjectById(UUID.randomUUID().toString());
 
         assertEquals(subjectDTOTest, subjectDTOReturned);
     }
@@ -82,7 +83,7 @@ public class SubjectServiceTest {
     public void getSubjectById_givenId_shouldThrowException() {
         when(subjectRepository.findById(any())).thenReturn(Optional.empty());
 
-        assertThrows(SubjectException.class, () -> subjectService.getSubjectById("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"));
+        assertThrows(SubjectException.class, () -> subjectService.getSubjectById(UUID.randomUUID().toString()));
     }
 
     @Test
@@ -125,7 +126,7 @@ public class SubjectServiceTest {
         when(subjectRepository.updateActive(any(UUID.class))).thenReturn(true);
 
         Boolean updateActiveExpected = true;
-        Boolean updateActiveReturned = subjectService.deleteSubject("d45e4121-cfd0-4307-813e-a50b3d7ea7b5");
+        Boolean updateActiveReturned = subjectService.deleteSubject(UUID.randomUUID().toString());
 
         assertEquals(updateActiveExpected, updateActiveReturned);
 
@@ -137,7 +138,7 @@ public class SubjectServiceTest {
         when(subjectRepository.updateActive(any(UUID.class))).thenReturn(false);
 
         Boolean updateActiveExpected = false;
-        Boolean updateActiveReturned = subjectService.deleteSubject("d45e4121-cfd0-4307-813e-a50b3d7ea7b5");
+        Boolean updateActiveReturned = subjectService.deleteSubject(UUID.randomUUID().toString());
 
         assertEquals(updateActiveExpected, updateActiveReturned);
     }
@@ -147,7 +148,7 @@ public class SubjectServiceTest {
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
         when(subjectRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 
-        assertThrows(SubjectException.class, () -> subjectService.deleteSubject("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"));
+        assertThrows(SubjectException.class, () -> subjectService.deleteSubject(UUID.randomUUID().toString()));
     }
 }
 
