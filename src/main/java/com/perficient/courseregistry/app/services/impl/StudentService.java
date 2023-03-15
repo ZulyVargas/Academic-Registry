@@ -9,8 +9,8 @@ import com.perficient.courseregistry.app.repository.IStudentRepository;
 import com.perficient.courseregistry.app.services.IStudentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -25,11 +25,11 @@ public class StudentService extends UserService implements IStudentService {
         this.studentMapper = studentMapper;
     }
 
-    public Set<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
+    public List<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
         return studentRepository.findAll(limit,offset, isActive.orElse(true))
                                 .stream()
                                 .map(student -> studentMapper.studentToStudentDto(student))
-                                .collect(Collectors.toSet());
+                                .collect(Collectors.toList());
     }
 
     @Override
@@ -37,23 +37,39 @@ public class StudentService extends UserService implements IStudentService {
         Optional<Student> student = studentRepository.findById(UUID.fromString(studentId));
         if (student.isPresent()) return studentMapper.studentToStudentDto(student.get());
         else {
-            throw new UserException(UserException.USER_ID_EXCEPTION, "username");
+            throw new UserException(UserException.USER_ID_EXCEPTION, "ID");
         }
     }
 
     public StudentDTO addStudent (StudentDTO studentDTO) {
         try {
-            UserDTO tempUser = addUser(studentMapper.studentDTOToUser(studentDTO));
+            UserDTO tempUser = insertStudentAsUser(studentDTO);
             studentDTO.setUserId(tempUser.getUserId());
             studentRepository.save(studentDTO.getUserId(), studentDTO.getAvg(), studentDTO.getStatus());
         } catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "student");
         }
-        return studentDTO;
+        return getStudentById(studentDTO.getUserId().toString());
+    }
+
+    @Override
+    public StudentDTO updateStudent(StudentDTO studentDTO) {
+        try {
+            UserDTO tempUser = insertStudentAsUser(studentDTO);
+            studentDTO.setUserId(tempUser.getUserId());
+            studentRepository.update(studentDTO.getUserId(), studentDTO.getAvg(), studentDTO.getStatus());
+        } catch (Exception ex){
+            throw new UserException(UserException.USER_UPDATE_EXCEPTION, "student");
+        }
+        return getStudentById(studentDTO.getUserId().toString());
     }
 
     @Override
     public Boolean deleteStudent(String userId){
         return deleteUser(userId);
+    }
+
+    private UserDTO insertStudentAsUser(StudentDTO studentDTO){
+        return addUser(studentMapper.studentDTOToUser(studentDTO));
     }
 }

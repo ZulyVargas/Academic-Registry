@@ -6,12 +6,13 @@ import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IUserMapper;
 import com.perficient.courseregistry.app.repository.IUserRepository;
 import com.perficient.courseregistry.app.services.IUserService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 import java.util.UUID;
 
+@Data
 @Service
 public abstract class UserService implements IUserService {
 
@@ -23,7 +24,6 @@ public abstract class UserService implements IUserService {
     @Override
     public UserDTO addUser(UserDTO userDTO) {
         try{
-            System.out.println(userDTO);
             return userMapper.userToUserDTO(userRepository.save(userMapper.userDtoToUser(userDTO)));
         }catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "email or username unique");
@@ -49,5 +49,4 @@ public abstract class UserService implements IUserService {
             throw new UserException(UserException.USER_DELETE_EXCEPTION, "ID");
         }
     }
-    //public abstract <T extends UserDTO> T insertCorresponding( T specificUser);
 }

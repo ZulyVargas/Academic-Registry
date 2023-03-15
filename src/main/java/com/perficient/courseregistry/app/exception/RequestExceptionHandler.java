@@ -23,10 +23,9 @@ public class RequestExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = {InvalidFormatException.class})
-    public ResponseEntity<Error> handleRequestExceptionParseError(InvalidFormatException exception) {
-        Error response = new Error(exception.getValue().toString(), "ID format error", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-
+    @ExceptionHandler(value={InvalidFormatException.class})
+    public ResponseEntity<Error> handleRequestExceptionEnums(InvalidFormatException exception){
+        Error response = new Error(exception.getValue().toString(), "The indicated value is not allowed, you must use the default values or use the correct format", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
+        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 }
