@@ -50,4 +50,15 @@ public class CourseService implements ICourseService {
            throw new CourseException(CourseException.COURSE_ID_EXCEPTION, "ID");
         }
     }
+
+    @Override
+    public boolean deleteCourse(String courseId) {
+        try{
+            Optional<Course> course = courseRepository.findById(UUID.fromString(courseId));
+            if (course.isEmpty() || !course.get().isActive()) return false;
+            return courseRepository.updateActive(UUID.fromString(courseId));
+        }catch (Exception ex){
+            throw new CourseException(CourseException.COURSE_DELETE_EXCEPTION, "ID");
+        }
+    }
 }

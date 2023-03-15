@@ -26,5 +26,6 @@ public class CourseDetails {
     private STATUS_COURSE statusCourse;
     private String year;
     private PERIOD period;
-    private boolean active_course;
+    @Column("active_course")
+    private boolean active;
 }

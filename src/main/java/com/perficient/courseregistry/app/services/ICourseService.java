@@ -10,4 +10,6 @@ public interface ICourseService {
     CourseDTO addCourse(CourseDTO courseDTO);
 
     CourseDTO getCourseById(String id);
+
+    boolean deleteCourse(String courseId);
 }

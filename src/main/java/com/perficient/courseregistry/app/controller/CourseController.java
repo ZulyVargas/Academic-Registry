@@ -43,4 +43,9 @@ public class CourseController {
     public ResponseEntity<CourseDTO> updatedCourse(@RequestBody @Valid CourseDTO courseDTO){
         return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO), HttpStatus.OK);
     }
+
+    @DeleteMapping(value="/{courseId}")
+    public ResponseEntity<Boolean> deleteCourse(@PathVariable String courseId){
+        return  new ResponseEntity<Boolean>(courseService.deleteCourse(courseId), HttpStatus.OK);
+    }
 }
