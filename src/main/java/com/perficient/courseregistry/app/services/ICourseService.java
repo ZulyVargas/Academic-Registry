@@ -1,11 +1,11 @@
 package com.perficient.courseregistry.app.services;
 
 import com.perficient.courseregistry.app.dto.CourseDTO;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface ICourseService {
-    Set<CourseDTO> getAllCourses(Integer limit, Integer offset, Optional<Boolean> isActive);
+    List<CourseDTO> getAllCourses(Integer limit, Integer offset, Optional<Boolean> isActive);
 
     CourseDTO addCourse(CourseDTO courseDTO);
 
