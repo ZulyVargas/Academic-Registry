@@ -480,6 +480,55 @@
 			},
 			"response": [
 				{
+					"name": "getByTitle (Title not found exception)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects",
+								"title",
+								"BIOLOGI"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 15:34:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"title\",\n    \"message\": \"The subject with the given title does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:34.8940374-05:00\"\n}"
+				},
+				{
 					"name": "getByTitle",
 					"originalRequest": {
 						"method": "GET",
@@ -531,86 +580,13 @@
 			]
 		},
 		{
-			"name": "getByTitle (Title not found exception)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects",
-						"title",
-						"BIOLOGI"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "getByTitle (Title not found exception)",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects",
-								"title",
-								"BIOLOGI"
-							]
-						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:34 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"field\": \"title\",\n    \"message\": \"The subject with the given title does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:34.8940374-05:00\"\n}"
-				}
-			]
-		},
-		{
 			"name": "addSubject",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"prerrequisites\": []\r\n}",
+					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"active\": true,\r\n    \"prerrequisites\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -687,89 +663,6 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"subjectId\": \"c13831f0-bd3c-11ed-bdb4-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": 2,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
-				}
-			]
-		},
-		{
-			"name": "addSubject EXCEPTIONS",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "addSubject EXCEPTIONS MAX",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 10,\r\n    \"prerrequisites\": []\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects"
-							]
-						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 07 Mar 2023 20:57:34 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    },\n    {\n        \"field\": \"credits\",\n        \"message\": \"The maximum number of credits is 4.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    }\n]"
 				},
 				{
 					"name": "addSubject EXCEPTIONS MIN",
@@ -909,38 +802,7 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": 4,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
-				}
-			]
-		},
-		{
-			"name": "update (Exception) (ID NOT EXIST)",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110001\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "update (Exception)",
 					"originalRequest": {
@@ -996,38 +858,7 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The given subject could not be updated.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T11:01:07.061114-05:00\"\n}"
-				}
-			]
-		},
-		{
-			"name": "update (Exception) (ID BAD FORMAT) Copy",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "update (Exception) (ID NOT EXIST) Copy",
 					"originalRequest": {
