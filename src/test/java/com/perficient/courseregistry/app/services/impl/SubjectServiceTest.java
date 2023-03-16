@@ -10,7 +10,6 @@ import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import org.junit.Before;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
@@ -54,7 +53,7 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void getSubjectByTitle_givenTitle_shouldReturnSubjectDTO() {
+    public void getSubjectByTitle_givenValidTitle_shouldReturnSubjectDTO() {
         when(subjectRepository.findByTitle(any(String.class))).thenReturn(subjectTest);
 
         SubjectDTO subjectDTOReturned = subjectService.getSubjectByTitle("SUBT");
@@ -63,15 +62,15 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void getSubjectByTitle_givenTitle_shouldThrowException() {
+    public void getSubjectByTitle_givenEmptyTitle_shouldThrowException() {
         when(subjectRepository.findByTitle(any())).thenReturn(null);
 
-        assertThrows(SubjectException.class, () -> subjectService.getSubjectByTitle("SUBT"));
+        assertThrows(SubjectException.class, () -> subjectService.getSubjectByTitle(""));
 
     }
 
     @Test
-    public void getSubjectById_givenId_shouldReturnSubjectDTO() {
+    public void getSubjectById_givenValidId_shouldReturnSubjectDTO() {
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
 
         SubjectDTO subjectDTOReturned = subjectService.getSubjectById(UUID.randomUUID().toString());
@@ -80,14 +79,14 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void getSubjectById_givenId_shouldThrowException() {
+    public void getSubjectById_givenInvalidId_shouldThrowException() {
         when(subjectRepository.findById(any())).thenReturn(Optional.empty());
 
         assertThrows(SubjectException.class, () -> subjectService.getSubjectById(UUID.randomUUID().toString()));
     }
 
     @Test
-    public void addSubject_givenSubjectDTO_shouldReturnSubjectDTO(){
+    public void addSubject_givenValidSubjectDTO_shouldReturnSubjectDTO(){
         when(subjectRepository.save(any(Subject.class))).thenReturn(subjectTest);
 
         SubjectDTO subjectDTOReturned = subjectService.addSubject(subjectDTOTest);
@@ -97,14 +96,14 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void addSubject_givenSubjectDTO_shouldThrowException(){
+    public void addSubject_givenInvalidSubjectDTO_shouldThrowException(){
         when(subjectRepository.save(any(Subject.class))).thenThrow(new RuntimeException());
 
         assertThrows(SubjectException.class, () -> subjectService.addSubject(subjectDTOTest));
     }
 
     @Test
-    public void updateSubject_givenSubjectDTO_shouldReturnSubjectDTO(){
+    public void updateSubject_givenValidSubjectDTO_shouldReturnSubjectDTO(){
         when(subjectRepository.save(any(Subject.class))).thenReturn(subjectTest);
 
         SubjectDTO subjectDTOReturned = subjectService.updateSubject(subjectDTOTest);
@@ -114,14 +113,14 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void updateSubject_givenSubject_shouldThrowException(){
+    public void updateSubject_givenInvalidSubject_shouldThrowException(){
         when(subjectRepository.save(any(Subject.class))).thenThrow(new RuntimeException());
 
         assertThrows(SubjectException.class, () -> subjectService.updateSubject(subjectDTOTest));
     }
 
     @Test
-    public void deleteSubject_givenId_shouldReturnTrue(){
+    public void deleteSubject_givenExistingId_shouldReturnTrue(){
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
         when(subjectRepository.updateActive(any(UUID.class))).thenReturn(true);
 
@@ -133,7 +132,7 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void deleteSubject_givenId_shouldReturnFalse(){
+    public void deleteSubject_givenNonexistentId_shouldReturnFalse(){
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
         when(subjectRepository.updateActive(any(UUID.class))).thenReturn(false);
 
@@ -144,7 +143,7 @@ public class SubjectServiceTest {
     }
 
     @Test
-    public void deleteSubject_givenId_shouldThrowException(){
+    public void deleteSubject_givenInvalidId_shouldThrowException(){
         when(subjectRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(subjectTest));
         when(subjectRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 
