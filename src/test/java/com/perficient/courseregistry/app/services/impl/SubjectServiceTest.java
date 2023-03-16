@@ -1,9 +1,7 @@
 package com.perficient.courseregistry.app.services.impl;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
@@ -43,22 +41,24 @@ public class SubjectServiceTest {
 
     @Test
     public void getAllSubjects_shouldReturnSetOfDTOSubjects() {
-        Set<Subject> subjectSet = new HashSet<>();
-        subjectSet.add(subjectTest);
-        when(subjectRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(subjectSet);
+        List<Subject> subjectList = new ArrayList<>();
+        subjectList.add(subjectTest);
+        when(subjectRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(subjectList);
 
-        Set<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true));
+        List<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true));
 
-        assertEquals(new HashSet<>(Set.of(subjectDTOTest)), subjectDTOsReturned);
+        assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOsReturned);
     }
 
     @Test
     public void getSubjectByTitle_givenValidTitle_shouldReturnSubjectDTO() {
-        when(subjectRepository.findByTitle(any(String.class))).thenReturn(subjectTest);
+        List<Subject> subjectList = new ArrayList<>();
+        subjectList.add(subjectTest);
+        when(subjectRepository.findByTitle(any(String.class))).thenReturn(subjectList);
 
-        SubjectDTO subjectDTOReturned = subjectService.getSubjectByTitle("SUBT");
+        List<SubjectDTO> subjectDTOReturned = subjectService.getSubjectByTitle("SUBT");
 
-        assertEquals(subjectDTOTest, subjectDTOReturned);
+        assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOReturned);
     }
 
     @Test

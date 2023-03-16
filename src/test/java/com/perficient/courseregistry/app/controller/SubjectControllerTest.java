@@ -1,8 +1,7 @@
 package com.perficient.courseregistry.app.controller;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import org.junit.Before;
@@ -39,14 +38,14 @@ public class SubjectControllerTest {
 
     @Test
     public void getAllSubjects_shouldReturnSetOfDTOSubjects(){
-        Set<SubjectDTO> subjectDTOSet = new HashSet<>();
-        subjectDTOSet.add(subjectDTOTest);
-        when(subjectService.getAllSubjects(any(), any(), any())).thenReturn(subjectDTOSet);
+        List<SubjectDTO> subjectDTOList = new ArrayList<>();
+        subjectDTOList.add(subjectDTOTest);
+        when(subjectService.getAllSubjects(any(), any(), any())).thenReturn(subjectDTOList);
 
-        ResponseEntity<Set<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true);
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(subjectDTOSet, response.getBody());
+        assertEquals(subjectDTOList, response.getBody());
     }
 
     @Test
@@ -67,12 +66,15 @@ public class SubjectControllerTest {
 
     @Test
     public void getSubjectByTitle_givenTitle_shouldReturnSubjectDTO(){
-        when(subjectService.getSubjectByTitle(anyString())).thenReturn(subjectDTOTest);
+        List<SubjectDTO> subjectDTOList = new ArrayList<>();
+        subjectDTOList.add(subjectDTOTest);
 
-        ResponseEntity<SubjectDTO> response = subjectController.getSubjectByTitle("TEST");
+        when(subjectService.getSubjectByTitle(anyString())).thenReturn(subjectDTOList);
+
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getSubjectByTitle("TEST");
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(subjectDTOTest, response.getBody());
+        assertEquals(subjectDTOList, response.getBody());
     }
 
     @Test

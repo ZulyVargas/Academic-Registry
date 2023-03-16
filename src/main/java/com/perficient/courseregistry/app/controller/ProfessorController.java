@@ -1,16 +1,13 @@
 package com.perficient.courseregistry.app.controller;
 
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
-import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping( "/api/v1/professors" )
