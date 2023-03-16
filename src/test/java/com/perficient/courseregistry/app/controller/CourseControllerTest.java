@@ -3,26 +3,20 @@ package com.perficient.courseregistry.app.controller;
 import com.perficient.courseregistry.app.dto.CourseDTO;
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
-import com.perficient.courseregistry.app.entities.Course;
-import com.perficient.courseregistry.app.entities.Professor;
-import com.perficient.courseregistry.app.entities.Subject;
 import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.enums.STATUS_COURSE;
-import com.perficient.courseregistry.app.mappers.ICourseMapper;
+import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.services.impl.CourseService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -59,7 +53,7 @@ public class CourseControllerTest {
    }
 
     @Test
-    public void getAllCourses_shouldReturnListOfDTOCourses()  {
+    public void getAllCourses_shouldReturnListOfDTOCourses(){
         List<CourseDTO> courseDTOList = new ArrayList<>();
         courseDTOList.add(courseDTOTest);
         when(courseService.getAllCourses(any(), any(), any())).thenReturn(courseDTOList);
@@ -71,7 +65,7 @@ public class CourseControllerTest {
     }
 
     @Test
-    public void getCourseById_givenId_shouldReturnCourseDTO() {
+    public void getCourseById_givenExistingId_shouldReturnCourseDTO() {
         when(courseService.getCourseById(any(String.class))).thenReturn(courseDTOTest);
 
         ResponseEntity<CourseDTO> response = courseController.getCourseById(UUID.randomUUID().toString());
@@ -81,7 +75,14 @@ public class CourseControllerTest {
     }
 
     @Test
-    public void addCourse_givenCourseDTO_shouldReturnCourseDTO(){
+    public void getCourseById_givenNonExistingId_shouldThrowException(){
+        when(courseService.getCourseById(any(String.class))).thenThrow( new CourseException(CourseException.COURSE_ID_EXCEPTION, "ID"));
+
+        assertThrows(CourseException.class, () -> courseController.getCourseById("1"));
+    }
+
+    @Test
+    public void addCourse_givenValidCourseDTO_shouldReturnCourseDTO(){
         when(courseService.addCourse(any(CourseDTO.class))).thenReturn(courseDTOTest);
 
         ResponseEntity<CourseDTO> response = courseController.addCourse(courseDTOTest);
@@ -91,7 +92,15 @@ public class CourseControllerTest {
     }
 
     @Test
-    public void updateCourse_givenCourseDTO_shouldReturnCourseDTO(){
+    public void addCourse_givenDuplicateCourseDTO_shouldThrowException(){
+        when(courseService.addCourse(any(CourseDTO.class))).thenReturn(courseDTOTest)
+                                                           .thenThrow( new CourseException(CourseException.COURSE_UNIQUE_EXCEPTION, "Course"));
+        courseController.addCourse(courseDTOTest);
+        assertThrows(CourseException.class, () -> courseController.addCourse(courseDTOTest));
+    }
+
+    @Test
+    public void updateCourse_givenValidCourseDTO_shouldReturnCourseDTO(){
         when(courseService.updateCourse(any(CourseDTO.class))).thenReturn(courseDTOTest);
 
         ResponseEntity<CourseDTO> response = courseController.updatedCourse(courseDTOTest);
@@ -101,7 +110,14 @@ public class CourseControllerTest {
     }
 
     @Test
-    public void deleteSubject_givenId_shouldReturnBoolean() throws Exception {
+    public void updateCourse_givenInvalidCourseDTO_shouldThrowException(){
+        when(courseService.updateCourse(any(CourseDTO.class))).thenThrow( new CourseException(CourseException.COURSE_UPDATE_EXCEPTION, "Course"));
+
+        assertThrows(CourseException.class, () -> courseController.updatedCourse(courseDTOTest));
+    }
+
+    @Test
+    public void deleteSubject_givenExistingId_shouldReturnTrue(){
         when(courseService.deleteCourse(anyString())).thenReturn(true);
 
         ResponseEntity<Boolean> response = courseController.deleteCourse(UUID.randomUUID().toString());
@@ -110,6 +126,14 @@ public class CourseControllerTest {
         assertEquals(true, response.getBody());
     }
 
+    @Test
+    public void deleteSubject_givenNonExistingId_shouldReturnFalse(){
+        when(courseService.deleteCourse(anyString())).thenReturn(false);
 
+        ResponseEntity<Boolean> response = courseController.deleteCourse(UUID.randomUUID().toString());
+
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(false, response.getBody());
+    }
 
 }

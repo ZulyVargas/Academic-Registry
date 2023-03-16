@@ -61,7 +61,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void getStudentById_givenNonExistingId__shouldThrowException(){
+    public void getStudentById_givenNonExistingId_shouldThrowException(){
         when(studentService.getStudentById(any(String.class))).thenThrow( new UserException(UserException.USER_ID_EXCEPTION, "ID"));
 
         assertThrows(UserException.class, () -> studentController.getStudentById("1"));

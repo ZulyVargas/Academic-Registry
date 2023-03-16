@@ -19,13 +19,11 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CourseServiceTest {
@@ -91,7 +89,7 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void getCourseById_givenId_shouldReturnCourseDTO(){
+    public void getCourseById_givenExistingId_shouldReturnCourseDTO(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
 
         CourseDTO courseDTOReturned = courseService.getCourseById(UUID.randomUUID().toString());
@@ -100,14 +98,14 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void getCourseById_givenId_shouldThrowException(){
+    public void getCourseById_givenNonExistingId_shouldThrowException(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
 
         assertThrows(CourseException.class, () -> courseService.getCourseById(UUID.randomUUID().toString()));
     }
 
     @Test
-    public void addCourse_givenCourseDTO_shouldReturnCourseDTO(){
+    public void addCourse_givenValidCourseDTO_shouldReturnCourseDTO(){
         List<Course> coursesList = new ArrayList<>();
         coursesList.add(courseTest);
         when(courseAdapter.saveWithDatabaseFormat(any(CourseDTO.class), any(ICourseRepository.class))).thenReturn(Optional.ofNullable(courseTest));
@@ -116,15 +114,16 @@ public class CourseServiceTest {
 
         assertEquals(courseDTOTest, courseDTOReturned);
     }
+
     @Test
-    public void addCourse_givenCourseDTO_shouldThrowException(){
+    public void addCourse_givenInvalidCourseDTO_shouldThrowException(){
         when(courseAdapter.saveWithDatabaseFormat(any(CourseDTO.class), any(ICourseRepository.class))).thenThrow(new RuntimeException());
 
         assertThrows(CourseException.class, () -> courseService.addCourse(courseDTOTest));
     }
 
     @Test
-    public void updateCourse_givenCourseDTO_shouldReturnCourseDTO(){
+    public void updateCourse_givenValidCourseDTO_shouldReturnCourseDTO(){
         when(courseAdapter.saveWithDatabaseFormat(any(CourseDTO.class), any(ICourseRepository.class))).thenReturn(Optional.ofNullable(courseTest));
 
         CourseDTO courseDTOReturned = courseService.updateCourse(courseDTOTest);
@@ -133,14 +132,14 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void updateCourse_givenCourseDTO_shouldThrowException(){
+    public void updateCourse_givenInvalidCourseDTO_shouldThrowException(){
         when(courseAdapter.saveWithDatabaseFormat(any(CourseDTO.class), any(ICourseRepository.class))).thenThrow(new RuntimeException());
 
         assertThrows(CourseException.class, () -> courseService.updateCourse(courseDTOTest));
     }
 
     @Test
-    public void deleteSubject_givenId_shouldReturnTrue(){
+    public void deleteSubject_givenExistingId_shouldReturnTrue(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenReturn(true);
 
@@ -151,7 +150,7 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void deleteSubject_givenId_shouldReturnFalse(){
+    public void deleteSubject_givenNonExistingId_shouldReturnFalse(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenReturn(false);
 
@@ -162,7 +161,7 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void deleteSubject_givenId_shouldThrowException(){
+    public void deleteSubject_givenInvalidId_shouldThrowException(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 
