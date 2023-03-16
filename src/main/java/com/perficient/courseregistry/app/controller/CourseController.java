@@ -24,7 +24,7 @@ public class CourseController {
 
     @GetMapping
     public ResponseEntity<List<CourseDTO>> getAllCourses(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
-                                                         @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                         @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                          @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<List<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)),HttpStatus.OK);
     }

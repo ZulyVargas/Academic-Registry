@@ -28,7 +28,8 @@ public class CourseService implements ICourseService {
 
     @Override
     public List<CourseDTO> getAllCourses(Integer limit, Integer offset, Optional<Boolean> isActive) {
-        return courseRepository.findAll(limit, offset, isActive.orElse(true)).stream().map(s -> courseMapper.courseToCourseDTO(s)).collect(Collectors.toList());
+        int initial = offset== 1 ? 0 : limit*(offset-1);
+        return courseRepository.findAll(limit, initial, isActive.orElse(true)).stream().map(s -> courseMapper.courseToCourseDTO(s)).collect(Collectors.toList());
     }
 
     @Override

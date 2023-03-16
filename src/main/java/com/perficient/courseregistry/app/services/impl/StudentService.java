@@ -26,7 +26,8 @@ public class StudentService extends UserService implements IStudentService {
     }
 
     public List<StudentDTO> getAllStudents(Integer limit, Integer offset, Optional<Boolean> isActive) {
-        return studentRepository.findAll(limit,offset, isActive.orElse(true))
+        int initial = offset== 1 ? 0 : limit*(offset-1);
+        return studentRepository.findAll(limit,initial, isActive.orElse(true))
                                 .stream()
                                 .map(student -> studentMapper.studentToStudentDto(student))
                                 .collect(Collectors.toList());

@@ -11,14 +11,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 @Repository
 public interface ICourseRepository extends CrudRepository<Course,UUID> {
 
-    @Query("SELECT * FROM INFO__TOTAL_COURSES WHERE active_course OR active_course=:isActive LIMIT :limit OFFSET :offset")
-    List<Course> findAll(@Param("limit") Integer limit, @Param("offset") Integer offset, @Param("isActive") boolean isActive);
+    @Query("SELECT * FROM INFO__TOTAL_COURSES WHERE active_course OR active_course=:isActive ORDER BY year DESC LIMIT :limit OFFSET :initial")
+    List<Course> findAll(@Param("limit") Integer limit, @Param("initial") Integer initial, @Param("isActive") boolean isActive);
 
     @Query("SELECT * FROM INFO__TOTAL_COURSES")
     List<Course> findAll();

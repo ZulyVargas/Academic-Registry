@@ -21,7 +21,7 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
-                                                           @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                           @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                            @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<>(studentService.getAllStudents(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }

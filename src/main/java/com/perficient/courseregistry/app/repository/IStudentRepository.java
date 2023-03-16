@@ -13,8 +13,8 @@ import java.util.UUID;
 
 public interface IStudentRepository extends CrudRepository<Student, String> {
 
-    @Query("SELECT * FROM INFO_STUDENTS WHERE active_user OR active_user=:isActive ORDER BY name LIMIT :limit OFFSET :offset")
-    List<Student> findAll(@Param("limit") Integer limit, @Param("offset") Integer offset, @Param("isActive") boolean isActive );
+    @Query("SELECT * FROM INFO_STUDENTS WHERE active_user OR active_user=:isActive ORDER BY name LIMIT :limit OFFSET :initial")
+    List<Student> findAll(@Param("limit") Integer limit, @Param("initial") Integer initial, @Param("isActive") boolean isActive );
 
 
     @Query("SELECT * FROM INFO_STUDENTS WHERE user_id = :studentId")

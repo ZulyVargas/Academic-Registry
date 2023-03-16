@@ -24,7 +24,8 @@ public class SubjectService  implements ISubjectService {
 
     @Override
     public List<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
-        return groupSubjects(subjectRepository.findAll(limit, offset, isActive.orElse(true) ));
+        int initial = offset== 1 ? 0 : limit*(offset-1);
+        return groupSubjects(subjectRepository.findAll(limit, initial, isActive.orElse(true) ));
     }
 
     @Override

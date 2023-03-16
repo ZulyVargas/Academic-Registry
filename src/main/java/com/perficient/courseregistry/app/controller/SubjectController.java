@@ -22,7 +22,7 @@ public class SubjectController {
 
     @GetMapping
     public ResponseEntity<List<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
-                                                          @RequestParam(name = "offset", defaultValue = "0") Integer offset,
+                                                          @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                           @RequestParam(name = "active", required = false) Boolean isActive) {
         return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
