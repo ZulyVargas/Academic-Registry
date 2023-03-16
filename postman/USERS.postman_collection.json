@@ -195,7 +195,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8001/api/v1/professors/degree/Civil Engineer",
+									"raw": "http://localhost:8001/api/v1/professors/degree?degree=Engineer",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -205,8 +205,13 @@
 										"api",
 										"v1",
 										"professors",
-										"degree",
-										"Civil Engineer"
+										"degree"
+									],
+									"query": [
+										{
+											"key": "degree",
+											"value": "Engineer"
+										}
 									]
 								}
 							},
@@ -224,7 +229,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 14 Mar 2023 20:48:17 GMT"
+									"value": "Thu, 16 Mar 2023 17:56:01 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -236,7 +241,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZA\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    }\n]"
+							"body": "[\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni Lopez\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZDS4A\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": false,\n        \"degree\": \"Civil Engineer \"\n    },\n    {\n        \"userId\": \"2d60796c-c370-11ed-87db-0242ac110002\",\n        \"name\": \"David Mendoza\",\n        \"username\": \"david.st\",\n        \"password\": \"dvid123df\",\n        \"email\": \"david.mendoza@school.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Electric Engineer\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    }\n]"
 						}
 					]
 				},
