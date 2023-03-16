@@ -23,17 +23,16 @@ public class SubjectService  implements ISubjectService {
     }
 
     @Override
-    public Set<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
+    public List<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
         return groupSubjects(subjectRepository.findAll(limit, offset, isActive.orElse(true) ));
     }
 
     @Override
-    public SubjectDTO getSubjectByTitle(String title) {
+    public List<SubjectDTO> getSubjectByTitle(String title) {
         try{
-            Subject subject = subjectRepository.findByTitle(title);
-            subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
-            return subjectMapper.subjectToSubjectDTO(subject);
+            return groupSubjects(subjectRepository.findByTitle(title));
         }catch (Exception ex){
+            System.out.println("ex " + ex);
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
         }
     }
@@ -78,11 +77,11 @@ public class SubjectService  implements ISubjectService {
         }
     }
 
-    private Set<SubjectDTO> groupSubjects(Set<Subject> subjectList){
+    private List<SubjectDTO> groupSubjects(List<Subject> subjectList){
         return  subjectList.stream()
                 .map(s -> { s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
                     return subjectMapper.subjectToSubjectDTO(s); })
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
     private Set<Subject> findPrerrequisitesById(UUID subjectId) {

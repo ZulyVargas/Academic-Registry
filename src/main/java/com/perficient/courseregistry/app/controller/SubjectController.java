@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping( "/api/v1/subjects" )
@@ -21,10 +21,10 @@ public class SubjectController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
+    public ResponseEntity<List<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                           @RequestParam(name = "offset", defaultValue = "0") Integer offset,
                                                           @RequestParam(name = "active", required = false) Boolean isActive) {
-        return new ResponseEntity<Set<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
+        return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
@@ -32,8 +32,8 @@ public class SubjectController {
         return new ResponseEntity<SubjectDTO>(subjectService.getSubjectById(id), HttpStatus.OK);
     }
     @GetMapping(value="/title")
-    public ResponseEntity<SubjectDTO> getSubjectByTitle(@RequestParam(name = "title") String title){
-        return new ResponseEntity<SubjectDTO>(subjectService.getSubjectByTitle(title), HttpStatus.OK);
+    public ResponseEntity<List<SubjectDTO>> getSubjectByTitle(@RequestParam(name = "title") String title){
+        return new ResponseEntity<List<SubjectDTO>>(subjectService.getSubjectByTitle(title), HttpStatus.OK);
     }
 
     @PostMapping
