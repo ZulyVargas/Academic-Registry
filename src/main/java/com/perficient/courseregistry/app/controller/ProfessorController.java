@@ -34,8 +34,8 @@ public class ProfessorController {
         return new ResponseEntity<>(professorService.getProfessorById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/degree/{degree}")
-    public ResponseEntity<List<ProfessorDTO>> getProffesorsByDegree(@PathVariable String degree){
+    @GetMapping(value = "/degree")
+    public ResponseEntity<List<ProfessorDTO>> getProffesorsByDegree(@RequestParam(name = "degree") String degree){
         return new ResponseEntity<>(professorService.getProfessorsByDegree(degree), HttpStatus.OK);
     }
 

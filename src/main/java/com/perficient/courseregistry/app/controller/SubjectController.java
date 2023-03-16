@@ -31,8 +31,8 @@ public class SubjectController {
     public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable String id){
         return new ResponseEntity<SubjectDTO>(subjectService.getSubjectById(id), HttpStatus.OK);
     }
-    @GetMapping(value="/title/{title}")
-    public ResponseEntity<SubjectDTO> getSubjectByTitle(@PathVariable String title){
+    @GetMapping(value="/title")
+    public ResponseEntity<SubjectDTO> getSubjectByTitle(@RequestParam(name = "title") String title){
         return new ResponseEntity<SubjectDTO>(subjectService.getSubjectByTitle(title), HttpStatus.OK);
     }
 
