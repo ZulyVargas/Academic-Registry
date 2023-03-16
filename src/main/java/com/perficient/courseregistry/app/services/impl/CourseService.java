@@ -6,7 +6,6 @@ import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.mappers.ICourseMapper;
 import com.perficient.courseregistry.app.repository.ICourseRepository;
 import com.perficient.courseregistry.app.services.ICourseService;
-import com.perficient.courseregistry.app.utils.adapters.ComparatorCourse;
 import com.perficient.courseregistry.app.utils.adapters.ICourseAdapterService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -44,7 +43,8 @@ public class CourseService implements ICourseService {
     @Override
     public CourseDTO addCourse(CourseDTO courseDTO) {
         try{
-            validateCourseUnique(courseDTO);
+            if (courseRepository.findEquals(courseDTO.getSubject().getSubjectId(), courseDTO.getGroupNumber(), courseDTO.getYear(), courseDTO.getPeriod()))
+                throw new RuntimeException();
             Optional<Course> courseSaved = courseAdapter.saveWithDatabaseFormat(courseDTO, courseRepository);
             return courseSaved.map(courseMapper::courseToCourseDTO).orElseThrow();
         }
@@ -74,9 +74,4 @@ public class CourseService implements ICourseService {
         }
     }
 
-    private void validateCourseUnique(CourseDTO courseDTO){
-        List<Course> courses =  courseRepository.findAll();
-        if (ComparatorCourse.findEqualsCourse(courses, courseDTO))
-            throw new CourseException("The course need to be unique", "SUBJECT-GROUP NUMBER-PERIOD");
-    }
 }

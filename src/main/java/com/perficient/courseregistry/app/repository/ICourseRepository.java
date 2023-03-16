@@ -1,6 +1,7 @@
 package com.perficient.courseregistry.app.repository;
 
 import com.perficient.courseregistry.app.entities.Course;
+import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.utils.adapters.entities.CourseDetails;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
@@ -24,6 +25,9 @@ public interface ICourseRepository extends CrudRepository<Course,UUID> {
 
     @Query("SELECT * FROM INFO__TOTAL_COURSES WHERE course_id = :courseId")
     Optional<Course> findById(@Param("courseId") UUID courseId);
+
+    @Query("SELECT COUNT(*) > 0 FROM COURSES WHERE subject_id=:subjectId AND group_number=:groupNumber AND year=:year AND period=:period")
+    boolean findEquals(@Param("subjectId") UUID subjectId, @Param("groupNumber") String groupNumber, @Param("year") String year, @Param("period") PERIOD period);
 
     CourseDetails save(CourseDetails course);
 
