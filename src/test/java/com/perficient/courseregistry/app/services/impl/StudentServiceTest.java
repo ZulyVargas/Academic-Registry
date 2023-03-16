@@ -16,11 +16,9 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.*;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -59,7 +57,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void getAllStudents_shouldReturnSetOfDTOProfessors() {
+    public void getAllStudents_shouldReturnListOfDTOProfessors() {
         List<Student> studentList = new ArrayList<>();
         studentList.add(studentTest);
         when(studentRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(studentList);
@@ -70,7 +68,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void getStudentById_givenId_shouldReturnStudentDTO(){
+    public void getStudentById_givenExistingId_shouldReturnStudentDTO(){
         when(studentRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(studentTest));
 
         StudentDTO studentDTOReturned = studentService.getStudentById(UUID.randomUUID().toString());
@@ -79,14 +77,14 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void getProfessorById_givenId_shouldThrowException(){
+    public void getProfessorById_givenNonExistingId_shouldThrowException(){
         when(studentRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
 
         assertThrows(UserException.class, ()->  studentService.getStudentById(UUID.randomUUID().toString()));
     }
 
     @Test
-    public void addStudent_givenStudentDTO_shouldReturnStudentDTO(){
+    public void addStudent_givenValidStudentDTO_shouldReturnStudentDTO(){
         when(userRepository.save(any(User.class))).thenReturn(userTest);
         when(studentRepository.save(any(UUID.class),any(Double.class), any(STATUS_STUDENT.class))).thenReturn(true);
         when(studentRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(studentTest));
@@ -97,14 +95,14 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void addStudent_givenStudentDTO_shouldThrowException(){
+    public void addStudent_givenInvalidStudentDTO_shouldThrowException(){
         when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
 
         assertThrows(UserException.class, () -> studentService.addStudent(studentDTOTest));
     }
 
     @Test
-    public void updateStudent_givenStudentDTO_shouldReturnStudentDTO() {
+    public void updateStudent_givenValidStudentDTO_shouldReturnStudentDTO() {
         when(userRepository.save(any(User.class))).thenReturn(userTest);
         when(studentRepository.update(any(UUID.class),any(Double.class), any(STATUS_STUDENT.class))).thenReturn(true);
         when(studentRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(studentTest));
@@ -115,14 +113,14 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void updateStudent_givenStudentDTO_shouldThrowException() {
+    public void updateStudent_givenInvalidStudentDTO_shouldThrowException() {
         when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
 
         assertThrows(UserException.class, () -> studentService.addStudent((studentDTOTest)));
     }
 
     @Test
-    public void deleteProfessor_givenId_shouldReturnTrue(){
+    public void deleteProfessor_givenExistingId_shouldReturnTrue(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(true);
 
@@ -134,7 +132,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenId_shouldReturnFalse(){
+    public void deleteProfessor_givenNonExistingId_shouldReturnFalse(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(false);
 
@@ -145,7 +143,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenId_shouldThrowException(){
+    public void deleteProfessor_givenInvalidId_shouldThrowException(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 

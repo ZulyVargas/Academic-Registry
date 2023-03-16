@@ -15,11 +15,9 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.*;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -58,7 +56,7 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void getAllProfessors_shouldReturnSetOfDTOProfessors() {
+    public void getAllProfessors_shouldReturnListOfDTOProfessors() {
         List<Professor> professorList= new ArrayList<>();
         professorList.add(professorTest);
         when(professorRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(professorList);
@@ -69,7 +67,7 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void getProfessorById_givenId_shouldReturnProfessorDTO(){
+    public void getProfessorById_givenExistingId_shouldReturnProfessorDTO(){
         when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(professorTest));
 
         ProfessorDTO professorDTOReturned = professorService.getProfessorById(UUID.randomUUID().toString());
@@ -78,14 +76,14 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void getProfessorById_givenId_shouldThrowException(){
+    public void getProfessorById_givenNonExistingId_shouldThrowException(){
         when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
 
         assertThrows(UserException.class, ()->  professorService.getProfessorById(UUID.randomUUID().toString()));
     }
 
     @Test
-    public void getProffesorsByDegree_givenDegree_shouldReturnSetOfDTOProfessors(){
+    public void getProffesorsByDegree_givenDegree_shouldReturnListOfDTOProfessors(){
         List<Professor> professorList = new ArrayList<>();
         professorList.add(professorTest);
         when(professorRepository.findAllByDegree(any(String.class))).thenReturn(professorList);
@@ -96,7 +94,7 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void addProfessor_givenProfessorDTO_shouldReturnProfessorDTO(){
+    public void addProfessor_givenValidProfessorDTO_shouldReturnProfessorDTO(){
         when(userRepository.save(any(User.class))).thenReturn(userTest);
         when(professorRepository.save(any(UUID.class),any(String.class))).thenReturn(true);
         when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(professorTest));
@@ -107,13 +105,13 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void addProfessor_givenProfessorDTO_shouldThrowException(){
+    public void addProfessor_givenInvalidProfessorDTO_shouldThrowException(){
         when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
 
         assertThrows(UserException.class, () -> professorService.addProfessor(professorDTOTest));
     }
     @Test
-    public void updateProfessor_givenProfessorDTO_shouldReturnProfessorDTO(){
+    public void updateProfessor_givenValidProfessorDTO_shouldReturnProfessorDTO(){
         when(userRepository.save(any(User.class))).thenReturn(userTest);
         when(professorRepository.update(any(UUID.class),any(String.class))).thenReturn(true);
         when(professorRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(professorTest));
@@ -124,14 +122,14 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void updateProfessor_givenProfessorDTO_shouldThrowException(){
+    public void updateProfessor_givenInvalidProfessorDTO_shouldThrowException(){
         when(userRepository.save(any(User.class))).thenThrow(new RuntimeException());
 
         assertThrows(UserException.class, () -> professorService.addProfessor(professorDTOTest));
     }
 
     @Test
-    public void deleteProfessor_givenId_shouldReturnTrue(){
+    public void deleteProfessor_givenExistingId_shouldReturnTrue(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(true);
 
@@ -142,7 +140,7 @@ public class ProfessorServiceTest {
         assertEquals(updateActiveExpected, updateActiveReturned);
     }
     @Test
-    public void deleteProfessor_givenId_shouldReturnFalse(){
+    public void deleteProfessor_givenNonExistingId_shouldReturnFalse(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(false);
 
@@ -153,7 +151,7 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenId_shouldThrowException(){
+    public void deleteProfessor_givenInvalidId_shouldThrowException(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 
