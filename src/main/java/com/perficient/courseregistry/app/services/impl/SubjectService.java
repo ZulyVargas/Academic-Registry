@@ -32,7 +32,6 @@ public class SubjectService  implements ISubjectService {
         try{
             return groupSubjects(subjectRepository.findByTitle(title));
         }catch (Exception ex){
-            System.out.println("ex " + ex);
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
         }
     }
