@@ -23,10 +23,4 @@ public class CourseAdapterService implements ICourseAdapterService {
         return courseRepository.findById(courseSaved.getCourseId());
     }
 
-    @Override
-    public Optional<Course> updateWithDatabaseFormat(CourseDTO dbObject, ICourseRepository courseRepository) {
-        CourseDetails courseUpdated= courseRepository.save(courseDetailsMapper.courseDTOToCourseDetails(dbObject));
-        return courseRepository.findById(courseUpdated.getCourseId());
-    }
-
 }

@@ -2,8 +2,11 @@ package com.perficient.courseregistry.app.services.impl;
 
 import com.perficient.courseregistry.app.dto.StudentDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
+import com.perficient.courseregistry.app.entities.Record;
 import com.perficient.courseregistry.app.entities.Student;
 import com.perficient.courseregistry.app.entities.User;
+import com.perficient.courseregistry.app.enums.GRADE_TYPE;
+import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IStudentMapper;
@@ -36,6 +39,8 @@ public class StudentServiceTest {
 
     @Before
     public void setUp(){
+        Set<Record> records = new HashSet<>();
+        records.add(new Record(UUID.randomUUID(), UUID.randomUUID(), GRADE_TYPE.FIRST, 3.4));
         studentTest = Student.builder().userId(UUID.randomUUID())
                 .name("USER TEST")
                 .email("usertest@test.edu")
@@ -44,6 +49,7 @@ public class StudentServiceTest {
                 .active(true)
                 .avg(3.4)
                 .status(STATUS_STUDENT.ACTIVE)
+                .records(new HashSet<>(records))
                 .build();
         IStudentMapper studentMapper = Mappers.getMapper(IStudentMapper.class);
         IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);

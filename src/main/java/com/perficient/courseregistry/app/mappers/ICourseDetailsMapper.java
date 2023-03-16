@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Mapper
 public interface ICourseDetailsMapper {
-    CourseDTO courseDetailsToCourseDTO(CourseDetails courseDetails);
 
     @Mapping(source = "professor", target = "professorId", qualifiedByName = "getIdProfessor")
     @Mapping(source = "subject", target = "subjectId", qualifiedByName = "getIdSubject")

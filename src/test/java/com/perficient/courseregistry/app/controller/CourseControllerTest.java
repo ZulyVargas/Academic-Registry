@@ -31,7 +31,6 @@ public class CourseControllerTest {
 
     @Before
     public void setUp(){
-
         ProfessorDTO professorDTO = ProfessorDTO.builder().userId(UUID.randomUUID()).name("USER TEST").email("usertest@test.edu")
                 .gender("F").username("user.test").active(true).degree("TEST").build();
 

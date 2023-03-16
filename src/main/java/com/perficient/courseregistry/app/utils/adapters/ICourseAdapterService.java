@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface ICourseAdapterService {
 
    Optional<Course> saveWithDatabaseFormat(CourseDTO dtoObject, ICourseRepository courseRepository);
-   Optional<Course> updateWithDatabaseFormat(CourseDTO dbObject,ICourseRepository courseRepository);
+
 }

@@ -35,9 +35,4 @@ public class ResponseExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(value={UncategorizedSQLException.class})
-    public ResponseEntity<Error> handleTriggerException(UncategorizedSQLException exception){
-        Error error = new Error("SUBJECT, NUMBER GROUP, YEAR, PERIOD", "THIS COURSE WAS REGISTERED PREVIOUSLY. THE COURSE HAS TO BE UNIQUE", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
 }

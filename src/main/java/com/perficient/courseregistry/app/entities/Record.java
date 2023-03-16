@@ -1,14 +1,15 @@
 package com.perficient.courseregistry.app.entities;
 
 import com.perficient.courseregistry.app.enums.GRADE_TYPE;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Embedded;
 import org.springframework.data.relational.core.mapping.Table;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
 @Table(value = "records")
 public class Record {
     @Column("record_id")
