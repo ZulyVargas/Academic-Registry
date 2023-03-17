@@ -37,9 +37,9 @@ public class CourseMapperTest {
         subject.setCode("SUBT");
         subject.setCredits(4);
         subject.setActive(true);
-        subject.setPrerrequisites(new HashSet<>());
+        subject.setPrerequisites(new HashSet<>());
         SubjectDTO subjectDTOTest = SubjectDTO.builder().subjectId(subject.getSubjectId()).title("SUBJECT TEST").code("SUBT").credits(4)
-                .active(true).prerrequisites(new HashSet<>()).build();
+                .active(true).prerequisites(new HashSet<>()).build();
 
         courseTest = new Course();
         courseTest.setCourseId(UUID.randomUUID());

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -26,22 +27,22 @@ public class CourseController {
     public ResponseEntity<List<CourseDTO>> getAllCourses(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                          @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                          @RequestParam(name = "active", required = false) Boolean isActive){
-        return new ResponseEntity<List<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)),HttpStatus.OK);
+        return new ResponseEntity<List<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)).stream().peek(CourseDTO::generateLinks).collect(Collectors.toList()),HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
     public ResponseEntity<CourseDTO> getCourseById(@PathVariable String id){
-        return new ResponseEntity<CourseDTO>(courseService.getCourseById(id), HttpStatus.OK);
+        return new ResponseEntity<CourseDTO>(courseService.getCourseById(id).generateLinks(), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<CourseDTO> addCourse(@RequestBody @Valid CourseDTO courseDTO){
-        return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO), HttpStatus.OK);
+        return  new ResponseEntity<CourseDTO>(courseService.addCourse(courseDTO).generateLinks(), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<CourseDTO> updatedCourse(@RequestBody @Valid CourseDTO courseDTO){
-        return  new ResponseEntity<CourseDTO>(courseService.updateCourse(courseDTO), HttpStatus.OK);
+        return  new ResponseEntity<CourseDTO>(courseService.updateCourse(courseDTO).generateLinks(), HttpStatus.OK);
     }
 
     @DeleteMapping(value="/{courseId}")
