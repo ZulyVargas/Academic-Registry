@@ -31,7 +31,7 @@ public class SubjectControllerTest {
                                    .code("SUBT")
                                    .credits(4)
                                    .active(true)
-                                   .prerrequisites(new HashSet<>())
+                                   .prerequisites(new HashSet<>())
                                    .build();
         subjectController = new SubjectController(subjectService);
     }

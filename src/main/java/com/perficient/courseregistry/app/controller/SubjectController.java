@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping( "/api/v1/subjects" )
@@ -24,26 +25,26 @@ public class SubjectController {
     public ResponseEntity<List<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                           @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                           @RequestParam(name = "active", required = false) Boolean isActive) {
-        return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)), HttpStatus.OK);
+        return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)).stream().peek(SubjectDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
     public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable String id){
-        return new ResponseEntity<SubjectDTO>(subjectService.getSubjectById(id), HttpStatus.OK);
+        return new ResponseEntity<SubjectDTO>(subjectService.getSubjectById(id).generateLinks(), HttpStatus.OK);
     }
     @GetMapping(value="/title")
     public ResponseEntity<List<SubjectDTO>> getSubjectByTitle(@RequestParam(name = "title") String title){
-        return new ResponseEntity<List<SubjectDTO>>(subjectService.getSubjectByTitle(title), HttpStatus.OK);
+        return new ResponseEntity<List<SubjectDTO>>(subjectService.getSubjectByTitle(title).stream().peek(SubjectDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<SubjectDTO> addSubject(@RequestBody @Valid SubjectDTO subjectDTO){
-        return  new ResponseEntity<SubjectDTO>(subjectService.addSubject(subjectDTO), HttpStatus.OK);
+        return  new ResponseEntity<SubjectDTO>(subjectService.addSubject(subjectDTO).generateLinks(), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<SubjectDTO>  updateSubject(@RequestBody @Valid SubjectDTO subjectDTO){
-        return new ResponseEntity<SubjectDTO>(subjectService.updateSubject(subjectDTO), HttpStatus.OK);
+        return new ResponseEntity<SubjectDTO>(subjectService.updateSubject(subjectDTO).generateLinks(), HttpStatus.OK);
     }
 
     @DeleteMapping(value="/{subjectId}")

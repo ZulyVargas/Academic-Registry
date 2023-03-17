@@ -26,7 +26,7 @@ public class SubjectMapperTest {
         subjectTest.setCode("SUBT");
         subjectTest.setCredits(4);
         subjectTest.setActive(true);
-        subjectTest.setPrerrequisites(new HashSet<>());
+        subjectTest.setPrerequisites(new HashSet<>());
 
         subjectDTOTest = SubjectDTO.builder()
                                    .subjectId(UUID.fromString("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"))
@@ -34,7 +34,7 @@ public class SubjectMapperTest {
                                    .code("SUBT")
                                    .credits(4)
                                    .active(true)
-                                   .prerrequisites(new HashSet<>())
+                                   .prerequisites(new HashSet<>())
                                    .build();
 }
     @Test

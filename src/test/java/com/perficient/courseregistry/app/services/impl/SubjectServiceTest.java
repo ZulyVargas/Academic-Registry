@@ -34,7 +34,7 @@ public class SubjectServiceTest {
         subjectTest.setCode("SUBT");
         subjectTest.setCredits(4);
         subjectTest.setActive(true);
-        subjectTest.setPrerrequisites(new HashSet<>());
+        subjectTest.setPrerequisites(new HashSet<>());
         subjectDTOTest = Mappers.getMapper(ISubjectMapper.class).subjectToSubjectDTO(subjectTest);
         subjectService = new SubjectService(subjectRepository, Mappers.getMapper(ISubjectMapper.class));
     }

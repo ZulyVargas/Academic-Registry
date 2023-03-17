@@ -20,7 +20,7 @@ public class Subject {
     @Column("active_subject")
     private boolean active;
     @Transient
-    private Set<Subject> prerrequisites;
+    private Set<Subject> prerequisites;
 
 
 }
