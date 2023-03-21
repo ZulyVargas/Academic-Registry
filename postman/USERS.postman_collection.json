@@ -44,7 +44,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8001/api/v1/professors",
+									"raw": "http://localhost:8001/api/v1/professors?active=false&limit=8&offset=1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -54,6 +54,20 @@
 										"api",
 										"v1",
 										"professors"
+									],
+									"query": [
+										{
+											"key": "active",
+											"value": "false"
+										},
+										{
+											"key": "limit",
+											"value": "8"
+										},
+										{
+											"key": "offset",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -71,7 +85,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 14 Mar 2023 20:47:59 GMT"
+									"value": "Tue, 21 Mar 2023 19:46:55 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -83,7 +97,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n        \"name\": \"Sandi Sobieski\",\n        \"username\": \"ssobieski3\",\n        \"password\": \"knxGjrTj\",\n        \"email\": \"ssobieski3@reverbnation.com\",\n        \"gender\": \"F\",\n        \"active\": true,\n        \"degree\": \"Masters Degree in Mathematics\"\n    },\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZA\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"04ed2403-b934-49f9-a580-326bae9ae68c\",\n        \"name\": \"Harbert Bragg\",\n        \"username\": \"hbragg3\",\n        \"password\": \"L72bC7qZ7\",\n        \"email\": \"hbragg3@toplist.cz\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Accountant\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"ad460c1d-b17b-4cfa-b834-74bd4f9c363e\",\n        \"name\": \"Hedvige Elliott\",\n        \"username\": \"helliott8\",\n        \"password\": \"eoHONxscTy\",\n        \"email\": \"helliott8@samsung.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Graphic designer\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"f0a71a78-728c-4b1e-8e06-c53d64c19a64\",\n        \"name\": \"Thedrick Jamot\",\n        \"username\": \"tjamotb\",\n        \"password\": \"VtwqQU9PLsqL\",\n        \"email\": \"tjamotb@rambler.ru\",\n        \"gender\": \"F\",\n        \"active\": true,\n        \"degree\": \"Architect\"\n    }\n]"
+							"body": "[\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni Lopez\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZDS4A\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": false,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/273f9c9c-c900-436b-af8a-65aead73052c\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer%20\"\n            }\n        ],\n        \"degree\": \"Civil Engineer \"\n    },\n    {\n        \"userId\": \"4b434152-c448-11ed-8aa4-0242ac110002\",\n        \"name\": \"David Mendoza\",\n        \"username\": \"david.st\",\n        \"password\": \"dvid123df\",\n        \"email\": \"david.mendoza@school.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/4b434152-c448-11ed-8aa4-0242ac110002\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Electric%20Engineer\"\n            }\n        ],\n        \"degree\": \"Electric Engineer\"\n    },\n    {\n        \"userId\": \"04ed2403-b934-49f9-a580-326bae9ae68c\",\n        \"name\": \"Harbert Bragg\",\n        \"username\": \"hbragg3\",\n        \"password\": \"L72bC7qZ7\",\n        \"email\": \"hbragg3@toplist.cz\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/04ed2403-b934-49f9-a580-326bae9ae68c\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Accountant\"\n            }\n        ],\n        \"degree\": \"Accountant\"\n    },\n    {\n        \"userId\": \"ad460c1d-b17b-4cfa-b834-74bd4f9c363e\",\n        \"name\": \"Hedvige Elliott\",\n        \"username\": \"helliott8\",\n        \"password\": \"eoHONxscTy\",\n        \"email\": \"helliott8@samsung.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/ad460c1d-b17b-4cfa-b834-74bd4f9c363e\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Graphic%20designer\"\n            }\n        ],\n        \"degree\": \"Graphic designer\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/2e7f1073-7026-4254-8ce5-d394078d51d3\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n            }\n        ],\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"022ac2b9-516f-4e58-b976-9c77eca0f53f\",\n        \"name\": \"Liane Swaby\",\n        \"username\": \"lswaby0\",\n        \"password\": \"oGNfU9Y\",\n        \"email\": \"lswaby0@weibo.com\",\n        \"gender\": \"F\",\n        \"active\": false,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/022ac2b9-516f-4e58-b976-9c77eca0f53f\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Accountant\"\n            }\n        ],\n        \"degree\": \"Accountant\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/15d01094-244e-4df8-a9d1-ec7bd750a7a5\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n            }\n        ],\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n        \"name\": \"Sandi Sobieski\",\n        \"username\": \"ssobieski3\",\n        \"password\": \"knxGjrTj\",\n        \"email\": \"ssobieski3@reverbnation.com\",\n        \"gender\": \"F\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/b378f207-0f03-469c-bb6f-058779a2ad32\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Masters%20Degree%20in%20Mathematics\"\n            }\n        ],\n        \"degree\": \"Masters Degree in Mathematics\"\n    }\n]"
 						}
 					]
 				},
@@ -109,7 +123,7 @@
 					},
 					"response": [
 						{
-							"name": "add student",
+							"name": "getById",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -151,7 +165,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 15 Mar 2023 20:29:29 GMT"
+									"value": "Tue, 21 Mar 2023 19:47:57 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -163,7 +177,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n    \"name\": \"Sandi Sobieski\",\n    \"username\": \"ssobieski3\",\n    \"password\": \"knxGjrTj\",\n    \"email\": \"ssobieski3@reverbnation.com\",\n    \"gender\": \"F\",\n    \"active\": true,\n    \"degree\": \"Masters Degree in Mathematics\"\n}"
+							"body": "{\n    \"userId\": \"b378f207-0f03-469c-bb6f-058779a2ad32\",\n    \"name\": \"Sandi Sobieski\",\n    \"username\": \"ssobieski3\",\n    \"password\": \"knxGjrTj\",\n    \"email\": \"ssobieski3@reverbnation.com\",\n    \"gender\": \"F\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/professors/b378f207-0f03-469c-bb6f-058779a2ad32\"\n        },\n        {\n            \"rel\": \"getByDegree\",\n            \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Masters%20Degree%20in%20Mathematics\"\n        }\n    ],\n    \"degree\": \"Masters Degree in Mathematics\"\n}"
 						}
 					]
 				},
@@ -229,7 +243,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 16 Mar 2023 17:56:01 GMT"
+									"value": "Tue, 21 Mar 2023 19:48:13 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -241,7 +255,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni Lopez\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZDS4A\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": false,\n        \"degree\": \"Civil Engineer \"\n    },\n    {\n        \"userId\": \"2d60796c-c370-11ed-87db-0242ac110002\",\n        \"name\": \"David Mendoza\",\n        \"username\": \"david.st\",\n        \"password\": \"dvid123df\",\n        \"email\": \"david.mendoza@school.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Electric Engineer\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"degree\": \"Civil Engineer\"\n    }\n]"
+							"body": "[\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni Lopez\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZDS4A\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": false,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/273f9c9c-c900-436b-af8a-65aead73052c\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n            }\n        ],\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"4b434152-c448-11ed-8aa4-0242ac110002\",\n        \"name\": \"David Mendoza\",\n        \"username\": \"david.st\",\n        \"password\": \"dvid123df\",\n        \"email\": \"david.mendoza@school.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/4b434152-c448-11ed-8aa4-0242ac110002\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Electric%20Engineer\"\n            }\n        ],\n        \"degree\": \"Electric Engineer\"\n    },\n    {\n        \"userId\": \"2e7f1073-7026-4254-8ce5-d394078d51d3\",\n        \"name\": \"Jacquelyn Astell\",\n        \"username\": \"jastell7\",\n        \"password\": \"0qNVrS1H\",\n        \"email\": \"jastell7@miitbeian.gov.cn\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/2e7f1073-7026-4254-8ce5-d394078d51d3\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n            }\n        ],\n        \"degree\": \"Civil Engineer\"\n    },\n    {\n        \"userId\": \"15d01094-244e-4df8-a9d1-ec7bd750a7a5\",\n        \"name\": \"Parry Screen\",\n        \"username\": \"pscreen9\",\n        \"password\": \"02TAA4c8Axu3\",\n        \"email\": \"pscreen9@mediafire.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/professors/15d01094-244e-4df8-a9d1-ec7bd750a7a5\"\n            },\n            {\n                \"rel\": \"getByDegree\",\n                \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n            }\n        ],\n        \"degree\": \"Civil Engineer\"\n    }\n]"
 						}
 					]
 				},
@@ -275,7 +289,7 @@
 					},
 					"response": [
 						{
-							"name": "addProfessor",
+							"name": "add professor",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -316,7 +330,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 11 Mar 2023 21:45:47 GMT"
+									"value": "Tue, 21 Mar 2023 19:50:12 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -328,7 +342,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"userId\": \"15234900-c056-11ed-bdfc-0242ac110002\",\n    \"name\": \"David Mendoza\",\n    \"username\": \"david.st\",\n    \"password\": \"dvid123df\",\n    \"email\": \"david.mendoza@school.com\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"degree\": \"Electric Engineer\"\n}"
+							"body": "{\n    \"userId\": \"9817e7a8-c821-11ed-819a-0242ac110002\",\n    \"name\": \"David Mendoza\",\n    \"username\": \"david.st\",\n    \"password\": \"dvid123df\",\n    \"email\": \"david.mendoza@school.com\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/professors/9817e7a8-c821-11ed-819a-0242ac110002\"\n        },\n        {\n            \"rel\": \"getByDegree\",\n            \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Electric%20Engineer\"\n        }\n    ],\n    \"degree\": \"Electric Engineer\"\n}"
 						}
 					]
 				},
@@ -368,7 +382,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\r\n        \"name\": \"Amberly Pietroni Lopez\",\r\n        \"username\": \"apietroni4\",\r\n        \"password\": \"A8PQNZDS4A\",\r\n        \"email\": \"apietroni4@delicious.com\",\r\n        \"gender\": \"M\",\r\n        \"active\": true,\r\n        \"degree\": \"Civil Engineer \"\r\n    }",
+									"raw": "{\r\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\r\n        \"name\": \"Amberly Pietroni Lopez\",\r\n        \"username\": \"apietroni4\",\r\n        \"password\": \"A8PQNZDS4A\",\r\n        \"email\": \"apietroni4@delicious.com\",\r\n        \"gender\": \"M\",\r\n        \"active\": true,\r\n        \"degree\": \"Civil Engineer\"\r\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -403,7 +417,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 15 Mar 2023 20:30:42 GMT"
+									"value": "Tue, 21 Mar 2023 19:50:29 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -415,7 +429,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n    \"name\": \"Amberly Pietroni Lopez\",\n    \"username\": \"apietroni4\",\n    \"password\": \"A8PQNZDS4A\",\n    \"email\": \"apietroni4@delicious.com\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"degree\": \"Civil Engineer \"\n}"
+							"body": "{\n    \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n    \"name\": \"Amberly Pietroni Lopez\",\n    \"username\": \"apietroni4\",\n    \"password\": \"A8PQNZDS4A\",\n    \"email\": \"apietroni4@delicious.com\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/professors/273f9c9c-c900-436b-af8a-65aead73052c\"\n        },\n        {\n            \"rel\": \"getByDegree\",\n            \"href\": \"http://localhost:8001/api/v1/professors/degree?degree=Civil%20Engineer\"\n        }\n    ],\n    \"degree\": \"Civil Engineer\"\n}"
 						}
 					]
 				},
@@ -569,54 +583,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8001/api/v1/students",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8001",
-									"path": [
-										"api",
-										"v1",
-										"students"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 14 Mar 2023 21:03:43 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"userId\": \"6f323b65-cd24-48a9-bc53-e3e45676e619\",\n        \"name\": \"Pierre Aubray\",\n        \"username\": \"paubray0\",\n        \"password\": \"j95p5YVCl\",\n        \"email\": \"paubray0@auda.org.au\",\n        \"gender\": \"F\",\n        \"active\": true,\n        \"avg\": 3.5,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"73f434dc-0e37-4ec2-9b36-7744fcc15f96\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 3.9\n            }\n        ]\n    },\n    {\n        \"userId\": \"131e8918-730b-4739-9b9b-e91510f96fa9\",\n        \"name\": \"Hayden Strephan\",\n        \"username\": \"hstrephan1\",\n        \"password\": \"8rOmjSki\",\n        \"email\": \"hstrephan1@oracle.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 4,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"a23f4dd9-ae58-4391-bd03-1545d5d28d79\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 3.1\n            }\n        ]\n    },\n    {\n        \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n        \"name\": \"Kerry Waslin\",\n        \"username\": \"kwaslin2\",\n        \"password\": \"o70kLhC4QQkO\",\n        \"email\": \"kwaslin2@liveinternet.ru\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 1.5,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"c1fb643b-3196-443a-abcb-95800531374a\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 4.1\n            }\n        ]\n    },\n    {\n        \"userId\": \"273f9c9c-c900-436b-af8a-65aead73052c\",\n        \"name\": \"Amberly Pietroni\",\n        \"username\": \"apietroni4\",\n        \"password\": \"A8PQNZA\",\n        \"email\": \"apietroni4@delicious.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 3.8,\n        \"status\": \"ACTIVE\",\n        \"records\": []\n    },\n    {\n        \"userId\": \"f29cabee-6278-433a-b2b5-36a26400a0f8\",\n        \"name\": \"Clarette Frany\",\n        \"username\": \"cfrany2\",\n        \"password\": \"GXZHtb\",\n        \"email\": \"cfrany2@spiegel.de\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 3.8,\n        \"status\": \"ACTIVE\",\n        \"records\": []\n    },\n    {\n        \"userId\": \"bac15dd9-2f75-455a-ab81-bfc14714931a\",\n        \"name\": \"Malinde Oda\",\n        \"username\": \"moda4\",\n        \"password\": \"oGsT9jdfYcAi\",\n        \"email\": \"moda4@house.gov\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 3.6,\n        \"status\": \"ACTIVE\",\n        \"records\": []\n    }\n]"
-						},
-						{
-							"name": "getAllStudents active and not active",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8001/api/v1/students?active=false",
+									"raw": "http://localhost:8001/api/v1/students?limit=2&offset=2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -629,8 +596,12 @@
 									],
 									"query": [
 										{
-											"key": "active",
-											"value": "false"
+											"key": "limit",
+											"value": "2"
+										},
+										{
+											"key": "offset",
+											"value": "2"
 										}
 									]
 								}
@@ -649,7 +620,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 13 Mar 2023 15:35:58 GMT"
+									"value": "Tue, 21 Mar 2023 19:50:44 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -661,7 +632,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"userId\": \"a965999c-c1b4-11ed-8888-0242ac110002\",\n        \"name\": \"Loren Strephan\",\n        \"username\": \"loren.st\",\n        \"password\": \"dfergjjh\",\n        \"email\": \"loren@school.com\",\n        \"gender\": \"F\",\n        \"active\": false,\n        \"avg\": 3.4,\n        \"status\": \"ACTIVE\",\n        \"records\": []\n    },\n    {\n        \"userId\": \"131e8918-730b-4739-9b9b-e91510f96fa9\",\n        \"name\": \"Hayden Strephan\",\n        \"username\": \"hstrephan1\",\n        \"password\": \"8rOmjSki\",\n        \"email\": \"hstrephan1@oracle.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 4,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"a23f4dd9-ae58-4391-bd03-1545d5d28d79\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 3.1\n            }\n        ]\n    },\n    {\n        \"userId\": \"6f323b65-cd24-48a9-bc53-e3e45676e619\",\n        \"name\": \"Pierre Aubray\",\n        \"username\": \"paubray0\",\n        \"password\": \"j95p5YVCl\",\n        \"email\": \"paubray0@auda.org.au\",\n        \"gender\": \"F\",\n        \"active\": true,\n        \"avg\": 3.5,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"73f434dc-0e37-4ec2-9b36-7744fcc15f96\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 3.9\n            }\n        ]\n    },\n    {\n        \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n        \"name\": \"Kerry Waslin\",\n        \"username\": \"kwaslin2\",\n        \"password\": \"o70kLhC4QQkO\",\n        \"email\": \"kwaslin2@liveinternet.ru\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"avg\": 1.5,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"c1fb643b-3196-443a-abcb-95800531374a\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 4.1\n            }\n        ]\n    }\n]"
+							"body": "[\n    {\n        \"userId\": \"131e8918-730b-4739-9b9b-e91510f96fa9\",\n        \"name\": \"Hayden Strephan\",\n        \"username\": \"hstrephan1\",\n        \"password\": \"8rOmjSki\",\n        \"email\": \"hstrephan1@oracle.com\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/students/131e8918-730b-4739-9b9b-e91510f96fa9\"\n            }\n        ],\n        \"avg\": 4,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"a23f4dd9-ae58-4391-bd03-1545d5d28d79\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 3.1\n            }\n        ]\n    },\n    {\n        \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n        \"name\": \"Kerry Waslin\",\n        \"username\": \"kwaslin2\",\n        \"password\": \"o70kLhC4QQkO\",\n        \"email\": \"kwaslin2@liveinternet.ru\",\n        \"gender\": \"M\",\n        \"active\": true,\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/students/8983514f-2e8a-4664-b616-2ea1744cb6af\"\n            }\n        ],\n        \"avg\": 1.5,\n        \"status\": \"ACTIVE\",\n        \"records\": [\n            {\n                \"recordId\": \"c1fb643b-3196-443a-abcb-95800531374a\",\n                \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n                \"type\": \"FIRST\",\n                \"grade\": 4.1\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -692,7 +663,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8001/api/v1/students/8983514f-2e8a-4664-b616-2ea1744cb6af",
+									"raw": "http://localhost:8001/api/v1/students/6f323b65-cd24-48a9-bc53-e3e45676e619",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -702,7 +673,7 @@
 										"api",
 										"v1",
 										"students",
-										"8983514f-2e8a-4664-b616-2ea1744cb6af"
+										"6f323b65-cd24-48a9-bc53-e3e45676e619"
 									]
 								}
 							},
@@ -720,7 +691,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 13 Mar 2023 15:35:02 GMT"
+									"value": "Tue, 21 Mar 2023 19:51:24 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -732,7 +703,51 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"userId\": \"8983514f-2e8a-4664-b616-2ea1744cb6af\",\n    \"name\": \"Kerry Waslin\",\n    \"username\": \"kwaslin2\",\n    \"password\": \"o70kLhC4QQkO\",\n    \"email\": \"kwaslin2@liveinternet.ru\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"avg\": 1.5,\n    \"status\": \"ACTIVE\",\n    \"records\": [\n        {\n            \"recordId\": \"c1fb643b-3196-443a-abcb-95800531374a\",\n            \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n            \"type\": \"FIRST\",\n            \"grade\": 4.1\n        }\n    ]\n}"
+							"body": "{\n    \"userId\": \"6f323b65-cd24-48a9-bc53-e3e45676e619\",\n    \"name\": \"Pierre Aubray\",\n    \"username\": \"paubray0\",\n    \"password\": \"j95p5YVCl\",\n    \"email\": \"paubray0@auda.org.au\",\n    \"gender\": \"F\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/students/6f323b65-cd24-48a9-bc53-e3e45676e619\"\n        }\n    ],\n    \"avg\": 3.5,\n    \"status\": \"ACTIVE\",\n    \"records\": [\n        {\n            \"recordId\": \"73f434dc-0e37-4ec2-9b36-7744fcc15f96\",\n            \"courseId\": \"cfe96f22-5c2c-406a-b458-3831aaa6d3c9\",\n            \"type\": \"FIRST\",\n            \"grade\": 3.9\n        }\n    ]\n}"
+						},
+						{
+							"name": "getById (invalid id)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/students/6f323b65",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"students",
+										"6f323b65"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Mar 2023 20:00:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"field\": \"Invalid UUID string: 6f323b65\",\n    \"message\": \"The indicated value is not allowed, you must use the correct format\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-21T15:00:54.2489406-05:00\"\n}"
 						}
 					]
 				},
@@ -807,7 +822,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 13 Mar 2023 15:35:19 GMT"
+									"value": "Tue, 21 Mar 2023 19:53:23 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -819,7 +834,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"userId\": \"a965999c-c1b4-11ed-8888-0242ac110002\",\n    \"name\": \"Loren Strephan\",\n    \"username\": \"loren.st\",\n    \"password\": \"dfergjjh\",\n    \"email\": \"loren@school.com\",\n    \"gender\": \"F\",\n    \"active\": true,\n    \"avg\": 3.4,\n    \"status\": \"ACTIVE\",\n    \"records\": []\n}"
+							"body": "{\n    \"userId\": \"09e008de-c822-11ed-ba7c-0242ac110002\",\n    \"name\": \"Loren Strephan\",\n    \"username\": \"loren.st\",\n    \"password\": \"dfergjjh\",\n    \"email\": \"loren@school.com\",\n    \"gender\": \"F\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/students/09e008de-c822-11ed-ba7c-0242ac110002\"\n        }\n    ],\n    \"avg\": 3.4,\n    \"status\": \"ACTIVE\",\n    \"records\": []\n}"
 						},
 						{
 							"name": "add student enum error",
@@ -905,62 +920,6 @@
 					},
 					"response": [
 						{
-							"name": "update student",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "    {\r\n        \"userId\": \"bac15dd9-2f75-455a-ab81-bfc14714931a\",\r\n        \"name\": \"Malinde Oda\",\r\n        \"username\": \"moda.4\",\r\n        \"password\": \"oGsT9jdfYcAi\",\r\n        \"email\": \"moda4@house.gov\",\r\n        \"gender\": \"M\",\r\n        \"active\": true,\r\n        \"avg\": 3.1,\r\n        \"status\": \"ACTIVE\"\r\n    }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8001/api/v1/students",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8001",
-									"path": [
-										"api",
-										"v1",
-										"students"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 15 Mar 2023 20:35:52 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"userId\": \"bac15dd9-2f75-455a-ab81-bfc14714931a\",\n    \"name\": \"Malinde Oda\",\n    \"username\": \"moda.4\",\n    \"password\": \"oGsT9jdfYcAi\",\n    \"email\": \"moda4@house.gov\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"avg\": 3.1,\n    \"status\": \"ACTIVE\",\n    \"records\": []\n}"
-						},
-						{
 							"name": "update student id error",
 							"originalRequest": {
 								"method": "PUT",
@@ -1011,6 +970,62 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"field\": \"bac15dd9-2f75-455a-ab81-bfc1414931a\",\n    \"message\": \"The indicated value is not allowed, you must use the default values or use the correct format\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-15T15:36:05.4051352-05:00\"\n}"
+						},
+						{
+							"name": "update student",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"userId\": \"bac15dd9-2f75-455a-ab81-bfc14714931a\",\r\n        \"name\": \"Malinde Oda Oda\",\r\n        \"username\": \"moda.4\",\r\n        \"password\": \"oGsT9jdfYcAi\",\r\n        \"email\": \"moda4@house.gov\",\r\n        \"gender\": \"M\",\r\n        \"active\": true,\r\n        \"avg\": 3.1,\r\n        \"status\": \"ACTIVE\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/api/v1/students",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"students"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Mar 2023 19:53:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"bac15dd9-2f75-455a-ab81-bfc14714931a\",\n    \"name\": \"Malinde Oda Oda\",\n    \"username\": \"moda.4\",\n    \"password\": \"oGsT9jdfYcAi\",\n    \"email\": \"moda4@house.gov\",\n    \"gender\": \"M\",\n    \"active\": true,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://localhost:8001/api/v1/students/bac15dd9-2f75-455a-ab81-bfc14714931a\"\n        }\n    ],\n    \"avg\": 3.1,\n    \"status\": \"ACTIVE\",\n    \"records\": []\n}"
 						}
 					]
 				},
