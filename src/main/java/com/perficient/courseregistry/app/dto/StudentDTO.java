@@ -1,11 +1,15 @@
 package com.perficient.courseregistry.app.dto;
 
+import com.perficient.courseregistry.app.controller.StudentController;
 import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Set;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Data
 @SuperBuilder
@@ -15,4 +19,10 @@ public class StudentDTO extends UserDTO implements Serializable {
     private double avg;
     private STATUS_STUDENT status;
     private Set<RecordDTO> records ;
+
+    public StudentDTO generateLinks() {
+        setLinks(new ArrayList<>());
+        getLinks().add(linkTo(StudentController.class).slash(this.getUserId().toString()).withSelfRel());
+        return this;
+    }
 }
