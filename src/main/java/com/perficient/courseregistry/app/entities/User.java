@@ -1,11 +1,13 @@
 package com.perficient.courseregistry.app.entities;
 
-import lombok.*;
+import java.util.UUID;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import java.util.UUID;
+import org.springframework.data.relational.core.mapping.Column;
 
 @Data
 @SuperBuilder

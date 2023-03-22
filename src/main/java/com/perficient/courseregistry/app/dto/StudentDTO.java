@@ -1,13 +1,14 @@
 package com.perficient.courseregistry.app.dto;
 
-import com.perficient.courseregistry.app.controller.StudentController;
-import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
-import lombok.*;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
+import com.perficient.courseregistry.app.controller.StudentController;
+import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 

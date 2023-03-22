@@ -1,18 +1,14 @@
 package com.perficient.courseregistry.app.dto;
 
+import java.util.UUID;
+import java.io.Serializable;
+import lombok.Data;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import com.perficient.courseregistry.app.controller.CourseController;
-import com.perficient.courseregistry.app.controller.SubjectController;
 import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.enums.STATUS_COURSE;
 import com.perficient.courseregistry.app.hateoas.Resource;
-import lombok.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import java.io.Serializable;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.core.DummyInvocationUtils.methodOn;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Data

@@ -1,16 +1,13 @@
 package com.perficient.courseregistry.app.exception;
 
-
 import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.exception.custom.GeneralException;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.net.ConnectException;
 import java.sql.SQLException;
 import java.time.ZoneId;

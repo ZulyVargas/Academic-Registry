@@ -1,16 +1,17 @@
 package com.perficient.courseregistry.app.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.perficient.courseregistry.app.controller.SubjectController;
-import com.perficient.courseregistry.app.hateoas.Resource;
-import lombok.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.Builder;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.perficient.courseregistry.app.controller.SubjectController;
+import com.perficient.courseregistry.app.hateoas.Resource;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import static org.springframework.hateoas.server.core.DummyInvocationUtils.methodOn;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;

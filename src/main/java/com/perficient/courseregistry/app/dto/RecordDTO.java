@@ -1,7 +1,8 @@
 package com.perficient.courseregistry.app.dto;
 
+import lombok.Data;
+import lombok.AllArgsConstructor;
 import com.perficient.courseregistry.app.enums.GRADE_TYPE;
-import lombok.*;
 
 @Data
 @AllArgsConstructor

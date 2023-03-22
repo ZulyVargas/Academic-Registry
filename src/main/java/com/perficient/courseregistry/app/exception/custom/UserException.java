@@ -1,7 +1,5 @@
 package com.perficient.courseregistry.app.exception.custom;
 
-import lombok.Getter;
-@Getter
 public class UserException extends GeneralException {
     public static final String USER_DELETE_EXCEPTION = "The user with the given ID could not be deleted." ;
     public static final String USER_UPDATE_EXCEPTION = "The given subject could not be updated.";

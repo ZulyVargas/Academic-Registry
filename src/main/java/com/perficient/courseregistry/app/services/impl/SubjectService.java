@@ -7,7 +7,6 @@ import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import com.perficient.courseregistry.app.services.ISubjectService;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

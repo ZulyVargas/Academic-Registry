@@ -1,11 +1,13 @@
 package com.perficient.courseregistry.app.entities;
 
-import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.springframework.data.relational.core.mapping.MappedCollection;
-import org.springframework.data.relational.core.mapping.Table;
 import java.util.Set;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
+import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 
 @Data
 @SuperBuilder

@@ -1,6 +1,5 @@
 package com.perficient.courseregistry.app.exception.custom;
 
-
 import lombok.Getter;
 
 @Getter

@@ -1,8 +1,5 @@
 package com.perficient.courseregistry.app.exception.custom;
 
-import lombok.Getter;
-
-@Getter
 public class SubjectException extends GeneralException{
     public static final String SUBJECT_TITLE_EXCEPTION = "The subject with the given title does not exist.";
     public static final String SUBJECT_ID_EXCEPTION = "The subject with the given ID does not exist.";

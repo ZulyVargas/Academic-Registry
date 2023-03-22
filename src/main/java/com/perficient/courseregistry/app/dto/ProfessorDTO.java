@@ -7,7 +7,6 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import static org.springframework.hateoas.server.core.DummyInvocationUtils.methodOn;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Data
@@ -22,7 +21,6 @@ public class ProfessorDTO extends UserDTO implements Serializable {
     public ProfessorDTO generateLinks() {
         setLinks(new ArrayList<>());
         getLinks().add(linkTo(ProfessorController.class).slash(this.getUserId().toString()).withSelfRel());
-        getLinks().add(linkTo(methodOn(ProfessorController.class).getProffesorsByDegree(degree)).withRel("getByDegree"));
         return this;
     }
 }
