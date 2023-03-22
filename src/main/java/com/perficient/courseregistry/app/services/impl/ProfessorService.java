@@ -8,10 +8,8 @@ import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.repository.IProfessorRepository;
 import com.perficient.courseregistry.app.services.IProfessorService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -28,8 +26,9 @@ public class ProfessorService extends UserService implements IProfessorService {
     }
 
     @Override
-    public List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive ){
+    public List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive, Optional<String> degree ){
         int initial = offset== 1 ? 0 : limit*(offset-1);
+        if (degree.isPresent()) return getProfessorsByDegree(limit, initial, isActive.orElse(true), degree.get());
         return professorRepository.findAll(limit, initial, isActive.orElse(true) )
                                   .stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
@@ -46,8 +45,8 @@ public class ProfessorService extends UserService implements IProfessorService {
     }
 
     @Override
-    public List<ProfessorDTO> getProfessorsByDegree(String degree) {
-        return professorRepository.findAllByDegree(degree).stream()
+    public List<ProfessorDTO> getProfessorsByDegree(Integer limit, Integer initial, boolean isActive, String degree) {
+        return professorRepository.findAllByDegree(limit, initial, isActive, degree).stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))
                                   .collect(Collectors.toList());
     }

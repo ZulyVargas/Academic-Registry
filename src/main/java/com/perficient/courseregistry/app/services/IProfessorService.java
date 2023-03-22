@@ -4,15 +4,14 @@ import com.perficient.courseregistry.app.dto.ProfessorDTO;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface IProfessorService {
 
-    List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive );
+    List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive, Optional<String> degree);
 
     ProfessorDTO getProfessorById(String id);
 
-    List<ProfessorDTO> getProfessorsByDegree(String degree);
+    List<ProfessorDTO> getProfessorsByDegree(Integer limit, Integer initial, boolean isActive, String degree);
 
     ProfessorDTO addProfessor (ProfessorDTO professorDTO);
 

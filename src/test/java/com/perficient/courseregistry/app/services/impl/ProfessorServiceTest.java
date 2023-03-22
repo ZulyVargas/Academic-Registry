@@ -61,7 +61,7 @@ public class ProfessorServiceTest {
         professorList.add(professorTest);
         when(professorRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(professorList);
 
-        List<ProfessorDTO> professorDTOsReturned = professorService.getAllProfessors(1,1, Optional.of(true));
+        List<ProfessorDTO> professorDTOsReturned = professorService.getAllProfessors(1,1, Optional.of(true), Optional.of("TEST"));
 
         assertEquals(new ArrayList<>(List.of(professorDTOTest)),professorDTOsReturned);
     }
@@ -86,9 +86,9 @@ public class ProfessorServiceTest {
     public void getProffesorsByDegree_givenDegree_shouldReturnListOfDTOProfessors(){
         List<Professor> professorList = new ArrayList<>();
         professorList.add(professorTest);
-        when(professorRepository.findAllByDegree(any(String.class))).thenReturn(professorList);
+        when(professorRepository.findAllByDegree(any(), any(), any(), any())).thenReturn(professorList);
 
-        List<ProfessorDTO> professorDTOsReturned = professorService.getProfessorsByDegree("TEST");
+        List<ProfessorDTO> professorDTOsReturned = professorService.getProfessorsByDegree(1,1,true, "TEST");
 
         assertEquals(new ArrayList<>(List.of(professorDTOTest)), professorDTOsReturned);
     }

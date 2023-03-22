@@ -41,9 +41,9 @@ public class ProfessorControllerTest {
     public void getAllProfessors_shouldReturnListOfDTOProfessors() {
         List<ProfessorDTO> professorList = new ArrayList<>();
         professorList.add(professorDTOTest);
-        when(professorService.getAllProfessors(any(), any(), any())).thenReturn(professorList);
+        when(professorService.getAllProfessors(any(), any(), any(), any())).thenReturn(professorList);
 
-        ResponseEntity<List<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true);
+        ResponseEntity<List<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true, null);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertEquals(professorList, response.getBody());
@@ -67,12 +67,12 @@ public class ProfessorControllerTest {
     }
 
     @Test
-    public void getProffesorsByDegree_givenDegree_shouldReturnListOfDTOProfessors() {
+    public void getAllProffesorsByDegree_givenDegree_shouldReturnListOfDTOProfessors() {
         List<ProfessorDTO> professorList = new ArrayList<>();
         professorList.add(professorDTOTest);
-        when(professorService.getProfessorsByDegree(any(String.class))).thenReturn(professorList);
+        when(professorService.getProfessorsByDegree(any(), any(), any(), any())).thenReturn(professorList);
 
-        ResponseEntity<List<ProfessorDTO>> response = professorController.getProffesorsByDegree("TEST");
+        ResponseEntity<List<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true, null);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertEquals(professorList, response.getBody());
