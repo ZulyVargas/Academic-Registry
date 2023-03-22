@@ -22,18 +22,15 @@ public class SubjectController {
 
     @GetMapping
     public ResponseEntity<List<SubjectDTO>> getAllSubjects(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
-                                                          @RequestParam(name = "offset", defaultValue = "1") Integer offset,
-                                                          @RequestParam(name = "active", required = false) Boolean isActive) {
-        return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive)).stream().peek(SubjectDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
+                                                           @RequestParam(name = "offset", defaultValue = "1") Integer offset,
+                                                           @RequestParam(name = "active", required = false) Boolean isActive,
+                                                           @RequestParam(name = "title", required = false) String title) {
+        return new ResponseEntity<List<SubjectDTO>>(subjectService.getAllSubjects(limit, offset, Optional.ofNullable(isActive), Optional.ofNullable(title)).stream().peek(SubjectDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
     public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable String id){
         return new ResponseEntity<SubjectDTO>(subjectService.getSubjectById(id).generateLinks(), HttpStatus.OK);
-    }
-    @GetMapping(value="/title")
-    public ResponseEntity<List<SubjectDTO>> getSubjectByTitle(@RequestParam(name = "title") String title){
-        return new ResponseEntity<List<SubjectDTO>>(subjectService.getSubjectByTitle(title).stream().peek(SubjectDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @PostMapping

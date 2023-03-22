@@ -38,7 +38,6 @@ public class SubjectDTO extends Resource<SubjectDTO> implements Serializable {
     public SubjectDTO generateLinks() {
         if(prerequisites!=null) this.setPrerequisites(prerequisites.stream().peek(SubjectDTO::generateLinks).collect(Collectors.toSet()));
         this.add(linkTo(SubjectController.class).slash(this.getSubjectId().toString()).withSelfRel());
-        this.add(linkTo(methodOn(SubjectController.class).getSubjectByTitle(title)).withRel("getByTitle"));
         return this;
     }
 }

@@ -40,9 +40,9 @@ public class SubjectControllerTest {
     public void getAllSubjects_shouldReturnSetOfDTOSubjects(){
         List<SubjectDTO> subjectDTOList = new ArrayList<>();
         subjectDTOList.add(subjectDTOTest);
-        when(subjectService.getAllSubjects(any(), any(), any())).thenReturn(subjectDTOList);
+        when(subjectService.getAllSubjects(any(), any(), any(), any())).thenReturn(subjectDTOList);
 
-        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true);
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true, null);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertEquals(subjectDTOList, response.getBody());
@@ -65,23 +65,16 @@ public class SubjectControllerTest {
     }
 
     @Test
-    public void getSubjectByTitle_givenTitle_shouldReturnSubjectDTO(){
+    public void getSubjectsByTitle_givenTitle_shouldReturnSubjectDTO(){
         List<SubjectDTO> subjectDTOList = new ArrayList<>();
         subjectDTOList.add(subjectDTOTest);
+        System.out.println("service " + subjectService);
+        when(subjectService.getAllSubjects(any(), any(), any(), any())).thenReturn(subjectDTOList);
 
-        when(subjectService.getSubjectByTitle(anyString())).thenReturn(subjectDTOList);
-
-        ResponseEntity<List<SubjectDTO>> response = subjectController.getSubjectByTitle("TEST");
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true,"TEST");
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertEquals(subjectDTOList, response.getBody());
-    }
-
-    @Test
-    public void getSubjectByTitle_givenEmptyTitle_shouldThrowException(){
-        when(subjectService.getSubjectByTitle(anyString())).thenThrow(new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION, "TITLE"));
-
-        assertThrows(SubjectException.class, () -> subjectController.getSubjectByTitle(""));
     }
 
     @Test

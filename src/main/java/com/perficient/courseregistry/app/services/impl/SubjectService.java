@@ -22,15 +22,16 @@ public class SubjectService  implements ISubjectService {
     }
 
     @Override
-    public List<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
+    public List<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive,  Optional<String> title) {
         int initial = offset== 1 ? 0 : limit*(offset-1);
+        if (title.isPresent()) return getSubjectByTitle(limit, initial, isActive.orElse(true), title.get());
         return groupSubjects(subjectRepository.findAll(limit, initial, isActive.orElse(true) ));
     }
 
     @Override
-    public List<SubjectDTO> getSubjectByTitle(String title) {
+    public List<SubjectDTO> getSubjectByTitle(Integer limit, Integer offset, boolean isActive, String title) {
         try{
-            return groupSubjects(subjectRepository.findByTitle(title));
+            return groupSubjects(subjectRepository.findByTitle(limit, offset, isActive, title));
         }catch (Exception ex){
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
         }

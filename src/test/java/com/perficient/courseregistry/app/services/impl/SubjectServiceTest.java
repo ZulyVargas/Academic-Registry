@@ -45,28 +45,20 @@ public class SubjectServiceTest {
         subjectList.add(subjectTest);
         when(subjectRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(subjectList);
 
-        List<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true));
+        List<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true), Optional.empty());
 
         assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOsReturned);
     }
 
     @Test
-    public void getSubjectByTitle_givenValidTitle_shouldReturnSubjectDTO() {
+    public void getSubjectsByTitle_givenValidTitle_shouldReturnSubjectDTO() {
         List<Subject> subjectList = new ArrayList<>();
         subjectList.add(subjectTest);
-        when(subjectRepository.findByTitle(any(String.class))).thenReturn(subjectList);
+        when(subjectRepository.findByTitle(any(Integer.class), any(Integer.class), any(Boolean.class), any(String.class))).thenReturn(subjectList);
 
-        List<SubjectDTO> subjectDTOReturned = subjectService.getSubjectByTitle("SUBT");
+        List<SubjectDTO> subjectDTOReturned = subjectService.getSubjectByTitle(1,1,true,"SUBT");
 
         assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOReturned);
-    }
-
-    @Test
-    public void getSubjectByTitle_givenEmptyTitle_shouldThrowException() {
-        when(subjectRepository.findByTitle(any())).thenReturn(null);
-
-        assertThrows(SubjectException.class, () -> subjectService.getSubjectByTitle(""));
-
     }
 
     @Test
