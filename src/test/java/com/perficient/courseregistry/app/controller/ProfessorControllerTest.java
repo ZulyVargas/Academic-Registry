@@ -70,7 +70,7 @@ public class ProfessorControllerTest {
     public void getAllProffesorsByDegree_givenDegree_shouldReturnListOfDTOProfessors() {
         List<ProfessorDTO> professorList = new ArrayList<>();
         professorList.add(professorDTOTest);
-        when(professorService.getProfessorsByDegree(any(), any(), any(), any())).thenReturn(professorList);
+        when(professorService.getAllProfessors(any(), any(), any(), any())).thenReturn(professorList);
 
         ResponseEntity<List<ProfessorDTO>> response = professorController.getAllProfessors(1,1,true, null);
 

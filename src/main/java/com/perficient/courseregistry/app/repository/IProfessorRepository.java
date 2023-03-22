@@ -18,7 +18,7 @@ public interface IProfessorRepository extends CrudRepository<Professor, String> 
     @Query("SELECT * FROM INFO_PROFESSORS WHERE user_id = :professorId")
     Optional<Professor> findById(UUID professorId );
 
-    @Query("SELECT * FROM INFO_PROFESSORS WHERE (active_user OR active_user=:isActive) AND degree LIKE '%'||:degree||'%' ORDER BY name LIMIT :limit OFFSET :initial")
+    @Query("SELECT * FROM INFO_PROFESSORS WHERE (active_user OR active_user=:isActive) AND degree ILIKE '%'||:degree||'%' ORDER BY name LIMIT :limit OFFSET :initial")
     List<Professor> findAllByDegree(@Param("limit") Integer limit, @Param("initial") Integer initial, @Param("isActive") boolean isActive, @Param("degree") String degree);
 
     @Modifying
