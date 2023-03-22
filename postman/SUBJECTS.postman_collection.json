@@ -186,6 +186,59 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"Data Source\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-07T08:04:44.9324167-05:00\"\n}"
+				},
+				{
+					"name": "getAll  by title",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/subjects?title=cal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"subjects"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "cal"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 22 Mar 2023 15:28:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerequisites\": [],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerequisites\": [],\n                        \"links\": [\n                            {\n                                \"rel\": \"self\",\n                                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                            }\n                        ]\n                    }\n                ],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/06ad6480-ba04-11ed-afa1-0242ac120002\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n            }\n        ]\n    }\n]"
 				}
 			]
 		},
@@ -305,138 +358,6 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The subject with the given ID does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:21.6891962-05:00\"\n}"
-				}
-			]
-		},
-		{
-			"name": "getByTitle",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/title?title=BIOL",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects",
-						"title"
-					],
-					"query": [
-						{
-							"key": "title",
-							"value": "BIOL"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "getByTitle",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/title?title=BIOL",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects",
-								"title"
-							],
-							"query": [
-								{
-									"key": "title",
-									"value": "BIOL"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Fri, 17 Mar 2023 16:20:21 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n        \"code\": \"BICN\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=BIOLOGIA%20Y%20CIENCIAS%20NATURALES\"\n            }\n        ]\n    }\n]"
-				},
-				{
-					"name": "getByTitle (Title not found exception)",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects",
-								"title",
-								"BIOLOGI"
-							]
-						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:34 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"field\": \"title\",\n    \"message\": \"The subject with the given title does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:34.8940374-05:00\"\n}"
 				}
 			]
 		},
