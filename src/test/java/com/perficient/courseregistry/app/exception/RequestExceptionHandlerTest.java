@@ -47,7 +47,7 @@ public class RequestExceptionHandlerTest {
 
     @Test
     public void handleRequestExceptionEnums(){
-        ResponseEntity<Error> responseExpected = new ResponseEntity<>(new Error(invalidFormatException.getMessage(), "The indicated value is not allowed, you must use the default values or use the correct format",
+        ResponseEntity<Error> responseExpected = new ResponseEntity<>(new Error(invalidFormatException.getValue().toString(), "The indicated value is not allowed, you must use the default values or use the correct format",
                                                                                 HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota"))),
                                                                         HttpStatus.BAD_REQUEST);
         ResponseEntity<Error> responseReturned = requestExceptionHandler.handleRequestExceptionEnums(invalidFormatException);
