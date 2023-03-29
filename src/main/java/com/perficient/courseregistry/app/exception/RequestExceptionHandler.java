@@ -1,6 +1,7 @@
 package com.perficient.courseregistry.app.exception;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.perficient.courseregistry.app.exception.custom.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -32,6 +33,11 @@ public class RequestExceptionHandler {
     public ResponseEntity<Error> handleRequestExceptionFormat(IllegalArgumentException exception){
         Error response = new Error(exception.getMessage(), "The indicated value is not allowed, you must use the correct format", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("America/Bogota")));
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value={ InvalidCredentialsException.class})
+    public ResponseEntity<Error> handleInvalidCredentialsException(InvalidCredentialsException exception){
+        return  new ResponseEntity<>(exception.getServerErrorResponseDto(),HttpStatus.NOT_FOUND);
     }
 
 }

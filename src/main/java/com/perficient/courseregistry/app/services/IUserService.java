@@ -9,4 +9,6 @@ public interface IUserService {
     UserDTO updateUser(UserDTO userDTO);
 
     Boolean deleteUser(String id);
+
+    UserDTO findByEmail(String email);
 }

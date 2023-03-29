@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Data
 @Service
-public abstract class UserService implements IUserService {
+public  class UserService implements IUserService {
 
     @Autowired
     private IUserRepository userRepository;
@@ -51,5 +51,9 @@ public abstract class UserService implements IUserService {
         }catch (Exception ex){
             throw new UserException(UserException.USER_DELETE_EXCEPTION, "ID");
         }
+    }
+
+    public UserDTO findByEmail(String email){
+        return userMapper.userToUserDTO(userRepository.findByEmail(email));
     }
 }
