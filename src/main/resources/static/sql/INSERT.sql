@@ -1,23 +1,23 @@
 --------------- USERS ----------------------
 
-insert into USERS (user_id, name, username, password, email, gender, active_user) values ('6f323b65-cd24-48a9-bc53-e3e45676e619', 'Pierre Aubray', 'paubray0', 'j95p5YVCl', 'paubray0@auda.org.au', 'F', true);
-insert into USERS (user_id, name, username, password, email, gender, active_user) values ('131e8918-730b-4739-9b9b-e91510f96fa9', 'Hayden Strephan', 'hstrephan1', '8rOmjSki', 'hstrephan1@oracle.com', 'M', true);
-insert into USERS (user_id, name, username, password, email, gender, active_user) values ('8983514f-2e8a-4664-b616-2ea1744cb6af', 'Kerry Waslin', 'kwaslin2', 'o70kLhC4QQkO', 'kwaslin2@liveinternet.ru', 'M', true);
-insert into USERS (user_id, name, username, password, email, gender, active_user) values ('b378f207-0f03-469c-bb6f-058779a2ad32', 'Sandi Sobieski', 'ssobieski3', 'knxGjrTj', 'ssobieski3@reverbnation.com', 'F', true);
-insert into USERS (user_id, name, username, password, email, gender, active_user) values ('273f9c9c-c900-436b-af8a-65aead73052c', 'Amberly Pietroni', 'apietroni4', 'A8PQNZA', 'apietroni4@delicious.com', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('022ac2b9-516f-4e58-b976-9c77eca0f53f', 'Liane Swaby', 'lswaby0', 'oGNfU9Y', 'lswaby0@weibo.com', 'F', false);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('a562d556-2103-4873-9275-85adf9097e6c', 'Benedikt McQuade', 'bmcquade1', 'Uk0tOgZ0XEr', 'bmcquade1@blogspot.com', 'F', false);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('f29cabee-6278-433a-b2b5-36a26400a0f8', 'Clarette Frany', 'cfrany2', 'GXZHtb', 'cfrany2@spiegel.de', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('04ed2403-b934-49f9-a580-326bae9ae68c', 'Harbert Bragg', 'hbragg3', 'L72bC7qZ7', 'hbragg3@toplist.cz', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('bac15dd9-2f75-455a-ab81-bfc14714931a', 'Malinde Oda', 'moda4', 'oGsT9jdfYcAi', 'moda4@house.gov', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('8736bc3a-e4b6-42db-aae8-6848c5b61efd', 'Manda Casey', 'mcasey5', '4v4M85', 'mcasey5@mail.ru', 'F', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('59cae71b-4eed-47ab-99e2-7c1b78101107', 'Eveleen Stainfield', 'estainfield6', 'mwUvqcbCTwO', 'estainfield6@1688.com', 'F', false);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('2e7f1073-7026-4254-8ce5-d394078d51d3', 'Jacquelyn Astell', 'jastell7', '0qNVrS1H', 'jastell7@miitbeian.gov.cn', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('ad460c1d-b17b-4cfa-b834-74bd4f9c363e', 'Hedvige Elliott', 'helliott8', 'eoHONxscTy', 'helliott8@samsung.com', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('15d01094-244e-4df8-a9d1-ec7bd750a7a5', 'Parry Screen', 'pscreen9', '02TAA4c8Axu3', 'pscreen9@mediafire.com', 'M', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('cf3a5a13-3035-447c-aa66-1f44dcbcc998', 'Timothee Hand', 'thanda', 'CeIV8zuGA5B', 'thanda@imdb.com', 'F', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('f0a71a78-728c-4b1e-8e06-c53d64c19a64', 'Thedrick Jamot', 'tjamotb', 'VtwqQU9PLsqL', 'tjamotb@rambler.ru', 'F', true);
-insert into users (user_id, name, username, password, email, gender, active_user) values ('19e781e9-0698-4666-a728-d14ef3b98ad7', 'Wald Guilfoyle', 'wguilfoylec', 'oQAKjSF', 'wguilfoylec@upenn.edu', 'M', true);
+insert into USERS (user_id, name, username, password, email, gender, active_user, role) values ('6f323b65-cd24-48a9-bc53-e3e45676e619', 'Pierre Aubray', 'paubray0', 'j95p5YVCl', 'paubray0@auda.org.au', 'F', true, 'STUDENT');
+insert into USERS (user_id, name, username, password, email, gender, active_user, role) values ('131e8918-730b-4739-9b9b-e91510f96fa9', 'Hayden Strephan', 'hstrephan1', '8rOmjSki', 'hstrephan1@oracle.com', 'M', true, 'STUDENT');
+insert into USERS (user_id, name, username, password, email, gender, active_user, role) values ('8983514f-2e8a-4664-b616-2ea1744cb6af', 'Kerry Waslin', 'kwaslin2', 'o70kLhC4QQkO', 'kwaslin2@liveinternet.ru', 'M', true, 'STUDENT');
+insert into USERS (user_id, name, username, password, email, gender, active_user, role) values ('b378f207-0f03-469c-bb6f-058779a2ad32', 'Sandi Sobieski', 'ssobieski3', 'knxGjrTj', 'ssobieski3@reverbnation.com', 'F', true, 'DEAN');
+insert into USERS (user_id, name, username, password, email, gender, active_user, role) values ('273f9c9c-c900-436b-af8a-65aead73052c', 'Amberly Pietroni', 'apietroni4', 'A8PQNZA', 'apietroni4@delicious.com', 'M', true, 'DEAN');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('022ac2b9-516f-4e58-b976-9c77eca0f53f', 'Liane Swaby', 'lswaby0', 'oGNfU9Y', 'lswaby0@weibo.com', 'F', false, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('a562d556-2103-4873-9275-85adf9097e6c', 'Benedikt McQuade', 'bmcquade1', 'Uk0tOgZ0XEr', 'bmcquade1@blogspot.com', 'F', false, 'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('f29cabee-6278-433a-b2b5-36a26400a0f8', 'Clarette Frany', 'cfrany2', 'GXZHtb', 'cfrany2@spiegel.de', 'M', true,'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('04ed2403-b934-49f9-a580-326bae9ae68c', 'Harbert Bragg', 'hbragg3', 'L72bC7qZ7', 'hbragg3@toplist.cz', 'M', true, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('bac15dd9-2f75-455a-ab81-bfc14714931a', 'Malinde Oda', 'moda4', 'oGsT9jdfYcAi', 'moda4@house.gov', 'M', true, 'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('8736bc3a-e4b6-42db-aae8-6848c5b61efd', 'Manda Casey', 'mcasey5', '4v4M85', 'mcasey5@mail.ru', 'F', true, 'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('59cae71b-4eed-47ab-99e2-7c1b78101107', 'Eveleen Stainfield', 'estainfield6', 'mwUvqcbCTwO', 'estainfield6@1688.com', 'F', false, 'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('2e7f1073-7026-4254-8ce5-d394078d51d3', 'Jacquelyn Astell', 'jastell7', '0qNVrS1H', 'jastell7@miitbeian.gov.cn', 'M', true, 'STUDENT');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('ad460c1d-b17b-4cfa-b834-74bd4f9c363e', 'Hedvige Elliott', 'helliott8', 'eoHONxscTy', 'helliott8@samsung.com', 'M', true, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('15d01094-244e-4df8-a9d1-ec7bd750a7a5', 'Parry Screen', 'pscreen9', '02TAA4c8Axu3', 'pscreen9@mediafire.com', 'M', true, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('cf3a5a13-3035-447c-aa66-1f44dcbcc998', 'Timothee Hand', 'thanda', 'CeIV8zuGA5B', 'thanda@imdb.com', 'F', true, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('f0a71a78-728c-4b1e-8e06-c53d64c19a64', 'Thedrick Jamot', 'tjamotb', 'VtwqQU9PLsqL', 'tjamotb@rambler.ru', 'F', true, 'PROFESSOR');
+insert into users (user_id, name, username, password, email, gender, active_user, role) values ('19e781e9-0698-4666-a728-d14ef3b98ad7', 'Wald Guilfoyle', 'wguilfoylec', 'oQAKjSF', 'wguilfoylec@upenn.edu', 'M', true, 'STUDENT');
 
 --------------- STUDENTS -------------------
 
@@ -79,3 +79,4 @@ insert into RECORDS (record_id, student_id, course_id, type, grade) values ('c1f
 
 insert into PREREQUISITES (subject_base, pre_subject) values ('06ad6480-ba04-11ed-afa1-0242ac120002','ed4f110a-ba03-11ed-afa1-0242ac120002');
 insert into PREREQUISITES (subject_base, pre_subject) values ('ed4f110a-ba03-11ed-afa1-0242ac120002','1f3efb1c-ba04-11ed-afa1-0242ac120002');
+

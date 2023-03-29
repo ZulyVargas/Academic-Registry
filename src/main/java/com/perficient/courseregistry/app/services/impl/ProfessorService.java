@@ -29,6 +29,7 @@ public class ProfessorService extends UserService implements IProfessorService {
     public List<ProfessorDTO> getAllProfessors(Integer limit, Integer offset, Optional<Boolean> isActive, Optional<String> degree ){
         int initial = offset== 1 ? 0 : limit*(offset-1);
         if (degree.isPresent()) return getProfessorsByDegree(limit, initial, isActive.orElse(true), degree.get());
+        List<Professor> temp = professorRepository.findAll(limit, initial, isActive.orElse(true));
         return professorRepository.findAll(limit, initial, isActive.orElse(true) )
                                   .stream()
                                   .map(professor -> professorMapper.professorToProfessorDto(professor))

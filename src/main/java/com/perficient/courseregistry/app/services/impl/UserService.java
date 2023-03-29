@@ -8,6 +8,7 @@ import com.perficient.courseregistry.app.repository.IUserRepository;
 import com.perficient.courseregistry.app.services.IUserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,6 +34,8 @@ public abstract class UserService implements IUserService {
     @Override
     public UserDTO updateUser(UserDTO userDTO) {
         try {
+            //encrypt password
+            userDTO.setPassword(BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt()));
             return this.addUser(userDTO);
         }catch (Exception ex){
             throw new UserException(UserException.USER_UPDATE_EXCEPTION, "ID");

@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.Column;
+import com.perficient.courseregistry.app.enums.ROLE;
 
 @Data
 @SuperBuilder
@@ -25,5 +26,5 @@ public class User {
     private String gender;
     @Column("active_user")
     private boolean active;
-
+    private ROLE role;
 }

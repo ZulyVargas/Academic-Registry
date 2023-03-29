@@ -32,6 +32,7 @@ public class CourseDTO extends Resource<CourseDTO> implements Serializable {
     @Override
     public CourseDTO generateLinks() {
         setSubject(subject.generateLinks());
+        setProfessor(professor.generateLinks());
         this.add(linkTo(CourseController.class).slash(this.getCourseId().toString()).withSelfRel());
         return this;
     }

@@ -11,13 +11,13 @@ select b.SUBJECT_ID  as base_id, pr.SUBJECT_ID  as subject_id, pr.title as title
 	  ----------  INFO_PROFESSORS  ----------
 
 create view INFO_PROFESSORS as
-select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active_user as active_user , p.degree as degree
+select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active_user as active_user , p.degree as degree, u.role as role
 from users u join professors p on u.user_id = p.professor_id;
 
 	  ----------  INFO_STUDENTS   ----------
 
 create view INFO_STUDENTS as
-select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active_user as active_user, s.avg, s.status
+select u.user_id as user_id, u.name as name , u.username as username , u.password as "password"  , u.email as email , u.gender as gender, u.active_user as active_user, s.avg, s.status, u.role as role
 from users u join students s on u.USER_ID = s.STUDENT_ID;
 
 ----------------- VIEWS FOR COURSES: ------------------------
