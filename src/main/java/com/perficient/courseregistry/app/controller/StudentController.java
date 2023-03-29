@@ -5,6 +5,8 @@ import com.perficient.courseregistry.app.services.IStudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    @RolesAllowed({"ADMIN"})
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                            @RequestParam(name = "offset", defaultValue = "1") Integer offset,
@@ -26,24 +29,27 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getAllStudents(limit, offset, Optional.ofNullable(isActive)).stream().peek(StudentDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ADMIN"})
     @GetMapping(value="/{id}")
     public ResponseEntity<StudentDTO> getStudentById(@PathVariable String id){
         return new ResponseEntity<>(studentService.getStudentById(id).generateLinks(), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ADMIN"})
     @PostMapping
     public ResponseEntity<StudentDTO> addStudent(@RequestBody @Valid StudentDTO studentDTO){
         return new ResponseEntity<>(studentService.addStudent(studentDTO).generateLinks(), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ADMIN"})
     @PutMapping
     public ResponseEntity<StudentDTO> updateStudent(@RequestBody @Valid StudentDTO studentDTO){
         return new ResponseEntity<>(studentService.updateStudent(studentDTO).generateLinks(), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ADMIN"})
     @DeleteMapping(value="/{studentId}")
     public ResponseEntity<Boolean> deleteStudent(@PathVariable String studentId){
         return new ResponseEntity<Boolean>(studentService.deleteStudent(studentId), HttpStatus.OK);
     }
-
 }
