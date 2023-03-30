@@ -4,7 +4,7 @@
  
 ## Entity Diagram
 
-![entity-diagram.png](img/entity-diagram.png)
+![entity-diagram.png](./img/entity-diagram.PNG)
 
 ## Construido con
 
