@@ -21,7 +21,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RolesAllowed({"ADMIN"})
+    @RolesAllowed({"ADMIN","DEAN"})
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                            @RequestParam(name = "offset", defaultValue = "1") Integer offset,
@@ -29,7 +29,7 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getAllStudents(limit, offset, Optional.ofNullable(isActive)).stream().peek(StudentDTO::generateLinks).collect(Collectors.toList()), HttpStatus.OK);
     }
 
-    @RolesAllowed({"ADMIN"})
+    @RolesAllowed({"ADMIN","DEAN"})
     @GetMapping(value="/{id}")
     public ResponseEntity<StudentDTO> getStudentById(@PathVariable String id){
         return new ResponseEntity<>(studentService.getStudentById(id).generateLinks(), HttpStatus.OK);

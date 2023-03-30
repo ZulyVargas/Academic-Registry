@@ -9,11 +9,11 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Date;
 
 import static com.perficient.courseregistry.app.utils.adapters.Constants.CLAIMS_ROLES_KEY;
@@ -35,12 +35,19 @@ public class AuthController {
     @PostMapping
     public TokenDTO login(@RequestBody LoginDTO loginDto ) {
         UserDTO userDTO = userService.findByEmail( loginDto.getEmail() );
-        if ( loginDto.getPassword().equals(userDTO.getPassword() ) ) {
-            return generateTokenDto( userDTO );
+        if (BCrypt.checkpw(loginDto.getPassword(), userDTO.getPassword()) ) {
+            return generateTokenDTO( userDTO );
         }
         else {
             throw new InvalidCredentialsException();
         }
+    }
+
+    private TokenDTO generateTokenDTO( UserDTO user ) {
+        Calendar expirationDate = Calendar.getInstance();
+        expirationDate.add( Calendar.MINUTE, TOKEN_DURATION_MINUTES );
+        String token = generateToken( user, expirationDate.getTime() );
+        return new TokenDTO( token, expirationDate.getTime() );
     }
 
     private String generateToken( UserDTO user, Date expirationDate ) {
@@ -51,12 +58,5 @@ public class AuthController {
                 .setExpiration( expirationDate )
                 .signWith( SignatureAlgorithm.HS256, secret )
                 .compact();
-    }
-
-    private TokenDTO generateTokenDto( UserDTO user ) {
-        Calendar expirationDate = Calendar.getInstance();
-        expirationDate.add( Calendar.MINUTE, TOKEN_DURATION_MINUTES );
-        String token = generateToken( user, expirationDate.getTime() );
-        return new TokenDTO( token, expirationDate.getTime() );
     }
 }

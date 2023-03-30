@@ -8,6 +8,7 @@ import com.perficient.courseregistry.app.repository.IUserRepository;
 import com.perficient.courseregistry.app.services.IUserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,6 +25,8 @@ public  class UserService implements IUserService {
     @Override
     public UserDTO addUser(UserDTO userDTO) {
         try{
+            //Encrypt password
+            userDTO.setPassword(BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt()));
             return userMapper.userToUserDTO(userRepository.save(userMapper.userDtoToUser(userDTO)));
         }catch (Exception ex){
             throw new UserException(UserException.USER_INSERT_EXCEPTION, "email or username unique");

@@ -3,8 +3,6 @@ package com.perficient.courseregistry.app.config;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 

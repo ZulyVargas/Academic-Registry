@@ -25,14 +25,14 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @RolesAllowed({"DEAN","ADMIN"})
+    @RolesAllowed({"DEAN","ADMIN", "PROFESSOR", "STUDENT"})
     @GetMapping
     public ResponseEntity<List<CourseDTO>> getAllCourses(@RequestParam(name = "limit", defaultValue = "10")  Integer limit,
                                                          @RequestParam(name = "offset", defaultValue = "1") Integer offset,
                                                          @RequestParam(name = "active", required = false) Boolean isActive){
         return new ResponseEntity<List<CourseDTO>>(courseService.getAllCourses(limit, offset, Optional.ofNullable(isActive)).stream().peek(CourseDTO::generateLinks).collect(Collectors.toList()),HttpStatus.OK);
     }
-    @RolesAllowed({"DEAN","ADMIN"})
+    @RolesAllowed({"DEAN","ADMIN","PROFESSOR"})
     @GetMapping(value="/{id}")
     public ResponseEntity<CourseDTO> getCourseById(@PathVariable String id){
         return new ResponseEntity<CourseDTO>(courseService.getCourseById(id).generateLinks(), HttpStatus.OK);
