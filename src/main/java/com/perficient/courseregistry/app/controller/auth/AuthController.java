@@ -35,9 +35,7 @@ public class AuthController {
     @PostMapping
     public TokenDTO login(@RequestBody LoginDTO loginDto ) {
         UserDTO userDTO = userService.findByEmail( loginDto.getEmail() );
-        if (BCrypt.checkpw(loginDto.getPassword(), userDTO.getPassword()) ) {
-            return generateTokenDTO( userDTO );
-        }
+        if (BCrypt.checkpw(loginDto.getPassword(), userDTO.getPassword()) ) return generateTokenDTO( userDTO );
         else {
             throw new InvalidCredentialsException();
         }
