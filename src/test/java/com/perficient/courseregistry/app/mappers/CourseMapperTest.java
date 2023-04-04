@@ -15,7 +15,7 @@ import org.mapstruct.factory.Mappers;
 import java.util.HashSet;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CourseMapperTest {
@@ -26,11 +26,24 @@ public class CourseMapperTest {
 
     @Before
     public void setUp() {
-        Professor professor = Professor.builder().userId(UUID.randomUUID()).name("USER TEST").email("usertest@test.edu")
-                .gender("F").username("user.test").active(true).degree("TEST").build();
-        ProfessorDTO professorDTO = ProfessorDTO.builder().userId(UUID.randomUUID()).name("USER TEST").email("usertest@test.edu")
-                .gender("F").username("user.test").active(true).degree("TEST").build();
-
+        Professor professor = Professor.builder()
+                                       .userId(UUID.randomUUID())
+                                       .name("USER TEST")
+                                       .email("usertest@test.edu")
+                                       .gender("F")
+                                       .username("user.test")
+                                       .active(true)
+                                       .degree("TEST")
+                                       .build();
+        ProfessorDTO professorDTO = ProfessorDTO.builder()
+                                                .userId(UUID.randomUUID())
+                                                .name("USER TEST")
+                                                .email("usertest@test.edu")
+                                                .gender("F")
+                                                .username("user.test")
+                                                .active(true)
+                                                .degree("TEST")
+                                                .build();
         Subject subject = new Subject();
         subject.setSubjectId(UUID.randomUUID());
         subject.setTitle("SUBJECT TEST");
@@ -38,9 +51,14 @@ public class CourseMapperTest {
         subject.setCredits(4);
         subject.setActive(true);
         subject.setPrerequisites(new HashSet<>());
-        SubjectDTO subjectDTOTest = SubjectDTO.builder().subjectId(subject.getSubjectId()).title("SUBJECT TEST").code("SUBT").credits(4)
-                .active(true).prerequisites(new HashSet<>()).build();
-
+        SubjectDTO subjectDTOTest = SubjectDTO.builder()
+                                             .subjectId(subject.getSubjectId())
+                                             .title("SUBJECT TEST")
+                                             .code("SUBT")
+                                             .credits(4)
+                                             .active(true)
+                                             .prerequisites(new HashSet<>())
+                                             .build();
         courseTest = new Course();
         courseTest.setCourseId(UUID.randomUUID());
         courseTest.setGroupNumber("1");

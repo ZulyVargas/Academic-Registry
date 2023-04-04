@@ -39,11 +39,24 @@ public class CourseAdapterServiceTest {
 
     @Before
     public void setUp(){
-        ProfessorDTO professorDTO = ProfessorDTO.builder().userId(UUID.randomUUID()).name("USER TEST").email("usertest@test.edu")
-                .gender("F").username("user.test").active(true).degree("TEST").build();
+        ProfessorDTO professorDTO = ProfessorDTO.builder()
+                                                .userId(UUID.randomUUID())
+                                                .name("USER TEST")
+                                                .email("usertest@test.edu")
+                                                .gender("F")
+                                                .username("user.test")
+                                                .active(true)
+                                                .degree("TEST")
+                                                .build();
 
-        SubjectDTO subjectDTOTest = SubjectDTO.builder().subjectId(UUID.randomUUID()).title("SUBJECT TEST").code("SUBT").credits(4)
-                .active(true).prerequisites(new HashSet<>()).build();
+        SubjectDTO subjectDTOTest = SubjectDTO.builder()
+                                              .subjectId(UUID.randomUUID())
+                                              .title("SUBJECT TEST")
+                                              .code("SUBT")
+                                              .credits(4)
+                                              .active(true)
+                                              .prerequisites(new HashSet<>())
+                                              .build();
 
         courseDTOTest = new CourseDTO();
         courseDTOTest.setCourseId(UUID.randomUUID());

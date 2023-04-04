@@ -73,7 +73,6 @@ public class SubjectControllerTest {
     public void getSubjectsByTitle_givenTitle_shouldReturnSubjectDTO(){
         List<SubjectDTO> subjectDTOList = new ArrayList<>();
         subjectDTOList.add(subjectDTOTest);
-        System.out.println("service " + subjectService);
         when(subjectService.getAllSubjects(any(), any(), any(), any())).thenReturn(subjectDTOList);
 
         ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true,"TEST");
