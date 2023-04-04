@@ -1,5 +1,6 @@
 package com.perficient.courseregistry.app.repository;
 
+import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.entities.User;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
@@ -14,4 +15,7 @@ public interface IUserRepository extends CrudRepository<User, String> {
     @Modifying
     @Query("UPDATE Users SET active_user= false WHERE user_id= :id ")
     boolean updateActive(@Param("id") UUID userId);
+
+    @Query("SELECT * FROM  Users WHERE email= :email ")
+    User findByEmail(@Param("email") String email);
 }

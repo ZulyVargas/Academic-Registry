@@ -1,7 +1,11 @@
 package com.perficient.courseregistry.app.services.impl;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
+import java.util.Optional;
+import java.util.Set;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
@@ -14,8 +18,9 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)

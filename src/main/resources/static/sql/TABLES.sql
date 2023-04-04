@@ -8,9 +8,9 @@ CREATE TABLE IF NOT EXISTS USERS (
 	password VARCHAR (60) not null,
 	email VARCHAR(100) unique not null,
 	gender VARCHAR(1) not null,
-	active_user BOOLEAN not null default true
+	active_user BOOLEAN not null default true,
+	role VARCHAR(20) not null
 );
-
 
 CREATE TABLE IF NOT EXISTS STUDENTS (
 	student_id uuid primary key,
@@ -74,3 +74,4 @@ CREATE TABLE IF NOT EXISTS  PREREQUISITES(
 	foreign KEY(pre_subject)
 		references subjects(subject_id)
 );
+

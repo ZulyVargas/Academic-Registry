@@ -1,6 +1,9 @@
 package com.perficient.courseregistry.app.dto;
 
-import lombok.*;
+import com.perficient.courseregistry.app.enums.ROLE;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import java.util.UUID;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,6 +31,8 @@ public class UserDTO implements Serializable {
     @NotBlank(message = "The gender of the user cannot be empty")
     private String gender;
     private boolean active;
+    private ROLE role;
     private ArrayList<Link> links;
+
 
 }

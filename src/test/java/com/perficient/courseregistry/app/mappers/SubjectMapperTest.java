@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mapstruct.factory.Mappers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SubjectMapperTest {
@@ -27,7 +27,6 @@ public class SubjectMapperTest {
         subjectTest.setCredits(4);
         subjectTest.setActive(true);
         subjectTest.setPrerequisites(new HashSet<>());
-
         subjectDTOTest = SubjectDTO.builder()
                                    .subjectId(UUID.fromString("d45e4121-cfd0-4307-813e-a50b3d7ea7b5"))
                                    .title("SUBJECT TEST")

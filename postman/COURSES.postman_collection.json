@@ -267,6 +267,86 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The course with the given ID does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-13T09:28:51.8907881-05:00\"\n}"
+				},
+				{
+					"name": "getById without access",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/v1/courses/38ef1de2-e0c6-404c-8cb0-b3e048a01fc0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"38ef1de2-e0c6-404c-8cb0-b3e048a01fc0"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Mar 2023 16:10:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"field\": \"Access is denied\",\n    \"message\": \"There is no authorization to access the resource.\",\n    \"httpStatus\": \"UNAUTHORIZED\",\n    \"timestamp\": \"2023-03-30T11:10:06.7066991-05:00\"\n}"
 				}
 			]
 		},

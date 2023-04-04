@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 public class ResponseExceptionHandlerTest {
 
     private ResponseExceptionHandler responseExceptionHandler = new ResponseExceptionHandler();
