@@ -1,6 +1,6 @@
 package com.perficient.courseregistry.app.entities;
 
-import lombok.*;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -20,7 +20,7 @@ public class Subject {
     @Column("active_subject")
     private boolean active;
     @Transient
-    private Set<Subject> prerrequisites;
+    private Set<Subject> prerequisites;
 
 
 }

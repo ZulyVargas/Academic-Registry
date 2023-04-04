@@ -1,25 +1,23 @@
 package com.perficient.courseregistry.app.entities;
 
-import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Set;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.relational.core.mapping.Column;
+import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
-import java.util.Set;
-import java.util.UUID;
-
-@Getter
-@Setter
+@Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(value="students")
 public class Student extends User{
-
-    @Column("student_id")
-    private UUID studentId;
     private double avg;
     private STATUS_STUDENT status;
     @MappedCollection(idColumn = "student_id")
-    private Set<Record> records ;
+    private Set<Record> records;
 
 }

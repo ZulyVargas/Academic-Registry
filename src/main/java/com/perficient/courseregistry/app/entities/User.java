@@ -1,16 +1,19 @@
 package com.perficient.courseregistry.app.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.UUID;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.Column;
 
-import java.util.UUID;
-
-@Getter
-@Setter
+@Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(value="users")
 public class User {
 
     @Column("user_id")
@@ -20,6 +23,7 @@ public class User {
     private String password;
     private String email;
     private String gender;
+    @Column("active_user")
     private boolean active;
 
 }

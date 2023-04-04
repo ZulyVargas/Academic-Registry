@@ -30,4 +30,3 @@ from subjects s join courses c on c.subject_id = s.subject_id
 				join users u on u.user_id = c.professor_id
 				join professors p on u.user_id  = p.professor_id;
 
-

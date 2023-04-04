@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS   COURSES (
 );
 
 CREATE TABLE IF NOT EXISTS  RECORDS(
-	record_id uuid primary key DEFAULT uuid_generate_v1(), 
+	record_id uuid primary key DEFAULT uuid_generate_v1(),
 	student_id uuid not null,
 	course_id uuid not null,
 	type VARCHAR (6) not null,

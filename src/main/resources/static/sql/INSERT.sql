@@ -24,14 +24,22 @@ insert into users (user_id, name, username, password, email, gender, active_user
 insert into STUDENTS (student_id, avg, status) values ('6f323b65-cd24-48a9-bc53-e3e45676e619', 3.5, 'ACTIVE');
 insert into STUDENTS (student_id, avg, status) values ('131e8918-730b-4739-9b9b-e91510f96fa9', 4.0, 'ACTIVE');
 insert into STUDENTS (student_id, avg, status) values ('8983514f-2e8a-4664-b616-2ea1744cb6af', 1.5, 'ACTIVE');
-
+insert into STUDENTS (student_id, avg, status) values ('59cae71b-4eed-47ab-99e2-7c1b78101107', 4.5, 'ACTIVE');
+insert into STUDENTS (student_id, avg, status) values ('f29cabee-6278-433a-b2b5-36a26400a0f8', 3.8, 'ACTIVE');
+insert into STUDENTS (student_id, avg, status) values ('273f9c9c-c900-436b-af8a-65aead73052c', 3.8, 'ACTIVE');
+insert into STUDENTS (student_id, avg, status) values ('a562d556-2103-4873-9275-85adf9097e6c', 3.2, 'ACTIVE');
+insert into STUDENTS (student_id, avg, status) values ('bac15dd9-2f75-455a-ab81-bfc14714931a', 3.6, 'ACTIVE');
 
 --------------- PROFESSORS -----------------
 
 insert into PROFESSORS (professor_id, degree) values ('b378f207-0f03-469c-bb6f-058779a2ad32', 'Masters Degree in Mathematics');
 insert into PROFESSORS (professor_id, degree) values ('273f9c9c-c900-436b-af8a-65aead73052c', 'Civil Engineer ');
-
-
+insert into PROFESSORS (professor_id, degree) values ('f0a71a78-728c-4b1e-8e06-c53d64c19a64', 'Architect');
+insert into PROFESSORS (professor_id, degree) values ('ad460c1d-b17b-4cfa-b834-74bd4f9c363e', 'Graphic designer');
+insert into PROFESSORS (professor_id, degree) values ('15d01094-244e-4df8-a9d1-ec7bd750a7a5', 'Civil Engineer');
+insert into PROFESSORS (professor_id, degree) values ('2e7f1073-7026-4254-8ce5-d394078d51d3', 'Civil Engineer');
+insert into PROFESSORS (professor_id, degree) values ('022ac2b9-516f-4e58-b976-9c77eca0f53f', 'Accountant');
+insert into PROFESSORS (professor_id, degree) values ('04ed2403-b934-49f9-a580-326bae9ae68c', 'Accountant');
 
 --------------- SUBJECTS -------------------
 
@@ -51,9 +59,6 @@ insert into SUBJECTS (subject_id, title, code, credits, active_subject ) values 
 insert into SUBJECTS (subject_id, title, code, credits, active_subject ) values ( 'ee2bf736-7f56-4d3d-a8db-2e44a5767325','EXPRESION GRAFICA', 'EGRA', 3, true);
 insert into SUBJECTS (subject_id, title, code, credits, active_subject ) values ( '30f70acc-3b66-4bed-90f3-38e614c055dd','CINE Y LITERATURA', 'CYLI', 2, false);
 insert into SUBJECTS (subject_id, title, code, credits, active_subject ) values ( 'bdc6e175-aa1e-4d78-8078-bfb6a80bba7a','HISTORIA DE COLOMBIA', 'HDCL', 1, false);
-
-delete from SUBJECTS where SUBJECT_ID = 'bdc6e175-aa1e-4d78-8078-bfb6a80bba7a';
-
 
 --------------- COURSES --------------------
 

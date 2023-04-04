@@ -7,7 +7,6 @@ import com.perficient.courseregistry.app.mappers.ISubjectMapper;
 import com.perficient.courseregistry.app.repository.ISubjectRepository;
 import com.perficient.courseregistry.app.services.ISubjectService;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,16 +22,16 @@ public class SubjectService  implements ISubjectService {
     }
 
     @Override
-    public Set<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive) {
-        return groupSubjects(subjectRepository.findAll(limit, offset, isActive.orElse(true) ));
+    public List<SubjectDTO> getAllSubjects(Integer limit, Integer offset, Optional<Boolean> isActive,  Optional<String> title) {
+        int initial = offset== 1 ? 0 : limit*(offset-1);
+        if (title.isPresent()) return getSubjectByTitle(limit, initial, isActive.orElse(true), title.get());
+        return groupSubjects(subjectRepository.findAll(limit, initial, isActive.orElse(true) ));
     }
 
     @Override
-    public SubjectDTO getSubjectByTitle(String title) {
+    public List<SubjectDTO> getSubjectByTitle(Integer limit, Integer offset, boolean isActive, String title) {
         try{
-            Subject subject = subjectRepository.findByTitle(title);
-            subject.setPrerrequisites(findPrerrequisitesById(subject.getSubjectId()));
-            return subjectMapper.subjectToSubjectDTO(subject);
+            return groupSubjects(subjectRepository.findByTitle(limit, offset, isActive, title));
         }catch (Exception ex){
             throw new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION , "title");
         }
@@ -42,7 +41,7 @@ public class SubjectService  implements ISubjectService {
     public SubjectDTO getSubjectById(String id) {
         Optional<Subject> subject = this.subjectRepository.findById(String.valueOf(UUID.fromString(id)));
         if (subject.isPresent()){
-            subject.get().setPrerrequisites(findPrerrequisitesById(subject.get().getSubjectId()));
+            subject.get().setPrerequisites(findPrerrequisitesById(subject.get().getSubjectId()));
             return subjectMapper.subjectToSubjectDTO(subject.get());
         }else {
             throw new SubjectException(SubjectException.SUBJECT_ID_EXCEPTION, "ID");
@@ -78,17 +77,17 @@ public class SubjectService  implements ISubjectService {
         }
     }
 
-    private Set<SubjectDTO> groupSubjects(Set<Subject> subjectList){
+    private List<SubjectDTO> groupSubjects(List<Subject> subjectList){
         return  subjectList.stream()
-                .map(s -> { s.setPrerrequisites(this.findPrerrequisitesById(s.getSubjectId()));
+                .map(s -> { s.setPrerequisites(this.findPrerrequisitesById(s.getSubjectId()));
                     return subjectMapper.subjectToSubjectDTO(s); })
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
     private Set<Subject> findPrerrequisitesById(UUID subjectId) {
         return subjectRepository.findPrerrequisitesById(subjectId)
                 .stream()
-                .map(p -> { p.setPrerrequisites(findPrerrequisitesById(p.getSubjectId()));
+                .map(p -> { p.setPrerequisites(findPrerrequisitesById(p.getSubjectId()));
                     return p; })
                 .collect(Collectors.toSet());
     }

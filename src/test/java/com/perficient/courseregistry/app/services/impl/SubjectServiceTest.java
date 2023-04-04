@@ -1,9 +1,7 @@
 package com.perficient.courseregistry.app.services.impl;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
@@ -36,37 +34,31 @@ public class SubjectServiceTest {
         subjectTest.setCode("SUBT");
         subjectTest.setCredits(4);
         subjectTest.setActive(true);
-        subjectTest.setPrerrequisites(new HashSet<>());
+        subjectTest.setPrerequisites(new HashSet<>());
         subjectDTOTest = Mappers.getMapper(ISubjectMapper.class).subjectToSubjectDTO(subjectTest);
         subjectService = new SubjectService(subjectRepository, Mappers.getMapper(ISubjectMapper.class));
     }
 
     @Test
     public void getAllSubjects_shouldReturnSetOfDTOSubjects() {
-        Set<Subject> subjectSet = new HashSet<>();
-        subjectSet.add(subjectTest);
-        when(subjectRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(subjectSet);
+        List<Subject> subjectList = new ArrayList<>();
+        subjectList.add(subjectTest);
+        when(subjectRepository.findAll(any(Integer.class), any(Integer.class), any(Boolean.class))).thenReturn(subjectList);
 
-        Set<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true));
+        List<SubjectDTO> subjectDTOsReturned = subjectService.getAllSubjects(10, 10, Optional.of(true), Optional.empty());
 
-        assertEquals(new HashSet<>(Set.of(subjectDTOTest)), subjectDTOsReturned);
+        assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOsReturned);
     }
 
     @Test
-    public void getSubjectByTitle_givenValidTitle_shouldReturnSubjectDTO() {
-        when(subjectRepository.findByTitle(any(String.class))).thenReturn(subjectTest);
+    public void getSubjectsByTitle_givenValidTitle_shouldReturnSubjectDTO() {
+        List<Subject> subjectList = new ArrayList<>();
+        subjectList.add(subjectTest);
+        when(subjectRepository.findByTitle(any(Integer.class), any(Integer.class), any(Boolean.class), any(String.class))).thenReturn(subjectList);
 
-        SubjectDTO subjectDTOReturned = subjectService.getSubjectByTitle("SUBT");
+        List<SubjectDTO> subjectDTOReturned = subjectService.getSubjectByTitle(1,1,true,"SUBT");
 
-        assertEquals(subjectDTOTest, subjectDTOReturned);
-    }
-
-    @Test
-    public void getSubjectByTitle_givenEmptyTitle_shouldThrowException() {
-        when(subjectRepository.findByTitle(any())).thenReturn(null);
-
-        assertThrows(SubjectException.class, () -> subjectService.getSubjectByTitle(""));
-
+        assertEquals(new ArrayList<>(Set.of(subjectDTOTest)), subjectDTOReturned);
     }
 
     @Test

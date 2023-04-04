@@ -1,8 +1,7 @@
 package com.perficient.courseregistry.app.controller;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import org.junit.Before;
@@ -32,21 +31,21 @@ public class SubjectControllerTest {
                                    .code("SUBT")
                                    .credits(4)
                                    .active(true)
-                                   .prerrequisites(new HashSet<>())
+                                   .prerequisites(new HashSet<>())
                                    .build();
         subjectController = new SubjectController(subjectService);
     }
 
     @Test
     public void getAllSubjects_shouldReturnSetOfDTOSubjects(){
-        Set<SubjectDTO> subjectDTOSet = new HashSet<>();
-        subjectDTOSet.add(subjectDTOTest);
-        when(subjectService.getAllSubjects(any(), any(), any())).thenReturn(subjectDTOSet);
+        List<SubjectDTO> subjectDTOList = new ArrayList<>();
+        subjectDTOList.add(subjectDTOTest);
+        when(subjectService.getAllSubjects(any(), any(), any(), any())).thenReturn(subjectDTOList);
 
-        ResponseEntity<Set<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true);
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true, null);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(subjectDTOSet, response.getBody());
+        assertEquals(subjectDTOList, response.getBody());
     }
 
     @Test
@@ -66,20 +65,16 @@ public class SubjectControllerTest {
     }
 
     @Test
-    public void getSubjectByTitle_givenTitle_shouldReturnSubjectDTO(){
-        when(subjectService.getSubjectByTitle(anyString())).thenReturn(subjectDTOTest);
+    public void getSubjectsByTitle_givenTitle_shouldReturnSubjectDTO(){
+        List<SubjectDTO> subjectDTOList = new ArrayList<>();
+        subjectDTOList.add(subjectDTOTest);
+        System.out.println("service " + subjectService);
+        when(subjectService.getAllSubjects(any(), any(), any(), any())).thenReturn(subjectDTOList);
 
-        ResponseEntity<SubjectDTO> response = subjectController.getSubjectByTitle("TEST");
+        ResponseEntity<List<SubjectDTO>> response = subjectController.getAllSubjects(1,1,true,"TEST");
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(subjectDTOTest, response.getBody());
-    }
-
-    @Test
-    public void getSubjectByTitle_givenEmptyTitle_shouldThrowException(){
-        when(subjectService.getSubjectByTitle(anyString())).thenThrow(new SubjectException(SubjectException.SUBJECT_TITLE_EXCEPTION, "TITLE"));
-
-        assertThrows(SubjectException.class, () -> subjectController.getSubjectByTitle(""));
+        assertEquals(subjectDTOList, response.getBody());
     }
 
     @Test

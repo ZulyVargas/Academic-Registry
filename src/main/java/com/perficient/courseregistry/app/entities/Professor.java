@@ -1,19 +1,17 @@
 package com.perficient.courseregistry.app.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.UUID;
-
-@Getter
-@Setter
+@Data
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(value="professors")
 public class Professor extends User {
-
-    @Column("professor_id")
-    private UUID professorId;
     private String degree;
 
 }

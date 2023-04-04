@@ -7,12 +7,12 @@
 	},
 	"item": [
 		{
-			"name": "getAll   (Limit 10 Offset 0 default)",
+			"name": "getAll",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
+					"raw": "http://localhost:8001/api/v1/subjects?active=false&limit=20&offset=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -22,17 +22,31 @@
 						"api",
 						"v1",
 						"subjects"
+					],
+					"query": [
+						{
+							"key": "active",
+							"value": "false"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "getAll",
+					"name": "getAll   (all and links)",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects",
+							"raw": "http://localhost:8001/api/v1/subjects?active=false&limit=20&offset=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -42,6 +56,20 @@
 								"api",
 								"v1",
 								"subjects"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "false"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -59,7 +87,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 01:56:24 GMT"
+							"value": "Fri, 17 Mar 2023 16:19:26 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -71,7 +99,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": \"4\",\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": \"3\",\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": \"3\",\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": \"4\",\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": \"3\",\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"cd11e55a-e064-42d1-bf25-d0363b5715d9\",\n        \"title\": \"ANALISIS NUMERICO\",\n        \"code\": \"ANUM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/cd11e55a-e064-42d1-bf25-d0363b5715d9\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=ANALISIS%20NUMERICO\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n        \"code\": \"BICN\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=BIOLOGIA%20Y%20CIENCIAS%20NATURALES\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerequisites\": [],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                    },\n                    {\n                        \"rel\": \"getByTitle\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/title?title=PRE%20CALCULO\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=CALCULO%20DIFERENCIAL\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerequisites\": [],\n                        \"links\": [\n                            {\n                                \"rel\": \"self\",\n                                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                            },\n                            {\n                                \"rel\": \"getByTitle\",\n                                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=PRE%20CALCULO\"\n                            }\n                        ]\n                    }\n                ],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n                    },\n                    {\n                        \"rel\": \"getByTitle\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/title?title=CALCULO%20DIFERENCIAL\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/06ad6480-ba04-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=CALCULO%20INTEGRAL\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"30f70acc-3b66-4bed-90f3-38e614c055dd\",\n        \"title\": \"CINE Y LITERATURA\",\n        \"code\": \"CYLI\",\n        \"credits\": 2,\n        \"active\": false,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/30f70acc-3b66-4bed-90f3-38e614c055dd\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=CINE%20Y%20LITERATURA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"9d1d7edd-46e6-4001-b277-efdd4b513042\",\n        \"title\": \"COSTOS Y PRESUPUESTOS\",\n        \"code\": \"CYPR\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/9d1d7edd-46e6-4001-b277-efdd4b513042\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=COSTOS%20Y%20PRESUPUESTOS\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"ee2bf736-7f56-4d3d-a8db-2e44a5767325\",\n        \"title\": \"EXPRESION GRAFICA\",\n        \"code\": \"EGRA\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/ee2bf736-7f56-4d3d-a8db-2e44a5767325\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=EXPRESION%20GRAFICA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/55d02807-635f-4408-b18f-ee92ef0f7de4\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=FUNDAMENTOS%20DE%20COMUNICACION\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/f90bbcb9-531d-4259-9d52-e92f29a961e5\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=FUNDAMENTOS%20DE%20MECANICA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"bdc6e175-aa1e-4d78-8078-bfb6a80bba7a\",\n        \"title\": \"HISTORIA DE COLOMBIA\",\n        \"code\": \"HDCL\",\n        \"credits\": 1,\n        \"active\": false,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/bdc6e175-aa1e-4d78-8078-bfb6a80bba7a\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=HISTORIA%20DE%20COLOMBIA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"4dd074b6-c4df-11ed-94fa-0242ac110002\",\n        \"title\": \"INGLES 1\",\n        \"code\": \"ING1\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/4dd074b6-c4df-11ed-94fa-0242ac110002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=INGLES%201\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"74efce37-2775-4016-b357-80a3ddaa85f0\",\n        \"title\": \"MATEMATICA FINANCIERA\",\n        \"code\": \"MATF\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/74efce37-2775-4016-b357-80a3ddaa85f0\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=MATEMATICA%20FINANCIERA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"ccb75709-a567-4934-85bd-4f733092784e\",\n        \"title\": \"OPTIMIZACION LINEAL\",\n        \"code\": \"OPTL\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/ccb75709-a567-4934-85bd-4f733092784e\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=OPTIMIZACION%20LINEAL\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=PRE%20CALCULO\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"cb7e06de-bd29-11ed-afa1-0242ac120002\",\n        \"title\": \"QUIMICA I\",\n        \"code\": \"QUIM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/cb7e06de-bd29-11ed-afa1-0242ac120002\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=QUIMICA%20I\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"3dfb64cb-c01c-416b-9a36-8d6df97d8933\",\n        \"title\": \"SEGURIDAD EN LA INDUSTRIA\",\n        \"code\": \"SIND\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/3dfb64cb-c01c-416b-9a36-8d6df97d8933\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=SEGURIDAD%20EN%20LA%20INDUSTRIA\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"6501acbf-ce9e-4b07-a87b-12b74d62c429\",\n        \"title\": \"SEÑALES DIGITALES\",\n        \"code\": \"SDIG\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/6501acbf-ce9e-4b07-a87b-12b74d62c429\"\n            },\n            {\n                \"rel\": \"getByTitle\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/title?title=SE%C3%91ALES%20DIGITALES\"\n            }\n        ]\n    }\n]"
 				},
 				{
 					"name": "getAll -> When the view or table doesnt exist",
@@ -158,107 +186,14 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"Data Source\",\n    \"message\": \"Unable to get data from source\",\n    \"httpStatus\": \"INTERNAL_SERVER_ERROR\",\n    \"timestamp\": \"2023-03-07T08:04:44.9324167-05:00\"\n}"
-				}
-			]
-		},
-		{
-			"name": "getAll paged",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=0&active=false",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					],
-					"query": [
-						{
-							"key": "limit",
-							"value": "5"
-						},
-						{
-							"key": "offset",
-							"value": "0"
-						},
-						{
-							"key": "active",
-							"value": "false"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "getAll (isActive default)",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects?limit=5&offset=1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "offset",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 07 Mar 2023 22:32:55 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
 				},
 				{
-					"name": "getAll paged (active and not active)",
+					"name": "getAll  by title",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects?limit=35&offset=0&active=false",
+							"raw": "http://localhost:8001/api/v1/subjects?title=cal",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -271,16 +206,8 @@
 							],
 							"query": [
 								{
-									"key": "limit",
-									"value": "35"
-								},
-								{
-									"key": "offset",
-									"value": "0"
-								},
-								{
-									"key": "active",
-									"value": "false"
+									"key": "title",
+									"value": "cal"
 								}
 							]
 						}
@@ -299,7 +226,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 22:37:28 GMT"
+							"value": "Wed, 22 Mar 2023 15:28:26 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -311,7 +238,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerrequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerrequisites\": []\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"3dfb64cb-c01c-416b-9a36-8d6df97d8933\",\n        \"title\": \"SEGURIDAD EN LA INDUSTRIA\",\n        \"code\": \"SIND\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"30f70acc-3b66-4bed-90f3-38e614c055dd\",\n        \"title\": \"CINE Y LITERATURA\",\n        \"code\": \"CYLI\",\n        \"credits\": 2,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cd11e55a-e064-42d1-bf25-d0363b5715d9\",\n        \"title\": \"ANALISIS NUMERICO\",\n        \"code\": \"ANUM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"f90bbcb9-531d-4259-9d52-e92f29a961e5\",\n        \"title\": \"FUNDAMENTOS DE MECANICA\",\n        \"code\": \"FMEC\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"55d02807-635f-4408-b18f-ee92ef0f7de4\",\n        \"title\": \"FUNDAMENTOS DE COMUNICACION\",\n        \"code\": \"FCOM\",\n        \"credits\": 2,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ee2bf736-7f56-4d3d-a8db-2e44a5767325\",\n        \"title\": \"EXPRESION GRAFICA\",\n        \"code\": \"EGRA\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ccb75709-a567-4934-85bd-4f733092784e\",\n        \"title\": \"OPTIMIZACION LINEAL\",\n        \"code\": \"OPTL\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"bdc6e175-aa1e-4d78-8078-bfb6a80bba7a\",\n        \"title\": \"HISTORIA DE COLOMBIA\",\n        \"code\": \"HDCL\",\n        \"credits\": 1,\n        \"active\": false,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"9d1d7edd-46e6-4001-b277-efdd4b513042\",\n        \"title\": \"COSTOS Y PRESUPUESTOS\",\n        \"code\": \"CYPR\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"BIOLOGIA\",\n        \"code\": \"BIOL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerrequisites\": []\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"6501acbf-ce9e-4b07-a87b-12b74d62c429\",\n        \"title\": \"SEÑALES DIGITALES\",\n        \"code\": \"SDIG\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"74efce37-2775-4016-b357-80a3ddaa85f0\",\n        \"title\": \"MATEMATICA FINANCIERA\",\n        \"code\": \"MATF\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    },\n    {\n        \"subjectId\": \"cb7e06de-bd29-11ed-afa1-0242ac120002\",\n        \"title\": \"QUIMICA I\",\n        \"code\": \"QUIM\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerrequisites\": []\n    }\n]"
+					"body": "[\n    {\n        \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO DIFERENCIAL\",\n        \"code\": \"CALD\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                \"title\": \"PRE CALCULO\",\n                \"code\": \"PCAL\",\n                \"credits\": 3,\n                \"active\": true,\n                \"prerequisites\": [],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"06ad6480-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"CALCULO INTEGRAL\",\n        \"code\": \"CALI\",\n        \"credits\": 4,\n        \"active\": true,\n        \"prerequisites\": [\n            {\n                \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n                \"title\": \"CALCULO DIFERENCIAL\",\n                \"code\": \"CALD\",\n                \"credits\": 4,\n                \"active\": true,\n                \"prerequisites\": [\n                    {\n                        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n                        \"title\": \"PRE CALCULO\",\n                        \"code\": \"PCAL\",\n                        \"credits\": 3,\n                        \"active\": true,\n                        \"prerequisites\": [],\n                        \"links\": [\n                            {\n                                \"rel\": \"self\",\n                                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                            }\n                        ]\n                    }\n                ],\n                \"links\": [\n                    {\n                        \"rel\": \"self\",\n                        \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n                    }\n                ]\n            }\n        ],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/06ad6480-ba04-11ed-afa1-0242ac120002\"\n            }\n        ]\n    },\n    {\n        \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n        \"title\": \"PRE CALCULO\",\n        \"code\": \"PCAL\",\n        \"credits\": 3,\n        \"active\": true,\n        \"prerequisites\": [],\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n            }\n        ]\n    }\n]"
 				}
 			]
 		},
@@ -362,7 +289,7 @@
 					"header": [
 						{
 							"key": "Content-Type",
-							"value": "application/json"
+							"value": "application/hal+json"
 						},
 						{
 							"key": "Transfer-Encoding",
@@ -370,7 +297,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Fri, 03 Mar 2023 21:29:55 GMT"
+							"value": "Fri, 17 Mar 2023 16:20:02 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -382,31 +309,8 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n    \"title\": \"CALCULO DIFERENCIAL\",\n    \"code\": \"CALD\",\n    \"credits\": \"4\",\n    \"prerrequisites\": [\n        {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": \"3\",\n            \"prerrequisites\": []\n        }\n    ]\n}"
-				}
-			]
-		},
-		{
-			"name": "getById (ID no found exception)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/f9529637-82bc-430e-bf9e-6114b3381bbc",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects",
-						"f9529637-82bc-430e-bf9e-6114b3381bbc"
-					]
-				}
-			},
-			"response": [
+					"body": "{\n    \"subjectId\": \"ed4f110a-ba03-11ed-afa1-0242ac120002\",\n    \"title\": \"CALCULO DIFERENCIAL\",\n    \"code\": \"CALD\",\n    \"credits\": 4,\n    \"active\": true,\n    \"prerequisites\": [\n        {\n            \"subjectId\": \"1f3efb1c-ba04-11ed-afa1-0242ac120002\",\n            \"title\": \"PRE CALCULO\",\n            \"code\": \"PCAL\",\n            \"credits\": 3,\n            \"active\": true,\n            \"prerequisites\": [],\n            \"_links\": {\n                \"self\": {\n                    \"href\": \"http://localhost:8001/api/v1/subjects/1f3efb1c-ba04-11ed-afa1-0242ac120002\"\n                },\n                \"getByTitle\": {\n                    \"href\": \"http://localhost:8001/api/v1/subjects/title?title=PRE%20CALCULO\"\n                }\n            }\n        }\n    ],\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/ed4f110a-ba03-11ed-afa1-0242ac120002\"\n        },\n        \"getByTitle\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/title?title=CALCULO%20DIFERENCIAL\"\n        }\n    }\n}"
+				},
 				{
 					"name": "getById (ID no found exception)",
 					"originalRequest": {
@@ -458,159 +362,13 @@
 			]
 		},
 		{
-			"name": "getByTitle",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGIA",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects",
-						"title",
-						"BIOLOGIA"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "getByTitle",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGIA",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects",
-								"title",
-								"BIOLOGIA"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:29 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"subjectId\": \"7ce1673a-b60a-11ed-b86e-0242ac110002\",\n    \"title\": \"BIOLOGIA\",\n    \"code\": \"BIOL\",\n    \"credits\": \"3\",\n    \"prerrequisites\": []\n}"
-				}
-			]
-		},
-		{
-			"name": "getByTitle (Title not found exception)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects",
-						"title",
-						"BIOLOGI"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "getByTitle (Title not found exception)",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects/title/BIOLOGI",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects",
-								"title",
-								"BIOLOGI"
-							]
-						}
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 02 Mar 2023 15:34:34 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"field\": \"title\",\n    \"message\": \"The subject with the given title does not exist.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T10:34:34.8940374-05:00\"\n}"
-				}
-			]
-		},
-		{
 			"name": "addSubject",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"prerrequisites\": []\r\n}",
+					"raw": "{\r\n    \"title\": \"INGLES 1\",\r\n    \"code\": \"ING1\",\r\n    \"credits\": \"2\",\r\n    \"active\": true,\r\n    \"prerrequisites\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -666,7 +424,7 @@
 					"header": [
 						{
 							"key": "Content-Type",
-							"value": "application/json"
+							"value": "application/hal+json"
 						},
 						{
 							"key": "Transfer-Encoding",
@@ -674,7 +432,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 23:06:55 GMT"
+							"value": "Fri, 17 Mar 2023 16:18:08 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -686,90 +444,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"c13831f0-bd3c-11ed-bdb4-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": 2,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
-				}
-			]
-		},
-		{
-			"name": "addSubject EXCEPTIONS",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": \"\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "addSubject EXCEPTIONS MAX",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"subject_id\": \"c87648b6-b90f-11ed-99c1-0242ac110002\",\r\n    \"title\": \"FISICA 1\",\r\n    \"code\": \"\",\r\n    \"credits\": 10,\r\n    \"prerrequisites\": []\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8001/api/v1/subjects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"api",
-								"v1",
-								"subjects"
-							]
-						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 07 Mar 2023 20:57:34 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"field\": \"code\",\n        \"message\": \"The code of the subject cannot be empty.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    },\n    {\n        \"field\": \"credits\",\n        \"message\": \"The maximum number of credits is 4.\",\n        \"httpStatus\": \"BAD_REQUEST\",\n        \"timestamp\": \"2023-03-07T15:57:34.2584184-05:00\"\n    }\n]"
+					"body": "{\n    \"subjectId\": \"4dd074b6-c4df-11ed-94fa-0242ac110002\",\n    \"title\": \"INGLES 1\",\n    \"code\": \"ING1\",\n    \"credits\": 2,\n    \"active\": true,\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/4dd074b6-c4df-11ed-94fa-0242ac110002\"\n        },\n        \"getByTitle\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/title?title=INGLES%201\"\n        }\n    }\n}"
 				},
 				{
 					"name": "addSubject EXCEPTIONS MIN",
@@ -888,7 +563,7 @@
 					"header": [
 						{
 							"key": "Content-Type",
-							"value": "application/json"
+							"value": "application/hal+json"
 						},
 						{
 							"key": "Transfer-Encoding",
@@ -896,7 +571,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 23:07:39 GMT"
+							"value": "Fri, 17 Mar 2023 16:20:57 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -908,39 +583,8 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": 4,\n    \"active\": true,\n    \"prerrequisites\": []\n}"
-				}
-			]
-		},
-		{
-			"name": "update (Exception) (ID NOT EXIST)",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1-0242ac110001\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"body": "{\n    \"subjectId\": \"1403f93c-ba04-11ed-afa1-0242ac120002\",\n    \"title\": \"BIOLOGIA Y CIENCIAS NATURALES\",\n    \"code\": \"BICN\",\n    \"credits\": 4,\n    \"active\": true,\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/1403f93c-ba04-11ed-afa1-0242ac120002\"\n        },\n        \"getByTitle\": {\n            \"href\": \"http://localhost:8001/api/v1/subjects/title?title=BIOLOGIA%20Y%20CIENCIAS%20NATURALES\"\n        }\n    }\n}"
 				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "update (Exception)",
 					"originalRequest": {
@@ -996,38 +640,7 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"field\": \"ID\",\n    \"message\": \"The given subject could not be updated.\",\n    \"httpStatus\": \"BAD_REQUEST\",\n    \"timestamp\": \"2023-03-02T11:01:07.061114-05:00\"\n}"
-				}
-			]
-		},
-		{
-			"name": "update (Exception) (ID BAD FORMAT) Copy",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"subjectId\": \"c87648b6-b90f-11ed-99c1\",\r\n    \"title\": \"ENGLISH 1\",\r\n    \"code\": \"ENG1\",\r\n    \"credits\": \"3\",\r\n    \"prerrequisites\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "http://localhost:8001/api/v1/subjects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"api",
-						"v1",
-						"subjects"
-					]
-				}
-			},
-			"response": [
 				{
 					"name": "update (Exception) (ID NOT EXIST) Copy",
 					"originalRequest": {
