@@ -1,7 +1,9 @@
 package com.perficient.courseregistry.app.controller;
 
-import java.util.*;
-
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.UUID;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import org.junit.Before;
@@ -12,9 +14,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.perficient.courseregistry.app.services.impl.SubjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import static org.mockito.ArgumentMatchers.*;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SubjectControllerTest {

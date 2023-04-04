@@ -4,6 +4,7 @@ import com.perficient.courseregistry.app.dto.ProfessorDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.entities.Professor;
 import com.perficient.courseregistry.app.entities.User;
+import com.perficient.courseregistry.app.enums.ROLE;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.mappers.IUserMapper;
@@ -15,9 +16,14 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static com.perficient.courseregistry.app.enums.ROLE.ADMIN;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -43,6 +49,8 @@ public class ProfessorServiceTest {
                 .username("user.test")
                 .active(true)
                 .degree("TEST")
+                .role(ADMIN)
+                .password("ABC")
                 .build();
         IProfessorMapper professorMapper = Mappers.getMapper(IProfessorMapper.class);
         IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);

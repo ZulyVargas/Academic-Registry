@@ -6,7 +6,6 @@ import com.perficient.courseregistry.app.entities.Record;
 import com.perficient.courseregistry.app.entities.Student;
 import com.perficient.courseregistry.app.entities.User;
 import com.perficient.courseregistry.app.enums.GRADE_TYPE;
-import com.perficient.courseregistry.app.enums.PERIOD;
 import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IStudentMapper;
@@ -19,9 +18,15 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
+import java.util.Optional;
+import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -50,6 +55,7 @@ public class StudentServiceTest {
                 .avg(3.4)
                 .status(STATUS_STUDENT.ACTIVE)
                 .records(new HashSet<>(records))
+                .password("ABC")
                 .build();
         IStudentMapper studentMapper = Mappers.getMapper(IStudentMapper.class);
         IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);

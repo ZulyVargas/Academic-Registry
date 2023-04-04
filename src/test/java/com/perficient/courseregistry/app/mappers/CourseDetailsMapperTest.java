@@ -13,7 +13,7 @@ import org.mapstruct.factory.Mappers;
 import java.util.HashSet;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CourseDetailsMapperTest {
