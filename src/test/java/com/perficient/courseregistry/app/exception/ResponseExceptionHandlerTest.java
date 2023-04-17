@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import java.net.ConnectException;
 import java.sql.SQLException;
 import java.time.ZoneId;

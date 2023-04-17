@@ -1,11 +1,10 @@
 package com.perficient.courseregistry.app.services.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.StudentDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
-import com.perficient.courseregistry.app.entities.Record;
 import com.perficient.courseregistry.app.entities.Student;
 import com.perficient.courseregistry.app.entities.User;
-import com.perficient.courseregistry.app.enums.GRADE_TYPE;
 import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IStudentMapper;
@@ -18,12 +17,12 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -41,28 +40,18 @@ public class StudentServiceTest {
     @Mock
     private IUserRepository userRepository;
     private StudentService studentService;
+    private ObjectMapper objectMapper;
+    private File studentJson = new File("src/test/resources/jsons/student.json");
 
     @Before
-    public void setUp(){
-        Set<Record> records = new HashSet<>();
-        records.add(new Record(UUID.randomUUID(), UUID.randomUUID(), GRADE_TYPE.FIRST, 3.4));
-        studentTest = Student.builder().userId(UUID.randomUUID())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .avg(3.4)
-                .status(STATUS_STUDENT.ACTIVE)
-                .records(new HashSet<>(records))
-                .password("ABC")
-                .build();
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        studentTest = objectMapper.readValue(studentJson, Student.class);
+        studentDTOTest = objectMapper.readValue(studentJson, StudentDTO.class);
         IStudentMapper studentMapper = Mappers.getMapper(IStudentMapper.class);
         IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);
-        studentDTOTest = studentMapper.studentToStudentDto(studentTest);
         userDTOTest = studentMapper.studentDTOToUser(studentDTOTest);
         userTest = userMapper.userDtoToUser(userDTOTest);
-
         studentService = new StudentService(studentRepository, studentMapper);
         studentService.setUserMapper(userMapper);
         studentService.setUserRepository(userRepository);
@@ -132,7 +121,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenExistingId_shouldReturnTrue(){
+    public void deleteStudent_givenExistingId_shouldReturnTrue(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(true);
 
@@ -144,7 +133,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenNonExistingId_shouldReturnFalse(){
+    public void deleteStudent_givenNonExistingId_shouldReturnFalse(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenReturn(false);
 
@@ -155,7 +144,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void deleteProfessor_givenInvalidId_shouldThrowException(){
+    public void deleteStudent_givenInvalidId_shouldThrowException(){
         when(userRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(userTest));
         when(userRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 

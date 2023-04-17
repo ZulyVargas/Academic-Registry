@@ -10,7 +10,6 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.util.UUID;
 
 @Data
-@Builder
 @Table(value = "courses")
 public class CourseDetails {
     @Column("course_id")

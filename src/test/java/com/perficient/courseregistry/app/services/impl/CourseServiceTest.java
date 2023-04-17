@@ -1,26 +1,21 @@
 package com.perficient.courseregistry.app.services.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.CourseDTO;
-import com.perficient.courseregistry.app.dto.ProfessorDTO;
-import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Course;
-import com.perficient.courseregistry.app.entities.Professor;
-import com.perficient.courseregistry.app.entities.Subject;
-import com.perficient.courseregistry.app.enums.PERIOD;
-import com.perficient.courseregistry.app.enums.STATUS_COURSE;
 import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.mappers.ICourseMapper;
 import com.perficient.courseregistry.app.repository.ICourseRepository;
 import com.perficient.courseregistry.app.utils.adapters.ICourseAdapterService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
@@ -39,63 +34,14 @@ public class CourseServiceTest {
     @Mock
     private ICourseAdapterService courseAdapter;
     private CourseService courseService;
+    private ObjectMapper objectMapper;
+    private File courseJson = new File("src/test/resources/jsons/course.json");
 
     @Before
-    public void setUp(){
-        Professor professor = Professor.builder()
-                                        .userId(UUID.randomUUID())
-                                        .name("USER TEST")
-                                        .email("usertest@test.edu")
-                                        .gender("F")
-                                        .username("user.test")
-                                        .active(true)
-                                        .degree("TEST")
-                                        .build();
-        ProfessorDTO professorDTO = ProfessorDTO.builder()
-                                                .userId(UUID.randomUUID())
-                                                .name("USER TEST")
-                                                .email("usertest@test.edu")
-                                                .gender("F")
-                                                .username("user.test")
-                                                .active(true)
-                                                .degree("TEST")
-                                                .build();
-        Subject subject = new Subject();
-        subject.setSubjectId(UUID.randomUUID());
-        subject.setTitle("SUBJECT TEST");
-        subject.setCode("SUBT");
-        subject.setCredits(4);
-        subject.setActive(true);
-        subject.setPrerequisites(new HashSet<>());
-        SubjectDTO subjectDTOTest = SubjectDTO.builder()
-                                              .subjectId(subject.getSubjectId())
-                                              .title("SUBJECT TEST")
-                                              .code("SUBT")
-                                              .credits(4)
-                                              .active(true)
-                                              .prerequisites(new HashSet<>()).build();
-        courseTest = new Course();
-        courseTest.setCourseId(UUID.randomUUID());
-        courseTest.setGroupNumber("1");
-        courseTest.setQuota(20);
-        courseTest.setProfessor(professor);
-        courseTest.setSubject(subject);
-        courseTest.setStatusCourse(STATUS_COURSE.IN_PROGRESS);
-        courseTest.setYear("2022");
-        courseTest.setPeriod(PERIOD.valueOf("I"));
-        courseTest.setActive(true);
-
-        courseDTOTest = new CourseDTO();
-        courseDTOTest.setCourseId(courseTest.getCourseId());
-        courseDTOTest.setGroupNumber("1");
-        courseDTOTest.setQuota(20);
-        courseDTOTest.setProfessor(professorDTO);
-        courseDTOTest.setSubject(subjectDTOTest);
-        courseDTOTest.setStatusCourse(STATUS_COURSE.IN_PROGRESS);
-        courseDTOTest.setYear("2022");
-        courseDTOTest.setPeriod(PERIOD.valueOf("I"));
-        courseDTOTest.setActive(true);
-
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        courseTest = objectMapper.readValue(courseJson, Course.class);
+        courseDTOTest = objectMapper.readValue(courseJson, CourseDTO.class);
         courseService = new CourseService(courseRepository, Mappers.getMapper(ICourseMapper.class), courseAdapter);
     }
 
@@ -161,33 +107,33 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void deleteSubject_givenExistingId_shouldReturnTrue(){
+    public void deleteCourse_givenExistingId_shouldReturnTrue(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenReturn(true);
 
         Boolean updateActiveExpected = true;
-        Boolean updateActiveReturned = courseService.deleteCourse(UUID.randomUUID().toString());
+        Boolean updateActiveReturned = courseService.deleteCourse(courseTest.getCourseId().toString());
 
-        Assert.assertEquals(updateActiveExpected, updateActiveReturned);
+        assertEquals(updateActiveExpected, updateActiveReturned);
     }
 
     @Test
-    public void deleteSubject_givenNonExistingId_shouldReturnFalse(){
+    public void deleteCourse_givenNonExistingId_shouldReturnFalse(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenReturn(false);
 
         Boolean updateActiveExpected = false;
         Boolean updateActiveReturned = courseService.deleteCourse(UUID.randomUUID().toString());
 
-        Assert.assertEquals(updateActiveExpected, updateActiveReturned);
+        assertEquals(updateActiveExpected, updateActiveReturned);
     }
 
     @Test
-    public void deleteSubject_givenInvalidId_shouldThrowException(){
+    public void deleteCourse_givenInvalidId_shouldThrowException(){
         when(courseRepository.findById(any(UUID.class))).thenReturn(Optional.ofNullable(courseTest));
         when(courseRepository.updateActive(any(UUID.class))).thenThrow(new RuntimeException());
 
-        Assert.assertThrows(CourseException.class, () -> courseService.deleteCourse(UUID.randomUUID().toString()));
+        assertThrows(CourseException.class, () -> courseService.deleteCourse(UUID.randomUUID().toString()));
     }
 
 }

@@ -1,39 +1,28 @@
 package com.perficient.courseregistry.app.mappers;
 
-import java.util.UUID;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.StudentDTO;
 import com.perficient.courseregistry.app.entities.Student;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.Before;
+import org.junit.Test;
 import org.mapstruct.factory.Mappers;
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StudentMapperTest {
     private final IStudentMapper studentMapper = Mappers.getMapper(IStudentMapper.class);
     private Student studentTest;
     private StudentDTO studentDTOTest;
+    private ObjectMapper objectMapper;
+    private File studentJson = new File("src/test/resources/jsons/student.json");
 
-    @BeforeAll
-    public void setUp(){
-        studentTest = Student.builder().userId(UUID.randomUUID())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .avg(3.4)
-                .build();
-        studentDTOTest = StudentDTO.builder().userId(studentTest.getUserId())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .avg(3.4)
-                .build();
+    @Before
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        studentTest = objectMapper.readValue(studentJson, Student.class);
+        studentDTOTest = objectMapper.readValue(studentJson, StudentDTO.class);
     }
 
     @Test

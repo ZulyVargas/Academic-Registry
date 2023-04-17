@@ -1,10 +1,7 @@
 package com.perficient.courseregistry.app.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.CourseDTO;
-import com.perficient.courseregistry.app.dto.ProfessorDTO;
-import com.perficient.courseregistry.app.dto.SubjectDTO;
-import com.perficient.courseregistry.app.enums.PERIOD;
-import com.perficient.courseregistry.app.enums.STATUS_COURSE;
 import com.perficient.courseregistry.app.exception.custom.CourseException;
 import com.perficient.courseregistry.app.services.impl.CourseService;
 import org.junit.Before;
@@ -14,8 +11,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,31 +25,17 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CourseControllerTest {
-     @Mock
-     private CourseService courseService;
+    @Mock
+    private CourseService courseService;
     private CourseDTO courseDTOTest;
-
     private CourseController courseController;
+    private ObjectMapper objectMapper;
+    private File courseJson = new File("src/test/resources/jsons/course.json");
 
     @Before
-    public void setUp(){
-        ProfessorDTO professorDTO = ProfessorDTO.builder().userId(UUID.randomUUID()).name("USER TEST").email("usertest@test.edu")
-                .gender("F").username("user.test").active(true).degree("TEST").build();
-
-        SubjectDTO subjectDTOTest = SubjectDTO.builder().subjectId(UUID.randomUUID()).title("SUBJECT TEST").code("SUBT").credits(4)
-                .active(true).prerequisites(new HashSet<>()).build();
-
-        courseDTOTest = new CourseDTO();
-        courseDTOTest.setCourseId(UUID.randomUUID());
-        courseDTOTest.setGroupNumber("1");
-        courseDTOTest.setQuota(20);
-        courseDTOTest.setProfessor(professorDTO);
-        courseDTOTest.setSubject(subjectDTOTest);
-        courseDTOTest.setStatusCourse(STATUS_COURSE.IN_PROGRESS);
-        courseDTOTest.setYear("2022");
-        courseDTOTest.setPeriod(PERIOD.valueOf("I"));
-        courseDTOTest.setActive(true);
-
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        courseDTOTest = objectMapper.readValue(courseJson, CourseDTO.class);
         courseController = new CourseController(courseService);
    }
 

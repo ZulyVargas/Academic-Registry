@@ -1,10 +1,10 @@
 package com.perficient.courseregistry.app.services.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.ProfessorDTO;
 import com.perficient.courseregistry.app.dto.UserDTO;
 import com.perficient.courseregistry.app.entities.Professor;
 import com.perficient.courseregistry.app.entities.User;
-import com.perficient.courseregistry.app.enums.ROLE;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.mappers.IProfessorMapper;
 import com.perficient.courseregistry.app.mappers.IUserMapper;
@@ -16,12 +16,13 @@ import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 
-import static com.perficient.courseregistry.app.enums.ROLE.ADMIN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -38,26 +39,19 @@ public class ProfessorServiceTest {
     @Mock
     private IUserRepository userRepository;
     private ProfessorService professorService;
+    private ObjectMapper objectMapper;
+    private File professorJson = new File("src/test/resources/jsons/professor.json");
 
 
     @Before
-    public void setUp(){
-        professorTest = Professor.builder().userId(UUID.randomUUID())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .degree("TEST")
-                .role(ADMIN)
-                .password("ABC")
-                .build();
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        professorTest = objectMapper.readValue(professorJson, Professor.class);
+        professorDTOTest = objectMapper.readValue(professorJson, ProfessorDTO.class);
         IProfessorMapper professorMapper = Mappers.getMapper(IProfessorMapper.class);
         IUserMapper userMapper = Mappers.getMapper(IUserMapper.class);
-        professorDTOTest = professorMapper.professorToProfessorDto(professorTest);
         userDTOTest = professorMapper.professorDTOToUserDTO(professorDTOTest);
         userTest = userMapper.userDtoToUser(userDTOTest);
-
         professorService = new ProfessorService(professorRepository, professorMapper);
         professorService.setUserMapper(userMapper);
         professorService.setUserRepository(userRepository);

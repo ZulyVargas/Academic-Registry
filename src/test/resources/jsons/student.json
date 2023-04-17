@@ -1,0 +1,13 @@
+{
+  "userId":"e39afdaf-e9c4-4bb4-9479-6dd169f061a0",
+  "name": "USER TEST",
+  "email":"usertest@test.edu",
+  "gender": "F",
+  "username": "user.test",
+  "active": "true",
+  "avg":"3.4",
+  "status": "ACTIVE",
+  "role": "STUDENT",
+  "records": [],
+  "password": "passw0rd1245"
+}
