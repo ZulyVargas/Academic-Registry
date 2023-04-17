@@ -1,0 +1,10 @@
+{
+  "userId":"b4d86008-0b07-471c-86e9-dedb8b8ea38d",
+  "name": "USER TEST",
+  "email":"usertest@test.edu",
+  "gender": "F",
+  "username": "user.test",
+  "active": "true",
+  "degree":"TEST",
+  "password": "passw0rd1245"
+}

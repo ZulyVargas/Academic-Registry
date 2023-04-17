@@ -1,7 +1,7 @@
 package com.perficient.courseregistry.app.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.StudentDTO;
-import com.perficient.courseregistry.app.enums.STATUS_STUDENT;
 import com.perficient.courseregistry.app.exception.custom.UserException;
 import com.perficient.courseregistry.app.services.impl.StudentService;
 import org.junit.Before;
@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -26,18 +28,13 @@ public class StudentControllerTest {
     private StudentService studentService;
     private StudentDTO studentDTOTest;
     private StudentController studentController;
+    private ObjectMapper objectMapper;
+    private File studentJson = new File("src/test/resources/jsons/student.json");
 
     @Before
-    public void setUp(){
-        studentDTOTest = StudentDTO.builder().userId(UUID.randomUUID())
-                .name("USER TEST")
-                .email("usertest@test.edu")
-                .gender("F")
-                .username("user.test")
-                .active(true)
-                .avg(3.4)
-                .status(STATUS_STUDENT.ACTIVE)
-                .build();
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        studentDTOTest = objectMapper.readValue(studentJson, StudentDTO.class);
         studentController = new StudentController(studentService);
     }
 
@@ -107,7 +104,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void deleteProfessor_givenExistingId_shouldReturnTrue(){
+    public void deleteStudent_givenExistingId_shouldReturnTrue(){
         when(studentService.deleteStudent(any(String.class))).thenReturn(true);
 
         ResponseEntity<Boolean> response = studentController.deleteStudent(UUID.randomUUID().toString());
@@ -117,7 +114,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void deleteProfessor_givenNonExistingId_shouldReturnFalse(){
+    public void deleteStudent_givenNonExistingId_shouldReturnFalse(){
         when(studentService.deleteStudent(any(String.class))).thenReturn(false);
 
         ResponseEntity<Boolean> response = studentController.deleteStudent(UUID.randomUUID().toString());

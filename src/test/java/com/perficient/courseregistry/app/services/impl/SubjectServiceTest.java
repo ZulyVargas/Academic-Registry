@@ -1,11 +1,13 @@
 package com.perficient.courseregistry.app.services.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import java.util.Set;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.entities.Subject;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
@@ -30,17 +32,14 @@ public class SubjectServiceTest {
     @Mock
     private ISubjectRepository subjectRepository;
     private SubjectService subjectService;
+    private ObjectMapper objectMapper;
+    private File subjectJson = new File("src/test/resources/jsons/subject.json");
 
     @Before
-    public void setUp() {
-        subjectTest = new Subject();
-        subjectTest.setSubjectId(UUID.randomUUID());
-        subjectTest.setTitle("SUBJECT TEST");
-        subjectTest.setCode("SUBT");
-        subjectTest.setCredits(4);
-        subjectTest.setActive(true);
-        subjectTest.setPrerequisites(new HashSet<>());
-        subjectDTOTest = Mappers.getMapper(ISubjectMapper.class).subjectToSubjectDTO(subjectTest);
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        subjectTest = objectMapper.readValue(subjectJson, Subject.class);
+        subjectDTOTest = objectMapper.readValue(subjectJson, SubjectDTO.class);
         subjectService = new SubjectService(subjectRepository, Mappers.getMapper(ISubjectMapper.class));
     }
 

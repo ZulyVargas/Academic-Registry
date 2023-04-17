@@ -1,9 +1,11 @@
 package com.perficient.courseregistry.app.controller;
 
-import java.util.HashSet;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.UUID;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.courseregistry.app.dto.SubjectDTO;
 import com.perficient.courseregistry.app.exception.custom.SubjectException;
 import org.junit.Before;
@@ -27,17 +29,13 @@ public class SubjectControllerTest {
     private SubjectService subjectService;
     private SubjectDTO subjectDTOTest;
     private SubjectController subjectController;
+    private ObjectMapper objectMapper;
+    private File subjectJson = new File("src/test/resources/jsons/subject.json");
 
     @Before
-    public void setUp() {
-        subjectDTOTest = SubjectDTO.builder()
-                                   .subjectId(UUID.randomUUID())
-                                   .title("SUBJECT TEST")
-                                   .code("SUBT")
-                                   .credits(4)
-                                   .active(true)
-                                   .prerequisites(new HashSet<>())
-                                   .build();
+    public void setUp() throws IOException {
+        objectMapper = new ObjectMapper();
+        subjectDTOTest = objectMapper.readValue(subjectJson, SubjectDTO.class);
         subjectController = new SubjectController(subjectService);
     }
 

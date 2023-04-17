@@ -13,12 +13,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
-import static org.springframework.hateoas.server.core.DummyInvocationUtils.methodOn;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
 @Data
-@Builder
 public class SubjectDTO extends Resource<SubjectDTO> implements Serializable {
     private UUID subjectId;
     @NotBlank(message = "The title of the subject cannot be empty.")
